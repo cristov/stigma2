@@ -17,6 +17,6 @@
 	<title>Stigma2</title>
 </head>
 <body>
-	Index Page.
+	Login Page.
 </body>
 </html>

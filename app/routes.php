@@ -11,7 +11,11 @@
 |
 */
 
-Route::get('/', function()
+Route::get('/', array('before' => 'auth',
+            'uses' => 'HomeController@showIndex'));
+Route::get('login', 'HomeController@showLogin');
+
+App::missing(function($exception)
 {
-	return View::make('index');
+	return Redirect::to('/');
 });
