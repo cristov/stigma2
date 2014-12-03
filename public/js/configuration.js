@@ -32,7 +32,18 @@ var stigma2 = (function() {
 			{"url": CONTEXT_ROOT + "/configuration/services/:id/edit", "templateUrl": PAGES_ROOT + "system.configuration.service.edit.php", "controller": "SystemConfigurationServiceEditCtrl"},
 			{"url": CONTEXT_ROOT + "/configuration/timeperiods", "templateUrl": PAGES_ROOT + "system.configuration.timeperiod.index.php", "controller": "SystemConfigurationTimeperiodListCtrl"},
 			{"url": CONTEXT_ROOT + "/configuration/timeperiods/create", "templateUrl": PAGES_ROOT + "system.configuration.timeperiod.create.php", "controller": "SystemConfigurationTimeperiodCreationCtrl"},
-		]
+		],
+		timeperiod: {
+			week: [
+				{"value": "sunday", "text": "sunday"},
+				{"value": "monday", "text": "monday"},
+				{"value": "tuesday", "text": "tuesday"},
+				{"value": "wednesday", "text": "wednesday"},
+				{"value": "thursday", "text": "thursday"},
+				{"value": "friday", "text": "friday"},
+				{"value": "saturday", "text": "saturday"},
+			]
+		}
 	};
 
 	return {

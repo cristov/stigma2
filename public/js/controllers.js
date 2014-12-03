@@ -470,9 +470,12 @@ mainApp.controller("SystemConfigurationTimeperiodListCtrl", ["$location", "$root
 			});
 	}]);
 
-mainApp.controller("SystemConfigurationTimeperiodCreationCtrl", ["$location", "$scope", "SystemConfigurationTimeperiodFactory",
-	function($location, $scope, SystemConfigurationTimeperiodFactory) {
-		//
+mainApp.controller("SystemConfigurationTimeperiodCreationCtrl", ["$compile", "$location", "$scope", "SystemConfigurationTimeperiodFactory",
+	function($compile, $location, $scope, SystemConfigurationTimeperiodFactory) {
+		$scope.addRow = function() {
+			var content = $compile('<x-timeperiod-add-row></x-timeperiod-add-row>')($scope);
+			$('tbody').append(content);
+		};
 	}]);
 
 var dragDropHelper = function($scope) {

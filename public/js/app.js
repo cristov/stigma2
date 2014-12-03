@@ -14,3 +14,15 @@ mainApp.config(function($routeProvider, $locationProvider) {
 
 	$routeProvider.otherwise({redirectTo: stigma2.getConfiguration().home});
 });
+
+mainApp.directive('timeperiodAddRow', function() {
+	return {
+		restrict: 'E',
+		replace: true,
+		template: '<tr><td><select ng-options="object.text for object in week track by object.text" ng-model="timeperiodData.week"></td><td><span>directive</span></td></tr>',
+		link: function (scope, element, attr) {
+			scope.timeperiodData = {};
+			scope.week = stigma2.getConfiguration().timeperiod.week;
+		}
+	};
+});
