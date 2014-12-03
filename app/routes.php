@@ -18,13 +18,13 @@ Route::get('logout', 'HomeController@doLogout');
 
 Route::group(array('before' => 'auth', 'prefix' => 'api'), function()
 {
-	// Route::resource('overview', 'OverviewController');
-	// Route::resource('hosts', 'HostsController');
-	// Route::resource('services', 'ServicesController');
-	// Route::resource('configuration/commands', 'ConfigurationCommandsController');
-	// Route::resource('configuration/hosts', 'ConfigurationHostsController');
-	// Route::resource('configuration/services', 'ConfigurationServicesController');
-	// Route::resource('configuration/timeperiods', 'ConfigurationTimeperiodsController');
+	Route::resource('overview', 'OverviewController');
+	Route::resource('hosts', 'HostsController');
+	Route::resource('services', 'ServicesController');
+	Route::resource('configuration/commands', 'ConfigurationCommandsController');
+	Route::resource('configuration/hosts', 'ConfigurationHostsController');
+	Route::resource('configuration/services', 'ConfigurationServicesController');
+	Route::resource('configuration/timeperiods', 'ConfigurationTimeperiodsController');
 });
 
 App::missing(function($exception)

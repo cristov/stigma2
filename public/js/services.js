@@ -13,6 +13,151 @@ services.factory("AccountFactory", function($http) {
 	}
 });
 
+services.factory("StatusOverviewFactory", function($http) {
+	return {
+		list: function() {
+			var url = stigma2.getConfiguration().home + "/api/overview";
+			return httpGetServiceImpl($http, url);
+		}
+	}
+});
+
+services.factory("StatusHostFactory", function($http) {
+	return {
+		list: function() {
+			var url = stigma2.getConfiguration().home + "/api/hosts";
+			return httpGetServiceImpl($http, url);
+		},
+		show: function(id) {
+			var url = stigma2.getConfiguration().home + "/api/hosts/" + id;
+			return httpGetServiceImpl($http, url);
+		}
+	}
+});
+
+services.factory("StatusServiceFactory", function($http) {
+	return {
+		list: function() {
+			var url = stigma2.getConfiguration().home + "/api/services";
+			return httpGetServiceImpl($http, url);
+		},
+		show: function(id) {
+			var url = stigma2.getConfiguration().home + "/api/services/" + id;
+			return httpGetServiceImpl($http, url);
+		}
+	}
+});
+
+services.factory("SystemConfigurationCommandFactory", function($http) {
+	return {
+		list: function() {
+			var url = stigma2.getConfiguration().home + "/api/configuration/commands";
+			return httpGetServiceImpl($http, url);
+		},
+		save: function(params) {
+			var url = stigma2.getConfiguration().home + "/api/configuration/commands";
+			return httpServiceImpl($http, "POST", params, url);
+		},
+		show: function(id) {
+			var url = stigma2.getConfiguration().home + "/api/configuration/commands/" + id;
+			return httpGetServiceImpl($http, url);
+		},
+		update: function(id, params) {
+			var url = stigma2.getConfiguration().home + "/api/configuration/commands/" + id;
+			return httpServiceImpl($http, "PUT", params, url);
+		},
+		remove: function(id) {
+			var url = stigma2.getConfiguration().home + "/api/configuration/commands/" + id;
+			return httpDeleteServiceImpl($http, url);
+		}
+	}
+});
+
+services.factory("SystemConfigurationHostFactory", function($http) {
+	return {
+		list: function(params) {
+			var url = stigma2.getConfiguration().home + "/api/configuration/hosts";
+			url = urlParameterHelper(url, params);
+			return httpGetServiceImpl($http, url);
+		},
+		create: function() {
+			var url = stigma2.getConfiguration().home + "/api/configuration/hosts/create";
+			return httpGetServiceImpl($http, url);
+		},
+		save: function(params) {
+			var url = stigma2.getConfiguration().home + "/api/configuration/hosts";
+			return httpServiceImpl($http, "POST", params, url);
+		},
+		show: function(id) {
+			var url = stigma2.getConfiguration().home + "/api/configuration/hosts/" + id;
+			return httpGetServiceImpl($http, url);
+		},
+		update: function(id, params) {
+			var url = stigma2.getConfiguration().home + "/api/configuration/hosts/" + id;
+			return httpServiceImpl($http, "PUT", params, url);
+		},
+		remove: function(id) {
+			var url = stigma2.getConfiguration().home + "/api/configuration/hosts/" + id;
+			return httpDeleteServiceImpl($http, url);
+		}
+	}
+});
+
+services.factory("SystemConfigurationServiceFactory", function($http) {
+	return {
+		list: function(params) {
+			var url = stigma2.getConfiguration().home + "/api/configuration/services";
+			url = urlParameterHelper(url, params);
+			return httpGetServiceImpl($http, url);
+		},
+		create: function() {
+			var url = stigma2.getConfiguration().home + "/api/configuration/services/create";
+			return httpGetServiceImpl($http, url);
+		},
+		save: function(params) {
+			var url = stigma2.getConfiguration().home + "/api/configuration/services";
+			return httpServiceImpl($http, "POST", params, url);
+		},
+		show: function(id) {
+			var url = stigma2.getConfiguration().home + "/api/configuration/services/" + id;
+			return httpGetServiceImpl($http, url);
+		},
+		update: function(id, params) {
+			var url = stigma2.getConfiguration().home + "/api/configuration/services/" + id;
+			return httpServiceImpl($http, "PUT", params, url);
+		},
+		remove: function(id) {
+			var url = stigma2.getConfiguration().home + "/api/configuration/services/" + id;
+			return httpDeleteServiceImpl($http, url);
+		}
+	}
+});
+
+services.factory("SystemConfigurationTimeperiodFactory", function($http) {
+	return {
+		list: function() {
+			var url = stigma2.getConfiguration().home + "/api/configuration/timeperiods";
+			return httpGetServiceImpl($http, url);
+		},
+		save: function(params) {
+			var url = stigma2.getConfiguration().home + "/api/configuration/timeperiods";
+			return httpServiceImpl($http, "POST", params, url);
+		},
+		show: function(id) {
+			var url = stigma2.getConfiguration().home + "/api/configuration/timeperiods/" + id;
+			return httpGetServiceImpl($http, url);
+		},
+		update: function(id, params) {
+			var url = stigma2.getConfiguration().home + "/api/configuration/timeperiods/" + id;
+			return httpServiceImpl($http, "PUT", params, url);
+		},
+		remove: function(id) {
+			var url = stigma2.getConfiguration().home + "/api/configuration/timeperiods/" + id;
+			return httpDeleteServiceImpl($http, url);
+		}
+	}
+});
+
 var httpServiceImpl = function(http, method, params, url) {
 	return http({
 		method: method,
@@ -31,4 +176,15 @@ var httpGetServiceImpl = function(http, url) {
 		.then(function(result) {
 			return result.data;
 		});
+};
+
+var urlParameterHelper = function(url, params) {
+	if (angular.isObject(params)) {
+		var delimiter = "?";
+		for (var key in params) {
+			url += delimiter + key + "=" + params[key];
+			delimiter = "&";
+		};
+	}
+	return url;
 };
