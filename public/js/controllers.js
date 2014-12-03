@@ -1,7 +1,14 @@
-mainApp.controller("MainCtrl", ["$location", "$scope",
-	function($location, $scope) {
+mainApp.controller("MainCtrl", ["$location", "$scope", "$window", "AccountFactory",
+	function($location, $scope, $window, AccountFactory) {
 		$scope.home = function() {
 			$location.path(stigma2.getConfiguration().home);
+		};
+
+		$scope.logout = function() {
+			AccountFactory.logout()
+				.then(function(data) {
+					$window.location.href = stigma2.getConfiguration().login;
+				});
 		};
 	}]);
 
