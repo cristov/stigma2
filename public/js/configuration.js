@@ -7,7 +7,7 @@ var stigma2 = (function() {
 		home: CONTEXT_ROOT,
 		directive: DIRECTIVES_ROOT,
 		route: [
-			{"url": CONTEXT_ROOT, "templateUrl": PAGES_ROOT + "general.home.php", "controller": "HomeCtrl"},
+			{"url": CONTEXT_ROOT, "templateUrl": PAGES_ROOT + "home.php", "controller": "HomeCtrl"},
 			{"url": CONTEXT_ROOT + "/login", "templateUrl": PAGES_ROOT + "login.php", "controller": "LoginCtrl"},
 			{"url": CONTEXT_ROOT + "/overview", "templateUrl": PAGES_ROOT + "status.overview.index.php", "controller": "StatusOverviewListCtrl"},
 			{"url": CONTEXT_ROOT + "/hosts", "templateUrl": PAGES_ROOT + "status.host.index.php", "controller": "StatusHostListCtrl"},
