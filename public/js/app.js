@@ -19,10 +19,10 @@ mainApp.directive('timeperiodAddRow', function() {
 	return {
 		restrict: 'E',
 		replace: true,
-		template: '<tr><td><select ng-options="object.text for object in week track by object.text" ng-model="timeperiodData.week"></td><td><span>directive</span></td></tr>',
+		templateUrl: stigma2.getConfiguration().directive + 'timeperiod.add.row.php',
 		link: function (scope, element, attr) {
 			scope.timeperiodData = {};
-			scope.week = stigma2.getConfiguration().timeperiod.week;
+			scope.foo1 = stigma2.getConfiguration().timeperiod.month.concat(stigma2.getConfiguration().timeperiod.week);
 		}
 	};
 });
