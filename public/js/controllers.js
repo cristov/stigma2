@@ -472,9 +472,20 @@ mainApp.controller("SystemConfigurationTimeperiodListCtrl", ["$location", "$root
 
 mainApp.controller("SystemConfigurationTimeperiodCreationCtrl", ["$compile", "$location", "$scope", "SystemConfigurationTimeperiodFactory",
 	function($compile, $location, $scope, SystemConfigurationTimeperiodFactory) {
+		$scope.count = 0;
+
 		$scope.addRow = function() {
-			var content = $compile('<x-timeperiod-add-row></x-timeperiod-add-row>')($scope);
+			$scope.count++;
+			var content = $compile('<x-timeperiod-add-row count="' + $scope.count + '"></x-timeperiod-add-row>')($scope);
 			$('tbody').append(content);
+		};
+
+		$scope.removeRow = function() {
+			//
+		};
+
+		$scope.saveTimeperiod = function() {
+			//
 		};
 	}]);
 
