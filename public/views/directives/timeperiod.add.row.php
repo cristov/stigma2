@@ -10,4 +10,7 @@
 		<select ng-options="object.text for object in bar3 track by object.text" ng-model="timeperiodData.bar3"></select> :
 		<select ng-options="object.text for object in bar4 track by object.text" ng-model="timeperiodData.bar4"></select>
 	</td>
+	<td class="text-right timeperiodAddRow">
+		<a ng-click="deleteRow(count)" class="btn btn-xs btn-danger">delete</a>
+	</td>
 </tr>

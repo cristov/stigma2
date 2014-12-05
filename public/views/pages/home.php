@@ -1,14 +1,14 @@
 <div ng-controller="HomeCtrl">
-	<div ng-if="$info" class="info">
-		<span>{{ $info }}</span>
-	</div>
-	<div ng-if="$success" class="success">
+	<div ng-if="$success" class="alert alert-success">
 		<span>{{ $success }}</span>
 	</div>
-	<div ng-if="$warning" class="warning">
+	<div ng-if="$info" class="alert alert-info">
+		<span>{{ $info }}</span>
+	</div>
+	<div ng-if="$warning" class="alert alert-warning">
 		<span>{{ $warning }}</span>
 	</div>
-	<div ng-if="$error" class="error">
+	<div ng-if="$error" class="alert alert-danger">
 		<span>{{ $error }}</span>
 	</div>
 	<div class="jumbotron text-center">

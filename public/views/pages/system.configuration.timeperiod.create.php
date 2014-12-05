@@ -16,7 +16,7 @@
 					<thead>
 						<tr>
 							<th class="hostCreationTitleName">Configuration Name</th>
-							<th class="hostCreationTitleValue">Configuration Value</th>
+							<th class="hostCreationTitleValue" colspan="2">Configuration Value</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -24,7 +24,7 @@
 							<td>
 								<span>Timeperiod Name</span>
 							</td>
-							<td>
+							<td colspan="2">
 								<input type="text" class="form-control input-sm" ng-model="timeperiodData.timeperiod_name" />
 							</td>
 						</tr>
@@ -32,7 +32,7 @@
 							<td>
 								<span>Alias</span>
 							</td>
-							<td>
+							<td colspan="2">
 								<input type="text" class="form-control input-sm" ng-model="timeperiodData.alias" />
 							</td>
 						</tr>

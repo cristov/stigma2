@@ -70,6 +70,10 @@ mainApp.directive('timeperiodAddRow', function() {
 					scope.timeperiodData.foo3 = "";
 				}
 			});
+
+			scope.deleteRow = function(num) {
+				jQuery('tr[count="' + num + '"]').remove();
+			};
 		}
 	};
 });
