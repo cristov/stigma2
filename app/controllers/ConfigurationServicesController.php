@@ -51,8 +51,6 @@ class ConfigurationServicesController extends \BaseController {
 	 */
 	public function store()
 	{
-		global $config;
-
 		$input = Input::all();
 		$v4uuid = UUID::v4();
 

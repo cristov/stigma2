@@ -16,7 +16,7 @@ class CreateServicePerformancesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('service_fk', 128);
-			$table->string('key', 256);
+			$table->string('key', 128);
 			$table->string('value', 1024);
 			$table->timestamps();
 		});

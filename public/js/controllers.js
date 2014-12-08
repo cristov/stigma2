@@ -483,6 +483,8 @@ mainApp.controller("SystemConfigurationTimeperiodCreationCtrl", ["$compile", "$l
 		};
 
 		$scope.saveTimeperiod = function() {
+			var params = $scope.timeperiodData;
+			
 			for (var i in $scope.timeperiods) {
 				var timeperiod = $scope.timeperiods[i];
 				var foo3 = timeperiod.foo3.value === undefined ? "" : " " + timeperiod.foo3.value;
@@ -490,10 +492,16 @@ mainApp.controller("SystemConfigurationTimeperiodCreationCtrl", ["$compile", "$l
 				var value = timeperiod.bar1.value + ":" + timeperiod.bar2.value + "-" +
 						timeperiod.bar3.value + ":" + timeperiod.bar4.value;
 
-				$scope.timeperiodData[key] = value;
+				params[key] = value;
 			}
 
-			//SystemConfigurationTimeperiodFactory.save($scope.timeperiodData)
+			SystemConfigurationTimeperiodFactory.save(params)
+				.success(function(data) {
+					$location.path(stigma2.getConfiguration().home + "/configuration/timeperiods/");
+				})
+				.error(function(data) {
+					console.log(data);
+				});
 		};
 	}]);
 

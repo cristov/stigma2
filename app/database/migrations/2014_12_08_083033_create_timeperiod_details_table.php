@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateHostDetailsTable extends Migration {
+class CreateTimeperiodDetailsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,16 +12,16 @@ class CreateHostDetailsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('host_details', function(Blueprint $table)
+		Schema::create('timeperiod_details', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('host_fk', 128);
+			$table->string('timeperiod_fk', 128);
 			$table->string('key', 128);
 			$table->string('value', 1024);
 			$table->timestamps();
 
-			$table->foreign('host_fk')
-				->references('object_uuid')->on('hosts')
+			$table->foreign('timeperiod_fk')
+				->references('object_uuid')->on('timeperiods')
 				->onDelete('cascade');
 		});
 	}
@@ -34,7 +34,7 @@ class CreateHostDetailsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('host_details');
+		Schema::drop('timeperiod_details');
 	}
 
 }

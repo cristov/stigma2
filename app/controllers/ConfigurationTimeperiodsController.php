@@ -1,5 +1,7 @@
 <?php
 
+require dirname(__FILE__)."/../utils/config.inc.php";
+
 class ConfigurationTimeperiodsController extends \BaseController {
 
 	/**
@@ -34,7 +36,33 @@ class ConfigurationTimeperiodsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::all();
+		$v4uuid = UUID::v4();
+
+		Object::create(array(
+			"uuid" => $v4uuid,
+			"object_type" => "9",
+			"first_name" => $input["timeperiod_name"],
+			"is_active" => "1"
+		));
+
+		Timeperiod::create(array(
+			"object_uuid" => $v4uuid,
+			"alias" => $input["alias"]
+		));
+
+		foreach ($input as $key => $value) {
+			TimeperiodDetail::create(array(
+				"timeperiod_fk" => $v4uuid,
+				"key" => $key,
+				"value" => $value
+			));
+		}
+
+		$this->writeConfig();
+		// TODO nagios restart
+
+		return Response::json(array("success" => true));
 	}
 
 	/**
@@ -87,11 +115,50 @@ class ConfigurationTimeperiodsController extends \BaseController {
 
 	private function getList()
 	{
-		$result = array(
-			array("timeperiod_name" => "24x7")
-		);
+		$query = DB::table("timeperiods")
+				->join("objects", "timeperiods.object_uuid", "=", "objects.uuid")
+				->select("timeperiods.id", "timeperiods.object_uuid", "objects.first_name as timeperiod_name")
+				->orderBy("timeperiods.created_at", "desc");
 
-		return $result;
+		return $query->get();
+	}
+
+	private function writeConfig()
+	{
+		global $config;
+
+		$file = $config["NAGIOS_OBJECTS_DIR"].$config["NAGIOS_TIMEPERIODS_CFG"];
+		$timeperiod_details = DB::table("timeperiod_details")->get();
+		$contents = "";
+		$objects = array();
+
+		if (file_exists($file)) {
+			unlink($file);
+		}
+
+		foreach ($timeperiod_details as $timeperiod)
+		{
+			$timeperiod_fk = $timeperiod->timeperiod_fk;
+			$object = array();
+			if (array_key_exists($timeperiod_fk, $objects)) $object = $objects[$timeperiod_fk];
+
+			$object[$timeperiod->key] = $timeperiod->value;
+			$objects[$timeperiod_fk] = $object;
+		}
+
+		foreach (array_keys($objects) as $timeperiod_fk)
+		{
+			$object = $objects[$timeperiod_fk];
+			$contents .= $config["NAGIOS_DEFINE_TIMEPERIOD"]."{\n";
+			
+			foreach (array_keys($object) as $key)
+			{
+				$contents .= "\t".$key."\t".$object[$key]."\n";
+			}
+			$contents .= "}\n\n";
+		}
+
+		file_put_contents($file, $contents, FILE_APPEND | LOCK_EX);
 	}
 
 }
