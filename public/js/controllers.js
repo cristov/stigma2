@@ -472,8 +472,8 @@ mainApp.controller("SystemConfigurationTimeperiodListCtrl", ["$location", "$root
 
 mainApp.controller("SystemConfigurationTimeperiodCreationCtrl", ["$compile", "$location", "$scope", "DirectiveTimeperiodFactory", "SystemConfigurationTimeperiodFactory",
 	function($compile, $location, $scope, DirectiveTimeperiodFactory, SystemConfigurationTimeperiodFactory) {
-		$scope.timeperiodData = {};
 		$scope.count = 0;
+		$scope.timeperiodData = {};
 		$scope.timeperiods = DirectiveTimeperiodFactory.timeperiods;
 
 		$scope.addRow = function() {
@@ -483,8 +483,17 @@ mainApp.controller("SystemConfigurationTimeperiodCreationCtrl", ["$compile", "$l
 		};
 
 		$scope.saveTimeperiod = function() {
-			// console.log($scope.timeperiodData);
-			console.log($scope.timeperiods);
+			for (var i in $scope.timeperiods) {
+				var timeperiod = $scope.timeperiods[i];
+				var foo3 = timeperiod.foo3.value === undefined ? "" : " " + timeperiod.foo3.value;
+				var key = timeperiod.foo1.value + " " + timeperiod.foo2.value + foo3;
+				var value = timeperiod.bar1.value + ":" + timeperiod.bar2.value + "-" +
+						timeperiod.bar3.value + ":" + timeperiod.bar4.value;
+
+				$scope.timeperiodData[key] = value;
+			}
+
+			//SystemConfigurationTimeperiodFactory.save($scope.timeperiodData)
 		};
 	}]);
 
