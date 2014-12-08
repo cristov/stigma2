@@ -51,12 +51,27 @@ class ConfigurationTimeperiodsController extends \BaseController {
 			"alias" => $input["alias"]
 		));
 
-		foreach ($input as $key => $value) {
-			TimeperiodDetail::create(array(
-				"timeperiod_fk" => $v4uuid,
-				"key" => $key,
-				"value" => $value
-			));
+		foreach ($input as $k => $v) {
+			if (is_array($v)) {
+				$foo3 = "";
+				if (!empty($v['foo3'])) {
+					$foo3 = " ".$v['foo3']['value'];
+				}
+				$key = $v['foo1']['value']." ".$v['foo2']['value'].$foo3;
+				$value = $v['bar1']['value'].":".$v['bar2']['value']."-".$v['bar3']['value'].":".$v['bar4']['value'];
+
+				TimeperiodDetail::create(array(
+					"timeperiod_fk" => $v4uuid,
+					"key" => $key,
+					"value" => $value
+				));
+			} else {
+				TimeperiodDetail::create(array(
+					"timeperiod_fk" => $v4uuid,
+					"key" => $k,
+					"value" => $v
+				));
+			}
 		}
 
 		$this->writeConfig();
