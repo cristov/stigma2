@@ -470,9 +470,11 @@ mainApp.controller("SystemConfigurationTimeperiodListCtrl", ["$location", "$root
 			});
 	}]);
 
-mainApp.controller("SystemConfigurationTimeperiodCreationCtrl", ["$compile", "$location", "$scope", "SystemConfigurationTimeperiodFactory",
-	function($compile, $location, $scope, SystemConfigurationTimeperiodFactory) {
+mainApp.controller("SystemConfigurationTimeperiodCreationCtrl", ["$compile", "$location", "$scope", "DirectiveTimeperiodFactory", "SystemConfigurationTimeperiodFactory",
+	function($compile, $location, $scope, DirectiveTimeperiodFactory, SystemConfigurationTimeperiodFactory) {
+		$scope.timeperiodData = {};
 		$scope.count = 0;
+		$scope.timeperiods = DirectiveTimeperiodFactory.timeperiods;
 
 		$scope.addRow = function() {
 			$scope.count++;
@@ -480,12 +482,9 @@ mainApp.controller("SystemConfigurationTimeperiodCreationCtrl", ["$compile", "$l
 			$('tbody').append(content);
 		};
 
-		$scope.removeRow = function() {
-			//
-		};
-
 		$scope.saveTimeperiod = function() {
-			//
+			// console.log($scope.timeperiodData);
+			console.log($scope.timeperiods);
 		};
 	}]);
 
