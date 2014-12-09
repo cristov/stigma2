@@ -482,17 +482,7 @@ mainApp.controller("SystemConfigurationTimeperiodCreationCtrl", ["$compile", "$l
 		};
 
 		$scope.saveTimeperiod = function() {
-			var timeperiods = DirectiveTimeperiodFactory.timeperiods;
-
-			// for (var i in $scope.timeperiods) {
-			// 	var timeperiod = $scope.timeperiods[i];
-			// 	var foo3 = timeperiod.foo3.value === undefined ? "" : " " + timeperiod.foo3.value;
-			// 	var key = timeperiod.foo1.value + " " + timeperiod.foo2.value + foo3;
-			// 	var value = timeperiod.bar1.value + ":" + timeperiod.bar2.value + "-" +
-			// 			timeperiod.bar3.value + ":" + timeperiod.bar4.value;
-
-			// 	params[key] = value;
-			// }
+			var timeperiods = DirectiveTimeperiodFactory.getTimeperiods();
 			var params = jQuery.extend({}, timeperiods, $scope.timeperiodData);
 
 			SystemConfigurationTimeperiodFactory.save(params)

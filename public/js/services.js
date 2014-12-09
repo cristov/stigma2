@@ -159,14 +159,16 @@ services.factory("SystemConfigurationTimeperiodFactory", function($http) {
 });
 
 services.factory("DirectiveTimeperiodFactory", function() {
-	var result = {
-		timeperiods: [],
+	var timeperiods = [];
+
+	return {
+		getTimeperiods: function() {
+			return timeperiods;
+		},
 		register: function(timeperiod) {
-			result.timeperiods.push(timeperiod);
+			timeperiods.push(timeperiod);
 		}
 	};
-
-	return result;
 });
 
 var httpServiceImpl = function(http, method, params, url) {
