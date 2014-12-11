@@ -26,7 +26,6 @@
 				</div>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a ng-click="home()"><i class="fa fa-home"></i> Home</a></li>
 					<li><a ng-click="logout()"><i class="fa fa-lock"></i> Logout</a></li>
 				</ul>
 			</div>
@@ -35,24 +34,32 @@
 	<aside class="sidebar">
 		<div class="sidebarContents">
 			<ul class="nav">
-				<li class="sidebarContentTitle">General</li>
-				<li class="sidebarContentElement"><a ng-click="home()">Home</a></li>
+				<li class="sidebarContentTitle">Dashboard</li>
+				<li class="sidebarContentElement"><a ng-click="overview()">Overview</a></li>
 			</ul>
 			<p>
 			<ul class="nav">
-				<li class="sidebarContentTitle">Current Status</li>
-				<li class="sidebarContentElement"><a ng-click="overview()">Tactical Overview</a></li>
-				<li class="sidebarContentElement"><a ng-click="hosts()">Hosts</a></li>
-				<li class="sidebarContentElement"><a ng-click="services()">Services</a></li>
-				<li class="sidebarContentElement"><a ng-click="hostgroups()">Host Groups</a></li>
-				<li class="sidebarContentElement"><a ng-click="servicegroups()">Service Groups</a></li>
-				<li class="sidebarContentElement"><a ng-click="problems()">Problems</a></li>
+				<li class="sidebarContentTitle">Host</li>
+				<li class="sidebarContentElement"><a ng-click="hosts()">All</a></li>
+				<li class="sidebarContentElement"><a ng-click="hosts('0')">Up</a></li>
+				<li class="sidebarContentElement"><a ng-click="hosts('1')">Down</a></li>
+				<li class="sidebarContentElement"><a ng-click="hosts('2')">Unreachable</a></li>
+				<li class="sidebarContentElement"><a ng-click="hosts()">Pending</a></li>
 			</ul>
 			<p>
 			<ul class="nav">
-				<li class="sidebarContentTitle">Reports</li>
-				<li class="sidebarContentElement"><a ng-click="trends()">Trends</a></li>
-				<li class="sidebarContentElement"><a ng-click="alerts()">Alerts</a></li>
+				<li class="sidebarContentTitle">Service</li>
+				<li class="sidebarContentElement"><a ng-click="services()">All</a></li>
+				<li class="sidebarContentElement"><a ng-click="services('0')">OK</a></li>
+				<li class="sidebarContentElement"><a ng-click="services('1')">Warning</a></li>
+				<li class="sidebarContentElement"><a ng-click="services('2')">Critical</a></li>
+				<li class="sidebarContentElement"><a ng-click="services('3')">Unknown</a></li>
+				<li class="sidebarContentElement"><a ng-click="services()">Pending</a></li>
+			</ul>
+			<p>
+			<ul class="nav">
+				<li class="sidebarContentTitle">Report</li>
+				<li class="sidebarContentElement"><a ng-click="log()">Log</a></li>
 			</ul>
 			<p>
 			<ul class="nav">

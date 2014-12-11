@@ -2,13 +2,9 @@ mainApp.controller("MainCtrl", ["$location", "$scope", "$window", "AccountFactor
 	function($location, $scope, $window, AccountFactory) {
 		$scope.home = function() { $location.path(stigma2.getConfiguration().home); };
 		$scope.overview = function() { $location.path(stigma2.getConfiguration().home + "/overview"); };
-		$scope.hosts = function() { $location.path(stigma2.getConfiguration().home + "/hosts"); };
+		$scope.hosts = function(type) { alert(type); $location.path(stigma2.getConfiguration().home + "/hosts"); };
 		$scope.services = function() { $location.path(stigma2.getConfiguration().home + "/services"); };
-		$scope.hostgroups = function() { $location.path(stigma2.getConfiguration().home + "/hostgroups"); };
-		$scope.servicegroups = function() { $location.path(stigma2.getConfiguration().home + "/servicegroups"); };
-		$scope.problems = function() { $location.path(stigma2.getConfiguration().home + "/problems"); };
-		$scope.trends = function() { $location.path(stigma2.getConfiguration().home + "/trends"); };
-		$scope.alerts = function() { $location.path(stigma2.getConfiguration().home + "/alerts"); };
+		$scope.log = function() { $location.path(stigma2.getConfiguration().home + "/log"); };
 		$scope.configuration = function() { $location.path(stigma2.getConfiguration().home + "/configuration"); };
 
 		$scope.logout = function() {
@@ -107,21 +103,7 @@ mainApp.controller("StatusServiceShowCtrl", ["$location", "$rootScope", "$scope"
 			});
 	}]);
 
-mainApp.controller("StatusHostgroupListCtrl", ["$location", "$rootScope", "$scope", "AccountFactory",
-	function($location, $rootScope, $scope, AccountFactory) {
-		//
-	}]);
-
-mainApp.controller("StatusServicegroupListCtrl", ["$location", "$rootScope", "$scope", "AccountFactory",
-	function($location, $rootScope, $scope, AccountFactory) {
-		//
-	}]);
-
-mainApp.controller("StatusProblemListCtrl", ["$location", "$rootScope", "$scope", "AccountFactory",
-	function($location, $rootScope, $scope, AccountFactory) {
-		//
-	}]);
-
+/*
 mainApp.controller("ReportTrendListCtrl", ["$location", "$scope", "SystemConfigurationHostFactory", "SystemConfigurationServiceFactory",
 	function($location, $scope, SystemConfigurationHostFactory, SystemConfigurationServiceFactory) {
 		$scope.step = "1";
@@ -183,8 +165,9 @@ mainApp.controller("ReportTrendShowCtrl", ["$scope",
 			})()
 		}];
 	}]);
+*/
 
-mainApp.controller("ReportAlertListCtrl", ["$location", "$rootScope", "$scope", "AccountFactory",
+mainApp.controller("ReportLogListCtrl", ["$location", "$rootScope", "$scope", "AccountFactory",
 	function($location, $rootScope, $scope, AccountFactory) {
 		//
 	}]);
