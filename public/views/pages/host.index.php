@@ -1,4 +1,4 @@
-<div ng-controller="StatusHostListCtrl">
+<div ng-controller="HostListCtrl">
 	<div class="col-md-11 col-md-offset-1">
 		<div class="page-header">
 			<h2>Hosts List</h2>

@@ -1,7 +1,7 @@
-<div ng-controller="StatusServiceShowCtrl">
+<div ng-controller="HostShowCtrl">
 	<div class="col-md-11 col-md-offset-1">
 		<div class="page-header">
-			<h2>Detail Service</h2>
+			<h2>Detail Host</h2>
 		</div>
 
 		<div class="form-group">
@@ -13,7 +13,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="(key, value) in service">
+					<tr ng-repeat="(key, value) in host">
 						<td>{{ key }}</td>
 						<td>{{ value }}</td>
 					</tr>

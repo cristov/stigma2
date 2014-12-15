@@ -1,4 +1,4 @@
-<div ng-controller="StatusServiceListCtrl">
+<div ng-controller="ServiceListCtrl">
 	<div class="col-md-11 col-md-offset-1">
 		<div class="page-header">
 			<h2>Services List</h2>

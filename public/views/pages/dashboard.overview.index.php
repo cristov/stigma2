@@ -1,4 +1,4 @@
-<div ng-controller="StatusOverviewListCtrl">
+<div ng-controller="DashboardOverviewListCtrl">
 	<div class="col-md-11 col-md-offset-1">
 		<div class="page-header">
 			<h2>Tactical Overview</h2>

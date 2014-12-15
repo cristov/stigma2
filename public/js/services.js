@@ -13,7 +13,7 @@ services.factory("AccountFactory", function($http) {
 	}
 });
 
-services.factory("StatusOverviewFactory", function($http) {
+services.factory("DashboardOverviewFactory", function($http) {
 	return {
 		list: function() {
 			var url = stigma2.getConfiguration().home + "/api/overview";
@@ -22,7 +22,7 @@ services.factory("StatusOverviewFactory", function($http) {
 	}
 });
 
-services.factory("StatusHostFactory", function($http) {
+services.factory("HostFactory", function($http) {
 	return {
 		list: function() {
 			var url = stigma2.getConfiguration().home + "/api/hosts";
@@ -35,7 +35,7 @@ services.factory("StatusHostFactory", function($http) {
 	}
 });
 
-services.factory("StatusServiceFactory", function($http) {
+services.factory("ServiceFactory", function($http) {
 	return {
 		list: function() {
 			var url = stigma2.getConfiguration().home + "/api/services";

@@ -1,16 +1,34 @@
-mainApp.controller("MainCtrl", ["$location", "$scope", "$window", "AccountFactory",
-	function($location, $scope, $window, AccountFactory) {
-		$scope.home = function() { $location.path(stigma2.getConfiguration().home); };
-		$scope.overview = function() { $location.path(stigma2.getConfiguration().home + "/overview"); };
-		$scope.hosts = function(type) { alert(type); $location.path(stigma2.getConfiguration().home + "/hosts"); };
-		$scope.services = function() { $location.path(stigma2.getConfiguration().home + "/services"); };
-		$scope.log = function() { $location.path(stigma2.getConfiguration().home + "/log"); };
-		$scope.configuration = function() { $location.path(stigma2.getConfiguration().home + "/configuration"); };
+mainApp.controller("MainCtrl", ["$location", "$rootScope", "$scope", "$window", "AccountFactory",
+	function($location, $rootScope, $scope, $window, AccountFactory) {
+		$scope.home = function() { $location.path(stigma2.getConfiguration().home + "/"); };
+		$scope.overview = function() { $location.path(stigma2.getConfiguration().home + "/overview/"); };
+		$scope.hosts = function(type) {
+			if (type === undefined) {
+				$rootScope.params = null;
+			} else {
+				$rootScope.params = {
+					"state": type
+				};
+			}
+			$location.path(stigma2.getConfiguration().home + "/hosts/");
+		};
+		$scope.services = function(type) {
+			if (type === undefined) {
+				$rootScope.params = null;
+			} else {
+				$rootScope.params = {
+					"state": type
+				};
+			}
+			$location.path(stigma2.getConfiguration().home + "/services/");
+		};
+		$scope.log = function() { $location.path(stigma2.getConfiguration().home + "/log/"); };
+		$scope.configuration = function() { $location.path(stigma2.getConfiguration().home + "/configuration/"); };
 
 		$scope.logout = function() {
 			AccountFactory.logout()
 				.then(function(data) {
-					$window.location.href = stigma2.getConfiguration().home + "/login";
+					$window.location.href = stigma2.getConfiguration().home + "/login/";
 				});
 		};
 	}]);
@@ -23,7 +41,7 @@ mainApp.controller("LoginCtrl", ["$scope", "$window", "AccountFactory",
 			AccountFactory.login($scope.loginData)
 				.success(function(data) {
 					if (data.success) {
-						$window.location.href = stigma2.getConfiguration().home;
+						$window.location.href = stigma2.getConfiguration().home + "/";
 					} else {
 						$scope.messages = data.messages;
 					}
@@ -39,65 +57,65 @@ mainApp.controller("HomeCtrl", ["$scope",
 		$scope.message = "Everyone come and see how good I look!";
 	}]);
 
-mainApp.controller("StatusOverviewListCtrl", ["$location", "$scope", "StatusOverviewFactory",
-	function($location, $scope, StatusOverviewFactory) {
-		StatusOverviewFactory.list()
+mainApp.controller("DashboardOverviewListCtrl", ["$location", "$scope", "DashboardOverviewFactory",
+	function($location, $scope, DashboardOverviewFactory) {
+		DashboardOverviewFactory.list()
 			.then(function(data) {
 				$scope.host = data.host;
 				$scope.service = data.service;
 			});
 	}]);
 
-mainApp.controller("StatusHostListCtrl", ["$location", "$rootScope", "$scope", "StatusHostFactory",
-	function($location, $rootScope, $scope, StatusHostFactory) {
+mainApp.controller("HostListCtrl", ["$location", "$rootScope", "$scope", "HostFactory",
+	function($location, $rootScope, $scope, HostFactory) {
 		$scope.detailHost = function(id) {
 			$rootScope.id = id;
-			$location.path(stigma2.getConfiguration().home + "/hosts/"+ id);
+			$location.path(stigma2.getConfiguration().home + "/hosts/"+ id + "/");
 		};
 
-		StatusHostFactory.list()
+		HostFactory.list($rootScope.params)
 			.then(function(data) {
 				$scope.hosts = data;
 			});
 	}]);
 
-mainApp.controller("StatusHostShowCtrl", ["$location", "$rootScope", "$scope", "StatusHostFactory",
-	function($location, $rootScope, $scope, StatusHostFactory) {
+mainApp.controller("HostShowCtrl", ["$location", "$rootScope", "$scope", "HostFactory",
+	function($location, $rootScope, $scope, HostFactory) {
 		$scope.cancel = function() {
-			$location.path(stigma2.getConfiguration().home + "/hosts");
+			$location.path(stigma2.getConfiguration().home + "/hosts/");
 		};
 
-		StatusHostFactory.show($rootScope.id)
+		HostFactory.show($rootScope.id)
 			.then(function(data) {
 				$scope.host = data.host;
 			});
 	}]);
 
-mainApp.controller("StatusServiceListCtrl", ["$location", "$rootScope", "$scope", "StatusServiceFactory",
-	function($location, $rootScope, $scope, StatusServiceFactory) {
+mainApp.controller("ServiceListCtrl", ["$location", "$rootScope", "$scope", "ServiceFactory",
+	function($location, $rootScope, $scope, ServiceFactory) {
 		$scope.detailHost = function(id) {
 			$rootScope.id = id;
-			$location.path(stigma2.getConfiguration().home + "/hosts/" + id);
+			$location.path(stigma2.getConfiguration().home + "/hosts/" + id + "/");
 		};
 
 		$scope.detailService = function(id) {
 			$rootScope.id = id;
-			$location.path(stigma2.getConfiguration().home + "/services/" + id);
+			$location.path(stigma2.getConfiguration().home + "/services/" + id + "/");
 		};
 
-		StatusServiceFactory.list()
+		ServiceFactory.list($rootScope.params)
 			.then(function(data) {
 				$scope.services = data;
 			});
 	}]);
 
-mainApp.controller("StatusServiceShowCtrl", ["$location", "$rootScope", "$scope", "StatusServiceFactory",
-	function($location, $rootScope, $scope, StatusServiceFactory) {
+mainApp.controller("ServiceShowCtrl", ["$location", "$rootScope", "$scope", "ServiceFactory",
+	function($location, $rootScope, $scope, ServiceFactory) {
 		$scope.cancel = function() {
-			$location.path(stigma2.getConfiguration().home + "/services");
+			$location.path(stigma2.getConfiguration().home + "/services/");
 		};
 
-		StatusServiceFactory.show($rootScope.id)
+		ServiceFactory.show($rootScope.id)
 			.then(function(data) {
 				$scope.service = data.service;
 			});
@@ -143,7 +161,7 @@ mainApp.controller("ReportTrendListCtrl", ["$location", "$scope", "SystemConfigu
 		};
 
 		$scope.createReport = function() {
-			$location.path(stigma2.getConfiguration().home + "/trends/show");
+			$location.path(stigma2.getConfiguration().home + "/trends/show/");
 		};
 	}]);
 
@@ -180,13 +198,13 @@ mainApp.controller("SystemConfigurationListCtrl", ["$location", "$scope",
 		$scope.continueToNextStep = function() {
 			switch ($scope.type.value) {
 				case "1" :
-					$location.path(stigma2.getConfiguration().home + "/configuration/hosts"); break;
+					$location.path(stigma2.getConfiguration().home + "/configuration/hosts/"); break;
 				case "2" :
-					$location.path(stigma2.getConfiguration().home + "/configuration/services"); break;
+					$location.path(stigma2.getConfiguration().home + "/configuration/services/"); break;
 				case "9" :
-					$location.path(stigma2.getConfiguration().home + "/configuration/timeperiods"); break;
+					$location.path(stigma2.getConfiguration().home + "/configuration/timeperiods/"); break;
 				case "12" :
-					$location.path(stigma2.getConfiguration().home + "/configuration/commands"); break;
+					$location.path(stigma2.getConfiguration().home + "/configuration/commands/"); break;
 			}
 		};
 	}]);
@@ -194,12 +212,12 @@ mainApp.controller("SystemConfigurationListCtrl", ["$location", "$scope",
 mainApp.controller("SystemConfigurationCommandListCtrl", ["$location", "$rootScope", "$scope", "SystemConfigurationCommandFactory",
 	function($location, $rootScope, $scope, SystemConfigurationCommandFactory) {
 		$scope.createCommand = function() {
-			$location.path(stigma2.getConfiguration().home + "/configuration/commands/create");
+			$location.path(stigma2.getConfiguration().home + "/configuration/commands/create/");
 		};
 
 		$scope.editCommand = function(id) {
 			$rootScope.id = id;
-			$location.path(stigma2.getConfiguration().home + "/configuration/commands/"+ id + "/edit");
+			$location.path(stigma2.getConfiguration().home + "/configuration/commands/"+ id + "/edit/");
 		};
 
 		$scope.deleteCommand = function(id) {
@@ -264,12 +282,12 @@ mainApp.controller("SystemConfigurationCommandEditCtrl", ["$location", "$rootSco
 mainApp.controller("SystemConfigurationHostListCtrl", ["$location", "$rootScope", "$scope", "SystemConfigurationHostFactory",
 	function($location, $rootScope, $scope, SystemConfigurationHostFactory) {
 		$scope.createHost = function() {
-			$location.path(stigma2.getConfiguration().home + "/configuration/hosts/create");
+			$location.path(stigma2.getConfiguration().home + "/configuration/hosts/create/");
 		};
 
 		$scope.detailHost = function(id) {
 			$rootScope.id = id;
-			$location.path(stigma2.getConfiguration().home + "/configuration/hosts/" + id);
+			$location.path(stigma2.getConfiguration().home + "/configuration/hosts/" + id + "/");
 		};
 
 		$scope.deleteHost = function(id) {
@@ -286,7 +304,7 @@ mainApp.controller("SystemConfigurationHostListCtrl", ["$location", "$rootScope"
 			$rootScope.params = {
 				"host_object_uuid": object_uuid
 			};
-			$location.path(stigma2.getConfiguration().home + "/configuration/services");
+			$location.path(stigma2.getConfiguration().home + "/configuration/services/");
 		};
 
 		SystemConfigurationHostFactory.list($rootScope.params)
@@ -334,7 +352,7 @@ mainApp.controller("SystemConfigurationHostEditCtrl", ["$location", "$rootScope"
 		dragDropHelper($scope);
 
 		$scope.editHost = function() {
-			$location.path(stigma2.getConfiguration().home + "/configuration/hosts/" + $rootScope.id + "/edit");
+			$location.path(stigma2.getConfiguration().home + "/configuration/hosts/" + $rootScope.id + "/edit/");
 		};
 
 		$scope.updateHost = function() {
@@ -348,7 +366,7 @@ mainApp.controller("SystemConfigurationHostEditCtrl", ["$location", "$rootScope"
 
 			SystemConfigurationHostFactory.update($rootScope.id, params)
 				.success(function(data) {
-					$location.path(stigma2.getConfiguration().home + "/configuration/hosts/" + $rootScope.id);
+					$location.path(stigma2.getConfiguration().home + "/configuration/hosts/" + $rootScope.id + "/");
 				})
 				.error(function(data) {
 					console.log(data);
@@ -356,7 +374,7 @@ mainApp.controller("SystemConfigurationHostEditCtrl", ["$location", "$rootScope"
 		};
 
 		$scope.cancel = function() {
-			$location.path(stigma2.getConfiguration().home + "/configuration/hosts");
+			$location.path(stigma2.getConfiguration().home + "/configuration/hosts/");
 		};
 
 		SystemConfigurationHostFactory.show($rootScope.id)
@@ -371,19 +389,19 @@ mainApp.controller("SystemConfigurationHostEditCtrl", ["$location", "$rootScope"
 mainApp.controller("SystemConfigurationServiceListCtrl", ["$location", "$rootScope", "$scope", "SystemConfigurationServiceFactory",
 	function($location, $rootScope, $scope, SystemConfigurationServiceFactory) {
 		$scope.createService = function() {
-			$location.path(stigma2.getConfiguration().home + "/configuration/services/create");
+			$location.path(stigma2.getConfiguration().home + "/configuration/services/create/");
 		};
 
 		$scope.detailService = function(id) {
 			$rootScope.id = id;
-			$location.path(stigma2.getConfiguration().home + "/configuration/services/" + id);
+			$location.path(stigma2.getConfiguration().home + "/configuration/services/" + id + "/");
 		};
 
 		$scope.listHost = function(host_object_uuid) {
 			$rootScope.params = {
 				"object_uuid": host_object_uuid
 			};
-			$location.path(stigma2.getConfiguration().home + "/configuration/hosts");
+			$location.path(stigma2.getConfiguration().home + "/configuration/hosts/");
 		};
 
 		SystemConfigurationServiceFactory.list($rootScope.params)
@@ -429,12 +447,12 @@ mainApp.controller("SystemConfigurationServiceCreationCtrl", ["$location", "$sco
 mainApp.controller("SystemConfigurationTimeperiodListCtrl", ["$location", "$rootScope", "$scope", "SystemConfigurationTimeperiodFactory",
 	function($location, $rootScope, $scope, SystemConfigurationTimeperiodFactory) {
 		$scope.createTimeperiod = function() {
-			$location.path(stigma2.getConfiguration().home + "/configuration/timeperiods/create");
+			$location.path(stigma2.getConfiguration().home + "/configuration/timeperiods/create/");
 		};
 
 		$scope.editTimeperiod = function(id) {
 			$rootScope.id = id;
-			$location.path(stigma2.getConfiguration().home + "/configuration/timeperiods/"+ id + "/edit");
+			$location.path(stigma2.getConfiguration().home + "/configuration/timeperiods/"+ id + "/edit/");
 		};
 
 		$scope.deleteTimeperiod = function(id) {
