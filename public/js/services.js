@@ -24,8 +24,9 @@ services.factory("DashboardOverviewFactory", function($http) {
 
 services.factory("HostFactory", function($http) {
 	return {
-		list: function() {
+		list: function(params) {
 			var url = stigma2.getConfiguration().home + "/api/hosts";
+			url = urlParameterHelper(url, params);
 			return httpGetServiceImpl($http, url);
 		},
 		show: function(id) {
@@ -37,8 +38,9 @@ services.factory("HostFactory", function($http) {
 
 services.factory("ServiceFactory", function($http) {
 	return {
-		list: function() {
+		list: function(params) {
 			var url = stigma2.getConfiguration().home + "/api/services";
+			url = urlParameterHelper(url, params);
 			return httpGetServiceImpl($http, url);
 		},
 		show: function(id) {

@@ -15,13 +15,13 @@ class HostPerformancesTableSeeder extends Seeder {
 			Object::create([
 				'uuid' => $apikey,
 				'object_type' => '1',
-				'first_name' => 'localhost',
+				'first_name' => 'localhost'.$index,
 				'second_name' => '',
 				'is_active' => '1'
 			]);
 			Host::create([
 				'object_uuid' => $apikey,
-				'name' => 'localhost',
+				'name' => 'localhost'.$index,
 				'description' => 'test',
 				'command_fk' => $index.'_-_'.$apikey
 			]);

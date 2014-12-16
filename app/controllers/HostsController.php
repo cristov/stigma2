@@ -10,12 +10,7 @@ class HostsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$hosts = array(
-			array("host_name" => "localhost1", "status" => "UP", "last_check" => "10-13-2014 06:24:01", "duration" => "0d 2h 18m 46s", "info" => "PING OK - Packet loss = 0%, RTA = 0.06 ms"),
-			array("host_name" => "localhost2", "status" => "UP", "last_check" => "10-13-2014 06:24:01", "duration" => "0d 2h 18m 46s", "info" => "PING OK - Packet loss = 0%, RTA = 0.06 ms"),
-			array("host_name" => "localhost3", "status" => "UP", "last_check" => "10-13-2014 06:24:01", "duration" => "0d 2h 18m 46s", "info" => "PING OK - Packet loss = 0%, RTA = 0.06 ms"),
-			array("host_name" => "localhost4", "status" => "UP", "last_check" => "10-13-2014 06:24:01", "duration" => "0d 2h 18m 46s", "info" => "PING OK - Packet loss = 0%, RTA = 0.06 ms")
-		);
+		$hosts = $this->getList();
 
 		return Response::json($hosts);
 	}
@@ -113,6 +108,43 @@ class HostsController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+	private function getList() {
+		$query = array(
+			array("host_name" => "localhost1", "status" => "UP", "last_check" => "10-13-2014 06:24:01", "duration" => "0d 2h 18m 46s", "info" => "PING OK - Packet loss = 0%, RTA = 0.06 ms"),
+			array("host_name" => "localhost2", "status" => "DOWN", "last_check" => "10-13-2014 06:24:01", "duration" => "0d 2h 18m 46s", "info" => "PING OK - Packet loss = 0%, RTA = 0.06 ms"),
+			array("host_name" => "localhost3", "status" => "UNREACHABLE", "last_check" => "10-13-2014 06:24:01", "duration" => "0d 2h 18m 46s", "info" => "PING OK - Packet loss = 0%, RTA = 0.06 ms"),
+			array("host_name" => "localhost4", "status" => "UP", "last_check" => "10-13-2014 06:24:01", "duration" => "0d 2h 18m 46s", "info" => "PING OK - Packet loss = 0%, RTA = 0.06 ms"),
+		);
+
+		if (Input::has("state")) {
+			$state = Input::get("state");
+
+			switch ($state) {
+				case '0':
+					$query = array(
+						array("host_name" => "localhost1", "status" => "UP", "last_check" => "10-13-2014 06:24:01", "duration" => "0d 2h 18m 46s", "info" => "PING OK - Packet loss = 0%, RTA = 0.06 ms"),
+						array("host_name" => "localhost4", "status" => "UP", "last_check" => "10-13-2014 06:24:01", "duration" => "0d 2h 18m 46s", "info" => "PING OK - Packet loss = 0%, RTA = 0.06 ms"),
+					);
+					break;
+				case '1':
+					$query = array(
+						array("host_name" => "localhost2", "status" => "DOWN", "last_check" => "10-13-2014 06:24:01", "duration" => "0d 2h 18m 46s", "info" => "PING OK - Packet loss = 0%, RTA = 0.06 ms"),
+					);
+					break;
+				case '2':
+					$query = array(
+						array("host_name" => "localhost3", "status" => "UNREACHABLE", "last_check" => "10-13-2014 06:24:01", "duration" => "0d 2h 18m 46s", "info" => "PING OK - Packet loss = 0%, RTA = 0.06 ms"),
+					);
+					break;
+				default:
+					$query = array();
+					break;
+			}
+		}
+
+		return $query;
 	}
 
 }
