@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link href="css/bootstrap-3.2.0-dist/bootstrap.min.css" rel="stylesheet">
-	<link href="css/font-awesome-4.2.0/font-awesome.min.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	
+	<link href="/stigma2/css/bootstrap-3.2.0-dist/bootstrap.min.css" rel="stylesheet">
+	<link href="/stigma2/css/font-awesome-4.2.0/font-awesome.min.css" rel="stylesheet">
+	<link href="/stigma2/css/style.css" rel="stylesheet">
 
-	<script src="js/jquery-2.1.1/jquery.min.js" type="text/javascript"></script>
-	<script src="js/angularjs-1.2.26/angular.min.js" type="text/javascript"></script>
-	<script src="js/angularjs-1.2.26/angular-route.min.js" type="text/javascript"></script>
-	<script src="js/bootstrap-3.2.0-dist/bootstrap.min.js" type="text/javascript"></script>
-	<script src="js/ngDraggable-master/ngDraggable.js" type="text/javascript"></script>
-	<script src="js/configuration.js" type="text/javascript"></script>
-	<script src="js/app.js" type="text/javascript"></script>
-	<script src="js/controllers.js" type="text/javascript"></script>
-	<script src="js/services.js" type="text/javascript"></script>
+	<script src="/stigma2/js/jquery-2.1.1/jquery.min.js"></script>
+	<script src="/stigma2/js/angularjs-1.2.26/angular.min.js"></script>
+	<script src="/stigma2/js/angularjs-1.2.26/angular-route.min.js"></script>
+	<script src="/stigma2/js/bootstrap-3.2.0-dist/bootstrap.min.js"></script>
+	<script src="/stigma2/js/ngDraggable-master/ngDraggable.js"></script>
+	<script src="/stigma2/js/configuration.js"></script>
+	<script src="/stigma2/js/app.js"></script>
+	<script src="/stigma2/js/controllers.js"></script>
+	<script src="/stigma2/js/services.js"></script>
 	
 	<title>Stigma2</title>
 </head>
@@ -26,7 +28,7 @@
 				</div>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a ng-click="logout()"><i class="fa fa-lock"></i> Logout</a></li>
+					<li><a ng-click="logout()"><span class="fa fa-lock"></span> Logout</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -44,7 +46,8 @@
 				<li class="sidebarContentElement"><a ng-click="hosts('0')">Up</a></li>
 				<li class="sidebarContentElement"><a ng-click="hosts('1')">Down</a></li>
 				<li class="sidebarContentElement"><a ng-click="hosts('2')">Unreachable</a></li>
-				<li class="sidebarContentElement"><a ng-click="hosts()">Pending</a></li>
+				<li class="sidebarContentElement"><a>Pending</a></li>
+				<li class="sidebarContentElement"><a ng-click="hostsGraph()"><span class="fa fa-line-chart"></span> Graph</a></li>
 			</ul>
 			<p>
 			<ul class="nav">
@@ -54,7 +57,8 @@
 				<li class="sidebarContentElement"><a ng-click="services('1')">Warning</a></li>
 				<li class="sidebarContentElement"><a ng-click="services('2')">Critical</a></li>
 				<li class="sidebarContentElement"><a ng-click="services('3')">Unknown</a></li>
-				<li class="sidebarContentElement"><a ng-click="services()">Pending</a></li>
+				<li class="sidebarContentElement"><a>Pending</a></li>
+				<li class="sidebarContentElement"><a ng-click="servicesGraph()"><span class="fa fa-line-chart"></span> Graph</a></li>
 			</ul>
 			<p>
 			<ul class="nav">

@@ -1,5 +1,5 @@
-mainApp.controller("MainCtrl", ["$location", "$rootScope", "$scope", "$window", "AccountFactory",
-	function($location, $rootScope, $scope, $window, AccountFactory) {
+mainApp.controller("MainCtrl", ["$location", "$rootScope", "$scope", "$window", "AccountFactory", "SystemConfigurationHostFactory",
+	function($location, $rootScope, $scope, $window, AccountFactory, SystemConfigurationHostFactory) {
 		$scope.home = function() { $location.path(stigma2.getConfiguration().home + "/"); };
 		$scope.overview = function() { $location.path(stigma2.getConfiguration().home + "/overview/"); };
 		$scope.hosts = function(type) {
@@ -12,6 +12,9 @@ mainApp.controller("MainCtrl", ["$location", "$rootScope", "$scope", "$window", 
 			}
 			$location.path(stigma2.getConfiguration().home + "/hosts/");
 		};
+		$scope.hostsGraph = function() {
+			$location.path(stigma2.getConfiguration().home + "/hosts/status");
+		};
 		$scope.services = function(type) {
 			if (type === undefined) {
 				$rootScope.params = null;
@@ -21,6 +24,9 @@ mainApp.controller("MainCtrl", ["$location", "$rootScope", "$scope", "$window", 
 				};
 			}
 			$location.path(stigma2.getConfiguration().home + "/services/");
+		};
+		$scope.servicesGraph = function() {
+			//
 		};
 		$scope.log = function() { $location.path(stigma2.getConfiguration().home + "/log/"); };
 		$scope.configuration = function() { $location.path(stigma2.getConfiguration().home + "/configuration/"); };
@@ -89,6 +95,57 @@ mainApp.controller("HostShowCtrl", ["$location", "$rootScope", "$scope", "HostFa
 			.then(function(data) {
 				$scope.host = data.host;
 			});
+	}]);
+
+mainApp.controller("HostStatusCtrl", ["$location", "$scope", "HostFactory",
+	function($location, $scope, HostFactory) {
+		$scope.step = "1";
+		$scope.periods = stigma2.getConfiguration().periods;
+		$scope.statusData = {};
+
+		$scope.cancel = function() {
+			$location.path(stigma2.getConfiguration().home + "/hosts/");
+		};
+
+		$scope.continueStep2 = function() {
+			$scope.step = "2";
+			$scope.statusData["period"] = $scope.periods.length > 0 ? $scope.periods[0] : undefined;
+		};
+
+		$scope.showStatus = function() {
+			$location.path(stigma2.getConfiguration().home + "/hosts/status/show/");
+		};
+
+		HostFactory.list()
+			.then(function(data) {
+				var hosts = [];
+				for (var i in data) {
+					var host_name = data[i].host_name;
+					var object_uuid = data[i].object_uuid;
+					hosts.push({"value": object_uuid, "text": host_name});
+				}
+				$scope.hosts = hosts;
+				$scope.statusData["host"] = $scope.hosts.length > 0 ? $scope.hosts[0] : undefined;
+			});
+	}]);
+
+mainApp.controller("HostStatusShowCtrl", ["$location", "$scope", "HostFactory",
+	function($location, $scope, HostFactory) {
+		$scope.series = [{
+			name : 'Random data',
+			data : (function() {
+				// generate an array of random data
+				var data = [], time = (new Date()).getTime(), i;
+
+				for( i = -999; i <= 0; i++) {
+					data.push([
+						time + i * 1000,
+						Math.round(Math.random() * 100)
+					]);
+				}
+				return data;
+			})()
+		}];
 	}]);
 
 mainApp.controller("ServiceListCtrl", ["$location", "$rootScope", "$scope", "ServiceFactory",
