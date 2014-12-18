@@ -28,7 +28,7 @@
 				</div>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a ng-click="logout()"><span class="fa fa-lock"></span> Logout</a></li>
+					<li><a ng-click="logout()"><i class="fa fa-lock"></i> Logout</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -47,7 +47,7 @@
 				<li class="sidebarContentElement"><a ng-click="hosts('1')">Down</a></li>
 				<li class="sidebarContentElement"><a ng-click="hosts('2')">Unreachable</a></li>
 				<li class="sidebarContentElement"><a>Pending</a></li>
-				<li class="sidebarContentElement"><a ng-click="hostsGraph()"><span class="fa fa-line-chart"></span> Graph</a></li>
+				<li class="sidebarContentElement"><a ng-click="hostsGraph()"><i class="fa fa-line-chart"></i> Graph</a></li>
 			</ul>
 			<p>
 			<ul class="nav">
@@ -58,7 +58,7 @@
 				<li class="sidebarContentElement"><a ng-click="services('2')">Critical</a></li>
 				<li class="sidebarContentElement"><a ng-click="services('3')">Unknown</a></li>
 				<li class="sidebarContentElement"><a>Pending</a></li>
-				<li class="sidebarContentElement"><a ng-click="servicesGraph()"><span class="fa fa-line-chart"></span> Graph</a></li>
+				<li class="sidebarContentElement"><a ng-click="servicesGraph()"><i class="fa fa-line-chart"></i> Graph</a></li>
 			</ul>
 			<p>
 			<ul class="nav">

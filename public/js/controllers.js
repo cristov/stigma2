@@ -338,6 +338,41 @@ mainApp.controller("SystemConfigurationCommandEditCtrl", ["$location", "$rootSco
 
 mainApp.controller("SystemConfigurationHostListCtrl", ["$location", "$rootScope", "$scope", "SystemConfigurationHostFactory",
 	function($location, $rootScope, $scope, SystemConfigurationHostFactory) {
+		$scope.groups = [{
+			hostgroup_name: "Group 1",
+			object_uuid: "host_group_1_object_uuid"
+		}, {
+			hostgroup_name: "Group 2",
+			object_uuid: "host_group_2_object_uuid"
+		}, {
+			hostgroup_name: "Group 3",
+			object_uuid: "host_group_3_object_uuid"
+		}, {
+			hostgroup_name: "Group 4",
+			object_uuid: "host_group_4_object_uuid"
+		}, {
+			hostgroup_name: "Group 5",
+			object_uuid: "host_group_5_object_uuid"
+		}, {
+			hostgroup_name: "Group 6",
+			object_uuid: "host_group_6_object_uuid"
+		}, {
+			hostgroup_name: "Group 7",
+			object_uuid: "host_group_7_object_uuid"
+		}, {
+			hostgroup_name: "Group 8",
+			object_uuid: "host_group_8_object_uuid"
+		}, {
+			hostgroup_name: "Group 9",
+			object_uuid: "host_group_9_object_uuid"
+		}, {
+			hostgroup_name: "Group 10",
+			object_uuid: "host_group_10_object_uuid"
+		}, {
+			hostgroup_name: "Group 11",
+			object_uuid: "host_group_11_object_uuid"
+		}];
+
 		$scope.createHost = function() {
 			$location.path(stigma2.getConfiguration().home + "/configuration/hosts/create/");
 		};

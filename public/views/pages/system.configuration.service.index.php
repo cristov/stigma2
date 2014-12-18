@@ -16,7 +16,7 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="service in services" ng-show="services.length">
-						<td><a ng-click="listHost(service.host_object_uuid)" class="btn btn-small">{{ service.host_name }}</a></td>
+						<td><a ng-click="listHost(service.host_object_uuid)">{{ service.host_name }}</a></td>
 						<td>{{ service.service_description }}</td>
 						<td><a ng-click="detailService(service.id)" class="btn btn-small btn-primary">detail</a></td>
 						<td><a ng-click="deleteService(service.id)" class="btn btn-small btn-danger">delete</a></td>
