@@ -15,11 +15,11 @@
 					</label>
 				</div> -->
 				<pre>{{radioModel || 'null'}}</pre>
-				<div class="col-lg-9">
+				<div class="col-lg-9" data-toggle="buttons">
 					<label class="btn btn-success" ng-model="radioModel" btn-radio="'Left'" uncheckable>Left</label>
 					<label class="btn btn-success" ng-model="radioModel" btn-radio="'Middle'" uncheckable>Middle</label>
 					<label class="btn btn-success" ng-model="radioModel" btn-radio="'Right'" uncheckable>Right</label>
-					<label class="btn btn-success" ng-model="radioModel" ng-repeat="group in groups" btn-radio="{{group.object_uuid}}" uncheckable>
+					<label class="btn btn-default" ng-click="toggle($event)" ng-repeat="group in groups">
 						{{ group.hostgroup_name }}
 					</label>
 				</div>

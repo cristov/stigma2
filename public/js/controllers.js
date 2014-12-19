@@ -400,6 +400,18 @@ mainApp.controller("SystemConfigurationHostListCtrl", ["$location", "$rootScope"
 			$location.path(stigma2.getConfiguration().home + "/configuration/services/");
 		};
 
+		$scope.toggle = function($event) {
+			var buttons = angular.element('div[data-toggle="buttons"]').children();
+			buttons.removeClass("active");
+
+			var target = angular.element($event.target);
+			console.log(target);
+			if (target.hasClass("active")) {
+				// target.removeClass("active");
+				console.log("removeClass");
+			}
+		};
+
 		SystemConfigurationHostFactory.list($rootScope.params)
 			.then(function(data) {
 				$scope.hosts = data;
