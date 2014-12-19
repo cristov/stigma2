@@ -4,14 +4,12 @@
 	<meta charset="UTF-8">
 	
 	<link href="/stigma2/css/bootstrap-3.2.0-dist/bootstrap.min.css" rel="stylesheet">
-	<link href="/stigma2/css/font-awesome-4.2.0/font-awesome.min.css" rel="stylesheet">
 	<link href="/stigma2/css/style.css" rel="stylesheet">
 
 	<script src="/stigma2/js/jquery-2.1.1/jquery.min.js"></script>
 	<script src="/stigma2/js/angularjs-1.2.26/angular.min.js"></script>
 	<script src="/stigma2/js/angularjs-1.2.26/angular-route.min.js"></script>
 	<script src="/stigma2/js/bootstrap-3.2.0-dist/bootstrap.min.js"></script>
-	<script src="/stigma2/js/ngDraggable-master/ngDraggable.js"></script>
 	<script src="/stigma2/js/configuration.js"></script>
 	<script src="/stigma2/js/app.js"></script>
 	<script src="/stigma2/js/controllers.js"></script>
@@ -19,7 +17,7 @@
 	
 	<title>Stigma2</title>
 </head>
-<body ng-app="mainApp">
+<body ng-app="loginApp">
 	<header>
 		<nav class="navbar navbar-default">
 			<div class="container">

@@ -1,4 +1,17 @@
-var mainApp = angular.module('mainApp', ['ngDraggable', 'ngRoute', 'services']);
+var loginApp = angular.module('loginApp', ['ngRoute', 'services']);
+var mainApp = angular.module('mainApp', ['ngDraggable', 'ngRoute', 'ui.bootstrap', 'services']);
+
+loginApp.config(function($routeProvider, $locationProvider) {
+	// use the HTML5 History API
+	$locationProvider.html5Mode(true);
+
+	$routeProvider.when(stigma2.getConfiguration().home + '/login', {
+		templateUrl : stigma2.getConfiguration().page + 'login.php',
+		controller : 'LoginCtrl'
+	})
+
+	$routeProvider.otherwise({redirectTo: stigma2.getConfiguration().home});
+});
 
 mainApp.config(function($routeProvider, $locationProvider) {
 	// use the HTML5 History API
@@ -75,7 +88,7 @@ mainApp.directive('timeperiodAddRow', ['DirectiveTimeperiodFactory',
 				});
 
 				scope.deleteRow = function(num) {
-					jQuery('tr[count="' + num + '"]').remove();
+					angular.element('tr[count="' + num + '"]').remove();
 				};
 			}
 		};

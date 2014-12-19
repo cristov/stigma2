@@ -12,6 +12,8 @@
 	<script src="/stigma2/js/angularjs-1.2.26/angular-route.min.js"></script>
 	<script src="/stigma2/js/bootstrap-3.2.0-dist/bootstrap.min.js"></script>
 	<script src="/stigma2/js/ngDraggable-master/ngDraggable.js"></script>
+	<script src="/stigma2/js/ui-bootstrap-0.12.0/ui-bootstrap-0.12.0.min.js"></script>
+	<script src="/stigma2/js/ui-bootstrap-0.12.0/ui-bootstrap-tpls-0.12.0.min.js"></script>
 	<script src="/stigma2/js/configuration.js"></script>
 	<script src="/stigma2/js/app.js"></script>
 	<script src="/stigma2/js/controllers.js"></script>
