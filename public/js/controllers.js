@@ -372,6 +372,7 @@ mainApp.controller("SystemConfigurationHostListCtrl", ["$location", "$rootScope"
 			hostgroup_name: "Group 11",
 			object_uuid: "host_group_11_object_uuid"
 		}];
+		$scope.hasActive = false;
 		$scope.hostgroup_uuid = "";
 
 		$scope.createHost = function() {
@@ -400,24 +401,30 @@ mainApp.controller("SystemConfigurationHostListCtrl", ["$location", "$rootScope"
 			$location.path(stigma2.getConfiguration().home + "/configuration/services/");
 		};
 
-		$scope.selectHostgroup = function(hostgroup_uuid) {
+		$scope.clickHostgroup = function(hostgroup_uuid) {
 			var buttons = angular.element('div[data-toggle="buttons"]').children();
 			buttons.removeClass("active");
 
-			if ($scope.hostgroup_uuid == hostgroup_uuid) {
+			if ($scope.hostgroup_uuid === hostgroup_uuid) {
 				var label = angular.element('label[name="' + hostgroup_uuid + '"]');
 				label.toggleClass("active");
+				$scope.hostgroup_uuid = "";
+			} else {
+				$scope.hostgroup_uuid = hostgroup_uuid;
 			}
-
-			$scope.hostgroup_uuid = hostgroup_uuid;
-
-			// var target = angular.element($event.target);
-			// console.log(target[0]);
-			// if (angular.element(target[0]).hasClass("active")) {
-			// 	angular.element(target[0]).removeClass("active");
-			// 	console.log("removeClass");
-			// }
 		};
+
+		$scope.$watch("hostgroup_uuid", function(newValue, oldValue) {
+			if (newValue === oldValue) return;
+
+			if (newValue === "") {
+				console.log("No one has active class");
+				$scope.hasActive = false;
+			} else {
+				console.log("Someone has active class");
+				$scope.hasActive = true;
+			}
+		});
 
 		SystemConfigurationHostFactory.list($rootScope.params)
 			.then(function(data) {
