@@ -9,13 +9,13 @@
 				<i class="fa fa-search"></i> <input type="text" ng-model="search" placeholder="Search">
 			</div>
 			<div>
-				<div class="col-lg-9" data-toggle="buttons">
+				<div class="col-lg-8" style="white-space: nowrap; overflow-x: scroll; padding-bottom: 15px;" data-toggle="buttons">
 					<label class="btn btn-default" name="{{group.object_uuid}}" ng-click="clickHostgroup(group.object_uuid)" ng-repeat="group in groups">
 						{{ group.hostgroup_name }}
 					</label>
 				</div>
-				<div class="col-lg-3">
-					<a class="btn btn-small btn-primary" ng-show="!hasActive">Add Group</a>
+				<div class="col-lg-4 text-right">
+					<a class="btn btn-small btn-success" ng-show="!hasActive">Add Group</a>
 					<a class="btn btn-small btn-primary" ng-show="hasActive">Update Group</a>
 					<a class="btn btn-small btn-danger" ng-show="hasActive">Drop Group</a>
 				</div>
