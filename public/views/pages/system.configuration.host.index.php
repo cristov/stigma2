@@ -10,14 +10,14 @@
 			</div>
 			<div>
 				<div class="col-lg-8" style="white-space: nowrap; overflow-x: scroll; padding-bottom: 15px;" data-toggle="buttons">
-					<label class="btn btn-default" name="{{group.object_uuid}}" ng-click="clickHostgroup(group.object_uuid)" ng-repeat="group in groups">
+					<label class="btn btn-default" name="{{ group.object_uuid }}" ng-click="clickHostgroup(group.object_uuid)" ng-repeat="group in groups">
 						{{ group.hostgroup_name }}
 					</label>
 				</div>
 				<div class="col-lg-4 text-right">
-					<a class="btn btn-small btn-success" ng-show="!hasActive">Add Group</a>
-					<a class="btn btn-small btn-primary" ng-show="hasActive">Update Group</a>
-					<a class="btn btn-small btn-danger" ng-show="hasActive">Drop Group</a>
+					<a class="btn btn-small btn-success" ng-show="!hasActive" ng-click="createHostgroup()">Add Group</a>
+					<a class="btn btn-small btn-primary" ng-show="hasActive" ng-click="updateHostgroup()">Update Group</a>
+					<a class="btn btn-small btn-danger" ng-show="hasActive" ng-click="deleteHostgroup()">Delete Group</a>
 				</div>
 			</div>
 			

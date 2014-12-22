@@ -414,14 +414,23 @@ mainApp.controller('SystemConfigurationHostListCtrl', ['$location', '$rootScope'
 			}
 		};
 
+		$scope.createHostgroup = function() {
+		};
+
+		$scope.updateHostgroup = function() {
+		};
+
+		$scope.deleteHostgroup = function() {
+		};
+
 		$scope.$watch('hostgroup_uuid', function(newValue, oldValue) {
 			if (newValue === oldValue) return;
 
 			if (newValue === '') {
-				console.log('No one has active class');
+				// console.log('No one has active class');
 				$scope.hasActive = false;
 			} else {
-				console.log('Someone has active class');
+				// console.log('Someone has active class');
 				$scope.hasActive = true;
 			}
 		});
