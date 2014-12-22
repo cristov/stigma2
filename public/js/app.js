@@ -71,7 +71,7 @@ mainApp.directive('timeperiodAddRow', ['DirectiveTimeperiodFactory',
 					weekObj[week.text] = week.value;
 				}
 
-				scope.$watch("timeperiodData.foo1", function(newValue, oldValue) {
+				scope.$watch('timeperiodData.foo1', function(newValue, oldValue) {
 					if (newValue === oldValue) return;
 					
 					if (monthObj.hasOwnProperty(oldValue.text) && weekObj.hasOwnProperty(newValue.text)) {
