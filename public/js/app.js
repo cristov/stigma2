@@ -1,5 +1,5 @@
 var loginApp = angular.module('loginApp', ['ngRoute', 'services']);
-var mainApp = angular.module('mainApp', ['ngDraggable', 'ngRoute', 'ui.bootstrap', 'services']);
+var mainApp = angular.module('mainApp', ['ngDraggable', 'ngRoute', 'services']);
 
 loginApp.config(function($routeProvider, $locationProvider) {
 	// use the HTML5 History API

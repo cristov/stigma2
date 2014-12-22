@@ -9,17 +9,8 @@
 				<i class="fa fa-search"></i> <input type="text" ng-model="search" placeholder="Search">
 			</div>
 			<div>
-				<!-- <div class="col-lg-9" data-toggle="buttons">
-					<label class="btn btn-default" ng-click="" ng-repeat="group in groups" style="float: left; margin: 5px 5px;">
-						{{ group.hostgroup_name }}
-					</label>
-				</div> -->
-				<pre>{{radioModel || 'null'}}</pre>
 				<div class="col-lg-9" data-toggle="buttons">
-					<label class="btn btn-success" ng-model="radioModel" btn-radio="'Left'" uncheckable>Left</label>
-					<label class="btn btn-success" ng-model="radioModel" btn-radio="'Middle'" uncheckable>Middle</label>
-					<label class="btn btn-success" ng-model="radioModel" btn-radio="'Right'" uncheckable>Right</label>
-					<label class="btn btn-default" ng-click="toggle($event)" ng-repeat="group in groups">
+					<label class="btn btn-default" name="{{group.object_uuid}}" ng-click="selectHostgroup(group.object_uuid)" ng-repeat="group in groups">
 						{{ group.hostgroup_name }}
 					</label>
 				</div>

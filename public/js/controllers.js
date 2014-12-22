@@ -372,7 +372,7 @@ mainApp.controller("SystemConfigurationHostListCtrl", ["$location", "$rootScope"
 			hostgroup_name: "Group 11",
 			object_uuid: "host_group_11_object_uuid"
 		}];
-		$scope.radioModel = 'Middle';
+		$scope.hostgroup_uuid = "";
 
 		$scope.createHost = function() {
 			$location.path(stigma2.getConfiguration().home + "/configuration/hosts/create/");
@@ -400,16 +400,23 @@ mainApp.controller("SystemConfigurationHostListCtrl", ["$location", "$rootScope"
 			$location.path(stigma2.getConfiguration().home + "/configuration/services/");
 		};
 
-		$scope.toggle = function($event) {
+		$scope.selectHostgroup = function(hostgroup_uuid) {
 			var buttons = angular.element('div[data-toggle="buttons"]').children();
 			buttons.removeClass("active");
 
-			var target = angular.element($event.target);
-			console.log(target);
-			if (target.hasClass("active")) {
-				// target.removeClass("active");
-				console.log("removeClass");
+			if ($scope.hostgroup_uuid == hostgroup_uuid) {
+				var label = angular.element('label[name="' + hostgroup_uuid + '"]');
+				label.toggleClass("active");
 			}
+
+			$scope.hostgroup_uuid = hostgroup_uuid;
+
+			// var target = angular.element($event.target);
+			// console.log(target[0]);
+			// if (angular.element(target[0]).hasClass("active")) {
+			// 	angular.element(target[0]).removeClass("active");
+			// 	console.log("removeClass");
+			// }
 		};
 
 		SystemConfigurationHostFactory.list($rootScope.params)
