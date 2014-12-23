@@ -373,6 +373,7 @@ mainApp.controller('SystemConfigurationHostListCtrl', ['$location', '$rootScope'
 			object_uuid: 'host_group_11_object_uuid'
 		}];
 		$scope.hasActive = false;
+		$scope.hostgroup_name = '';
 		$scope.hostgroup_uuid = '';
 
 		$scope.createHost = function() {
@@ -401,17 +402,20 @@ mainApp.controller('SystemConfigurationHostListCtrl', ['$location', '$rootScope'
 			$location.path(stigma2.getConfiguration().home + '/configuration/services/');
 		};
 
-		$scope.clickHostgroup = function(hostgroup_uuid) {
+		$scope.clickHostgroup = function(group) {
 			var buttons = angular.element('div[data-toggle="buttons"]').children();
 			buttons.removeClass('active');
 
-			if ($scope.hostgroup_uuid === hostgroup_uuid) {
-				var label = angular.element('label[name="' + hostgroup_uuid + '"]');
+			if ($scope.hostgroup_uuid === group.object_uuid) {
+				var label = angular.element('label[name="' + group.object_uuid + '"]');
 				label.toggleClass('active');
+				$scope.hostgroup_name = '';
 				$scope.hostgroup_uuid = '';
 			} else {
-				$scope.hostgroup_uuid = hostgroup_uuid;
+				$scope.hostgroup_uuid = group.object_uuid;
 			}
+
+			$scope.hostgroup_name = group.hostgroup_name;
 		};
 
 		$scope.createHostgroup = function() {
