@@ -9,7 +9,7 @@
 				<div class="col-lg-8">
 					<div class="form-inline">
 						<span>Group Name : </span>
-						<input type="text" class="form-control" ng-model="hostgroup_name" />
+						<input type="text" class="form-control" ng-model="hostgroup_name" placeholder="Write the name to create" />
 					</div>
 				</div>
 				<div class="col-lg-4 text-right">
@@ -18,9 +18,12 @@
 					<a class="btn btn-small btn-danger" ng-show="hasActive" ng-click="deleteHostgroup()">Delete Group</a>
 				</div>
 				<div class="col-lg-12">
-					<div style="white-space: nowrap; overflow-x: scroll; padding-bottom: 15px; padding-top: 15px;" data-toggle="buttons">
-						<label class="btn btn-default" name="{{ group.object_uuid }}" ng-click="clickHostgroup(group)" ng-repeat="group in groups">
-							{{ group.hostgroup_name }}
+					<div style="white-space: nowrap; overflow-x: scroll; padding: 15px 5px;" data-toggle="buttons">
+						<label class="btn btn-default" name="{{ hostgroup.object_uuid }}" ng-click="clickHostgroup(hostgroup)" ng-repeat="hostgroup in hostgroups" ng-show="hostgroups.length">
+							{{ hostgroup.hostgroup_name }}
+						</label>
+						<label ng-show="!hostgroups.length">
+							<strong>No hostgroups.</strong>
 						</label>
 					</div>
 				</div>
@@ -47,7 +50,7 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="host in hosts | filter:search" ng-show="hosts.length">
-						<td><input type="checkbox"></td>
+						<td><input type="checkbox" value="{{host.object_uuid}}"></td>
 						<td><a ng-click="listService(host.object_uuid)">{{ host.host_name }}</a></td>
 						<td><a ng-click="detailHost(host.id)" class="btn btn-small btn-primary">detail</a></td>
 						<td><a ng-click="deleteHost(host.id)" class="btn btn-small btn-danger">delete</a></td>

@@ -336,42 +336,42 @@ mainApp.controller('SystemConfigurationCommandEditCtrl', ['$location', '$rootSco
 			});
 	}]);
 
-mainApp.controller('SystemConfigurationHostListCtrl', ['$location', '$rootScope', '$scope', 'SystemConfigurationHostFactory',
-	function($location, $rootScope, $scope, SystemConfigurationHostFactory) {
-		$scope.groups = [{
-			hostgroup_name: 'Group 1',
-			object_uuid: 'host_group_1_object_uuid'
-		}, {
-			hostgroup_name: 'Group 2',
-			object_uuid: 'host_group_2_object_uuid'
-		}, {
-			hostgroup_name: 'Group 3',
-			object_uuid: 'host_group_3_object_uuid'
-		}, {
-			hostgroup_name: 'Group 4',
-			object_uuid: 'host_group_4_object_uuid'
-		}, {
-			hostgroup_name: 'Group 5',
-			object_uuid: 'host_group_5_object_uuid'
-		}, {
-			hostgroup_name: 'Group 6',
-			object_uuid: 'host_group_6_object_uuid'
-		}, {
-			hostgroup_name: 'Group 7',
-			object_uuid: 'host_group_7_object_uuid'
-		}, {
-			hostgroup_name: 'Group 8',
-			object_uuid: 'host_group_8_object_uuid'
-		}, {
-			hostgroup_name: 'Group 9',
-			object_uuid: 'host_group_9_object_uuid'
-		}, {
-			hostgroup_name: 'Group 10',
-			object_uuid: 'host_group_10_object_uuid'
-		}, {
-			hostgroup_name: 'Group 11',
-			object_uuid: 'host_group_11_object_uuid'
-		}];
+mainApp.controller('SystemConfigurationHostListCtrl', ['$location', '$rootScope', '$scope', 'SystemConfigurationHostFactory', 'SystemConfigurationHostgroupFactory',
+	function($location, $rootScope, $scope, SystemConfigurationHostFactory, SystemConfigurationHostgroupFactory) {
+		// $scope.hostgroups = [{
+		// 	hostgroup_name: 'Group 1',
+		// 	object_uuid: 'host_group_1_object_uuid'
+		// }, {
+		// 	hostgroup_name: 'Group 2',
+		// 	object_uuid: 'host_group_2_object_uuid'
+		// }, {
+		// 	hostgroup_name: 'Group 3',
+		// 	object_uuid: 'host_group_3_object_uuid'
+		// }, {
+		// 	hostgroup_name: 'Group 4',
+		// 	object_uuid: 'host_group_4_object_uuid'
+		// }, {
+		// 	hostgroup_name: 'Group 5',
+		// 	object_uuid: 'host_group_5_object_uuid'
+		// }, {
+		// 	hostgroup_name: 'Group 6',
+		// 	object_uuid: 'host_group_6_object_uuid'
+		// }, {
+		// 	hostgroup_name: 'Group 7',
+		// 	object_uuid: 'host_group_7_object_uuid'
+		// }, {
+		// 	hostgroup_name: 'Group 8',
+		// 	object_uuid: 'host_group_8_object_uuid'
+		// }, {
+		// 	hostgroup_name: 'Group 9',
+		// 	object_uuid: 'host_group_9_object_uuid'
+		// }, {
+		// 	hostgroup_name: 'Group 10',
+		// 	object_uuid: 'host_group_10_object_uuid'
+		// }, {
+		// 	hostgroup_name: 'Group 11',
+		// 	object_uuid: 'host_group_11_object_uuid'
+		// }];
 		$scope.hasActive = false;
 		$scope.hostgroup_name = '';
 		$scope.hostgroup_uuid = '';
@@ -409,7 +409,6 @@ mainApp.controller('SystemConfigurationHostListCtrl', ['$location', '$rootScope'
 			if ($scope.hostgroup_uuid === group.object_uuid) {
 				var label = angular.element('label[name="' + group.object_uuid + '"]');
 				label.toggleClass('active');
-				$scope.hostgroup_name = '';
 				$scope.hostgroup_uuid = '';
 			} else {
 				$scope.hostgroup_uuid = group.object_uuid;
@@ -419,6 +418,26 @@ mainApp.controller('SystemConfigurationHostListCtrl', ['$location', '$rootScope'
 		};
 
 		$scope.createHostgroup = function() {
+			var params = {
+				'hostgroup_name': $scope.hostgroup_name
+			};
+
+			var checkboxes = angular.element(':checked');
+			var members = [];
+			for (var i = 0; i < checkboxes.length; i++) {
+				members.push(checkboxes[i].value);
+			}
+			params['members'] = members;
+			console.log(params);
+
+			SystemConfigurationHostgroupFactory.save(params)
+				.success(function(data) {
+					console.log(data);
+					$scope.hostgroups = data.hostgroups;
+				})
+				.error(function(data) {
+					console.log(data);
+				});
 		};
 
 		$scope.updateHostgroup = function() {
@@ -433,6 +452,7 @@ mainApp.controller('SystemConfigurationHostListCtrl', ['$location', '$rootScope'
 			if (newValue === '') {
 				// console.log('No one has active class');
 				$scope.hasActive = false;
+				$scope.hostgroup_name = '';
 			} else {
 				// console.log('Someone has active class');
 				$scope.hasActive = true;
@@ -442,6 +462,12 @@ mainApp.controller('SystemConfigurationHostListCtrl', ['$location', '$rootScope'
 		SystemConfigurationHostFactory.list($rootScope.params)
 			.then(function(data) {
 				$scope.hosts = data;
+
+				SystemConfigurationHostgroupFactory.list()
+					.then(function(hostgroups) {
+						$scope.hostgroups = hostgroups;
+						console.log($scope.hostgroups);
+					});
 			});
 	}]);
 

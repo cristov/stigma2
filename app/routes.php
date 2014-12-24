@@ -22,6 +22,7 @@ Route::group(array('before' => 'auth', 'prefix' => 'api'), function()
 	Route::resource('hosts', 'HostsController');
 	Route::resource('services', 'ServicesController');
 	Route::resource('configuration/commands', 'ConfigurationCommandsController');
+	Route::resource('configuration/hostgroups', 'ConfigurationHostgroupsController');
 	Route::resource('configuration/hosts', 'ConfigurationHostsController');
 	Route::resource('configuration/services', 'ConfigurationServicesController');
 	Route::resource('configuration/timeperiods', 'ConfigurationTimeperiodsController');
