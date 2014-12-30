@@ -379,6 +379,7 @@ mainApp.controller('SystemConfigurationHostListCtrl', ['$location', '$rootScope'
 				$scope.hostgroup_uuid = '';
 			} else {
 				$scope.hostgroup_uuid = group.object_uuid;
+				$scope.hostgroup_name = group.hostgroup_name;
 
 				SystemConfigurationHostgroupFactory.show(group.object_uuid)
 					.then(function(data) {
@@ -390,8 +391,6 @@ mainApp.controller('SystemConfigurationHostListCtrl', ['$location', '$rootScope'
 						}
 					});
 			}
-
-			$scope.hostgroup_name = group.hostgroup_name;
 		};
 
 		$scope.createHostgroup = function() {
