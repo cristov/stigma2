@@ -371,6 +371,7 @@ mainApp.controller('SystemConfigurationHostListCtrl', ['$location', '$rootScope'
 		$scope.clickHostgroup = function(group) {
 			var buttons = angular.element('div[data-toggle="buttons"]').children();
 			buttons.removeClass('active');
+			angular.element(':checked').prop('checked', false);
 
 			if ($scope.hostgroup_uuid === group.object_uuid) {
 				var label = angular.element('label[name="' + group.object_uuid + '"]');
@@ -381,13 +382,10 @@ mainApp.controller('SystemConfigurationHostListCtrl', ['$location', '$rootScope'
 
 				SystemConfigurationHostgroupFactory.show(group.object_uuid)
 					.then(function(data) {
-						console.log(data);
-						for (var i in data) {
-							var member = data[i].member;
-							console.log(data[i]);
-							console.log(member);
+						var hostgroupDetail = data.hostgroupDetail;
+						for (var i in hostgroupDetail) {
+							var member = hostgroupDetail[i].member;
 							var checkbox = angular.element('input[type="checkbox"][name="' + member + '"]');
-							console.log(checkbox);
 							checkbox.prop('checked', true);
 						}
 					});
