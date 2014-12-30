@@ -378,6 +378,19 @@ mainApp.controller('SystemConfigurationHostListCtrl', ['$location', '$rootScope'
 				$scope.hostgroup_uuid = '';
 			} else {
 				$scope.hostgroup_uuid = group.object_uuid;
+
+				SystemConfigurationHostgroupFactory.show(group.object_uuid)
+					.then(function(data) {
+						console.log(data);
+						for (var i in data) {
+							var member = data[i].member;
+							console.log(data[i]);
+							console.log(member);
+							var checkbox = angular.element('input[type="checkbox"][name="' + member + '"]');
+							console.log(checkbox);
+							checkbox.prop('checked', true);
+						}
+					});
 			}
 
 			$scope.hostgroup_name = group.hostgroup_name;

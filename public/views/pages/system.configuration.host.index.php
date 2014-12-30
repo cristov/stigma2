@@ -50,7 +50,7 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="host in hosts | filter:search" ng-show="hosts.length">
-						<td><input type="checkbox" value="{{host.object_uuid}}"></td>
+						<td><input type="checkbox" name="{{host.object_uuid}}" value="{{host.object_uuid}}"></td>
 						<td><a ng-click="listService(host.object_uuid)">{{ host.host_name }}</a></td>
 						<td><a ng-click="detailHost(host.id)" class="btn btn-small btn-primary">detail</a></td>
 						<td><a ng-click="deleteHost(host.id)" class="btn btn-small btn-danger">delete</a></td>

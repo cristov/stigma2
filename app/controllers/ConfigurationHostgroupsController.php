@@ -71,7 +71,19 @@ class ConfigurationHostgroupsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$hostgroupDetail = DB::table("hostgroups")
+				->join("objects", "hostgroups.object_uuid", "=", "objects.uuid")
+				->join("hostgroup_members", "hostgroups.object_uuid", "=", "hostgroup_members.hostgroup_fk")
+				->select("hostgroup_members.member")
+				->where("hostgroups.object_uuid", "=", $id)
+				->orderBy("hostgroup_members.id", "asc")
+				->get();
+
+		$result = array(
+			"hostgroupDetail" => $hostgroupDetail
+		);
+
+		return Response::json($result);
 	}
 
 	/**
