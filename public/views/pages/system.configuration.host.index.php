@@ -22,9 +22,9 @@
 						<label class="btn btn-default" name="{{ hostgroup.object_uuid }}" ng-click="clickHostgroup(hostgroup)" ng-repeat="hostgroup in hostgroups" ng-show="hostgroups.length">
 							{{ hostgroup.hostgroup_name }}
 						</label>
-						<label ng-show="!hostgroups.length">
+						<span ng-show="!hostgroups.length">
 							<strong>No hostgroups.</strong>
-						</label>
+						</span>
 					</div>
 				</div>
 			</div>
