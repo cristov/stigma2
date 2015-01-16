@@ -1,5 +1,6 @@
 var loginApp = angular.module('loginApp', ['ngRoute', 'services']);
-var mainApp = angular.module('mainApp', ['ngDraggable', 'ngRoute', 'services']);
+var mainApp = angular.module('mainApp', ['services', 'ui.router']);
+// var mainApp = angular.module('mainApp', ['ngDraggable', 'ngRoute', 'services']);
 
 loginApp.config(function($routeProvider, $locationProvider) {
 	// use the HTML5 History API
@@ -13,20 +14,60 @@ loginApp.config(function($routeProvider, $locationProvider) {
 	$routeProvider.otherwise({redirectTo: stigma2.getConfiguration().home});
 });
 
-mainApp.config(function($routeProvider, $locationProvider) {
-	// use the HTML5 History API
-	$locationProvider.html5Mode(true);
+mainApp.config(['$locationProvider', '$stateProvider', '$urlRouterProvider',
+	function ($locationProvider, $stateProvider, $urlRouterProvider) {
+		$locationProvider.html5Mode(true);
 
-	var route = stigma2.getConfiguration().route;
-	for (var i in route) {
-		$routeProvider.when(route[i].url, {
-			templateUrl : route[i].templateUrl,
-			controller : route[i].controller
-		})
+		// For any unmatched url, send to /route1
+		$urlRouterProvider.otherwise("/stigma2");
+
+		// Now set up the states
+		$stateProvider
+			.state('state1', {
+				url: "/stigma2/state1",
+				templateUrl: "/stigma2/views/partials/state1.html"
+			})
+			.state('state1.list', {
+				url: "/list",
+				templateUrl: "/stigma2/views/partials/state1.list.html",
+				controller: "state1Ctrl"
+			})
+			.state('state2', {
+				url: "/stigma2/state2",
+				templateUrl: "/stigma2/views/partials/state2.html"
+			})
+			.state('state2.list', {
+				url: "/list",
+				templateUrl: "/stigma2/views/partials/state2.list.html",
+				controller: "state2Ctrl"
+			});
 	}
+]);
 
-	$routeProvider.otherwise({redirectTo: stigma2.getConfiguration().home});
-});
+mainApp.controller('state1Ctrl', ['$scope',
+	function($scope) {
+		$scope.items = ["A", "List", "Of", "Items"];
+	}]);
+
+mainApp.controller('state2Ctrl', ['$scope',
+	function($scope) {
+		$scope.things = ["A", "Set", "Of", "Things"];
+	}]);
+
+// mainApp.config(function($routeProvider, $locationProvider) {
+// 	// use the HTML5 History API
+// 	$locationProvider.html5Mode(true);
+
+// 	var route = stigma2.getConfiguration().route;
+// 	for (var i in route) {
+// 		$routeProvider.when(route[i].url, {
+// 			templateUrl : route[i].templateUrl,
+// 			controller : route[i].controller
+// 		})
+// 	}
+
+// 	$routeProvider.otherwise({redirectTo: stigma2.getConfiguration().home});
+// });
 
 mainApp.directive('timeperiodAddRow', ['DirectiveTimeperiodFactory',
 	function(DirectiveTimeperiodFactory) {

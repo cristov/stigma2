@@ -9,6 +9,7 @@
 
 	<script src="/stigma2/js/jquery-2.1.1/jquery.min.js"></script>
 	<script src="/stigma2/js/angularjs-1.2.26/angular.min.js"></script>
+	<script src="/stigma2/js/angularjs-1.2.26/angular-ui-router.min.js"></script>
 	<script src="/stigma2/js/angularjs-1.2.26/angular-route.min.js"></script>
 	<script src="/stigma2/js/bootstrap-3.2.0-dist/bootstrap.min.js"></script>
 	<script src="/stigma2/js/ngDraggable-master/ngDraggable.js"></script>
@@ -73,7 +74,23 @@
 		</div>
 	</aside>
 	<div class="mainContents">
-		<div ng-view></div>
+		<p><i>Best viewed in pop-out mode to see location changes. Click blue button on the right.</i></p>
+
+		  <div class="navbar">
+		    <div class="navbar-inner">
+		      <a class="brand" href="#">Quick Start</a>
+		      <ul class="nav">
+		        <li><a ui-sref="state1">state 1</a></li>
+		        <li><a ui-sref="state2">state 2</a></li>
+		      </ul>
+		    </div>
+		  </div>
+
+		  <div class="row">
+		    <div class="span12">
+		      <div class="well" ui-view></div>        
+		    </div>
+		  </div>
 	</div>
 	<footer class="text-center footerbar">
 		Copyright 2010 All Rights Reserved. <a href="http://www.zespro.co.kr">Zespro</a>
