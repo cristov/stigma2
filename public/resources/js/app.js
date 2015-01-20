@@ -1,8 +1,8 @@
-define(['angular', 'controllers', 'ui.router'],
+define(['angular', 'controllers', 'services', 'ui.router'],
 	function(angular) {
 		'use strict';
 
-		var app = angular.module('mainApp', ['controllers', 'ui.router']);
+		var app = angular.module('mainApp', ['controllers', 'services', 'ui.router']);
 
 		app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider',
 			function($locationProvider, $stateProvider, $urlRouterProvider) {

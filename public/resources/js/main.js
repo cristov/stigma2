@@ -15,8 +15,11 @@ require.config({
 		'app': {
 			deps: ['angular']
 		},
-		'controllers': {
+		'services': {
 			deps: ['angular']
+		},
+		'controllers': {
+			deps: ['angular', 'services']
 		},
 		'ui.router': {
 			deps: ['angular']
