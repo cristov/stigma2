@@ -10,12 +10,12 @@
 
 	<script data-main="resources/js/main" src="resources/lib/require/require.js"></script>
 </head>
-<body ng-controller="MainCtrl">
+<body>
 	<header>
 		<nav class="navbar navbar-default">
 			<div class="container">
 				<div class="navbar-header">
-					<a class="navbar-brand" ng-click="home()">Stigma2</a>
+					<a class="navbar-brand" ui-sref="home">Stigma2</a>
 				</div>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -28,7 +28,7 @@
 		<div class="sidebarContents">
 			<ul class="nav">
 				<li class="sidebarContentTitle">Dashboard</li>
-				<li class="sidebarContentElement"><a ng-click="overview()">Overview</a></li>
+				<li class="sidebarContentElement"><a ui-sref="dashboardOverviewList">Overview</a></li>
 			</ul>
 			<p>
 			<ul class="nav">

@@ -1,9 +1,12 @@
-define(function() {
-	'use strict';
+define(['./module'],
+	function(controllers) {
+		'use strict';
 
-	return ['$scope',
-		function($scope) {
-			$scope.message = 'Everyone come and see how good I look!';
-		}
-	];
-});
+		controllers.controller('HomeCtrl', [
+			'$scope',
+			function($scope) {
+				$scope.message = 'Everyone come and see how good I look!';
+			}
+		]);
+	}
+);

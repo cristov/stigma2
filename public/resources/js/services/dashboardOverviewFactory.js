@@ -1,12 +1,14 @@
-define(function() {
-	'use strict';
+define(['./implement', './module', '../app-config'],
+	function(implement, services, appConfig) {
+		'use strict';
 
-	return function($http) {
-		return {
-			list: function() {
-				var url = stigma2.getConfiguration().home + '/api/overview';
-				return httpGetServiceImpl($http, url);
+		services.factory('DashboardOverviewFactory', function($http) {
+			return {
+				list: function() {
+					var url = appConfig.getConfiguration().home + '/api/overview';
+					return implement.httpGetServiceImpl($http, url);
+				}
 			}
-		}
-	};
-});
+		});
+	}
+);

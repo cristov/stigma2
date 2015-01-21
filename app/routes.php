@@ -16,7 +16,30 @@ Route::get('/', function()
 	return View::make('index');
 });
 
+Route::group(array('prefix' => 'api'), function()
+{
+	Route::resource('overview', 'OverviewController');
+});
+
 App::missing(function($exception)
 {
 	return Redirect::to('/');
 });
+
+
+// Route::get('/', array('before' => 'auth', 'uses' => 'HomeController@showIndex'));
+// Route::get('login', 'HomeController@showLogin');
+// Route::post('login', 'HomeController@doLogin');
+// Route::get('logout', 'HomeController@doLogout');
+
+// Route::group(array('before' => 'auth', 'prefix' => 'api'), function()
+// {
+// 	Route::resource('overview', 'OverviewController');
+// 	Route::resource('hosts', 'HostsController');
+// 	Route::resource('services', 'ServicesController');
+// 	Route::resource('configuration/commands', 'ConfigurationCommandsController');
+// 	Route::resource('configuration/hostgroups', 'ConfigurationHostgroupsController');
+// 	Route::resource('configuration/hosts', 'ConfigurationHostsController');
+// 	Route::resource('configuration/services', 'ConfigurationServicesController');
+// 	Route::resource('configuration/timeperiods', 'ConfigurationTimeperiodsController');
+// });

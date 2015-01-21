@@ -1,23 +1,26 @@
-define(function() {
-	'use strict';
+define(['./module'],
+	function(controllers) {
+		'use strict';
 
-	return ['$location', '$scope', 'SystemConfigurationCommandFactory',
-		function($location, $scope, SystemConfigurationCommandFactory) {
-			$scope.commandData = {};
+		controllers.controller('SystemConfigurationCommandCreationCtrl', [
+			'$location', '$scope', 'SystemConfigurationCommandFactory',
+			function($location, $scope, SystemConfigurationCommandFactory) {
+				$scope.commandData = {};
 
-			$scope.saveCommand = function() {
-				SystemConfigurationCommandFactory.save($scope.commandData)
-					.success(function(data) {
-						$location.path(stigma2.getConfiguration().home + '/configuration/commands/');
-					})
-					.error(function(data) {
-						console.log(data);
-					});
-			};
+				$scope.saveCommand = function() {
+					SystemConfigurationCommandFactory.save($scope.commandData)
+						.success(function(data) {
+							$location.path(stigma2.getConfiguration().home + '/configuration/commands/');
+						})
+						.error(function(data) {
+							console.log(data);
+						});
+				};
 
-			$scope.cancel = function() {
-				$location.path(stigma2.getConfiguration().home + '/configuration/commands/');
-			};
-		}
-	];
-});
+				$scope.cancel = function() {
+					$location.path(stigma2.getConfiguration().home + '/configuration/commands/');
+				};
+			}
+		]);
+	}
+);

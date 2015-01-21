@@ -1,14 +1,18 @@
-define(function() {
-	'use strict';
+define(['./module'],
+	function(services) {
+		'use strict';
 
-	return function($http) {
-		return {
-			getTimeperiods: function() {
-				return timeperiods;
-			},
-			register: function(timeperiod) {
-				timeperiods.push(timeperiod);
-			}
-		}
-	};
-});
+		services.factory('DirectiveTimeperiodFactory', function() {
+			var timeperiods = [];
+
+			return {
+				getTimeperiods: function() {
+					return timeperiods;
+				},
+				register: function(timeperiod) {
+					timeperiods.push(timeperiod);
+				}
+			};
+		});
+	}
+);
