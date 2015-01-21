@@ -19,6 +19,7 @@ Route::get('/', function()
 Route::group(array('prefix' => 'api'), function()
 {
 	Route::resource('overview', 'OverviewController');
+	Route::resource('hosts', 'HostsController');
 });
 
 App::missing(function($exception)

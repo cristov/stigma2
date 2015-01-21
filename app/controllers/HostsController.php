@@ -118,10 +118,10 @@ class HostsController extends \BaseController {
 			array("object_uuid" => "92b6e831-4afb-45c5-a0ef-586f6cb3e32d", "host_name" => "localhost4", "status" => "UP", "last_check" => "10-13-2014 06:24:01", "duration" => "0d 2h 18m 46s", "info" => "PING OK - Packet loss = 0%, RTA = 0.06 ms"),
 		);
 
-		if (Input::has("state")) {
-			$state = Input::get("state");
+		if (Input::has("type")) {
+			$type = Input::get("type");
 
-			switch ($state) {
+			switch ($type) {
 				case '0':
 					$query = array(
 						array("host_name" => "localhost1", "status" => "UP", "last_check" => "10-13-2014 06:24:01", "duration" => "0d 2h 18m 46s", "info" => "PING OK - Packet loss = 0%, RTA = 0.06 ms"),

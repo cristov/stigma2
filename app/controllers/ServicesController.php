@@ -123,10 +123,10 @@ class ServicesController extends \BaseController {
 			array("host_name" => "localhost", "service_name" => "TEST", "status" => "UNKNOWN", "last_check" => "10-13-2014 06:24:01", "duration" => "0d 2h 18m 46s", "attempt" => "4/4", "info" => ""),
 		);
 
-		if (Input::has("state")) {
-			$state = Input::get("state");
+		if (Input::has("type")) {
+			$type = Input::get("type");
 
-			switch ($state) {
+			switch ($type) {
 				case '0':
 					$query = array(
 						array("host_name" => "localhost", "service_name" => "Current Load", "status" => "OK", "last_check" => "10-13-2014 06:24:01", "duration" => "0d 2h 18m 46s", "attempt" => "1/4", "info" => "OK - load average: 0.07, 0.16, 0.14"),

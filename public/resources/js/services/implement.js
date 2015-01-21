@@ -1,4 +1,4 @@
-define([], function() {
+define(['angular'], function(angular) {
 	function httpServiceImpl(http, method, params, url) {
 		return http({
 			method: method,
@@ -19,9 +19,22 @@ define([], function() {
 			});
 	};
 
+	function addParamsToURL(url, params) {
+		if (angular.isObject(params)) {
+			var delimiter = '?';
+			for (var key in params) {
+				url += delimiter + key + '=' + params[key];
+				delimiter = '&';
+			};
+		}
+		console.log(url);
+		return url;
+	};
+
 	return {
 		httpServiceImpl: httpServiceImpl,
 		httpDeleteServiceImpl: httpDeleteServiceImpl,
-		httpGetServiceImpl: httpGetServiceImpl
+		httpGetServiceImpl: httpGetServiceImpl,
+		addParamsToURL: addParamsToURL
 	};
 });

@@ -33,21 +33,21 @@
 			<p>
 			<ul class="nav">
 				<li class="sidebarContentTitle">Host</li>
-				<li class="sidebarContentElement"><a ng-click="hosts()">All</a></li>
-				<li class="sidebarContentElement"><a ng-click="hosts('0')">Up</a></li>
-				<li class="sidebarContentElement"><a ng-click="hosts('1')">Down</a></li>
-				<li class="sidebarContentElement"><a ng-click="hosts('2')">Unreachable</a></li>
+				<li class="sidebarContentElement"><a ui-sref="hostList">All</a></li>
+				<li class="sidebarContentElement"><a ui-sref="hostList({type:'0'})">Up</a></li>
+				<li class="sidebarContentElement"><a ui-sref="hostList({type:'1'})">Down</a></li>
+				<li class="sidebarContentElement"><a ui-sref="hostList({type:'2'})">Unreachable</a></li>
 				<li class="sidebarContentElement"><a>Pending</a></li>
 				<li class="sidebarContentElement"><a ng-click="hostsGraph()"><i class="fa fa-line-chart"></i> Graph</a></li>
 			</ul>
 			<p>
 			<ul class="nav">
 				<li class="sidebarContentTitle">Service</li>
-				<li class="sidebarContentElement"><a ng-click="services()">All</a></li>
-				<li class="sidebarContentElement"><a ng-click="services('0')">OK</a></li>
-				<li class="sidebarContentElement"><a ng-click="services('1')">Warning</a></li>
-				<li class="sidebarContentElement"><a ng-click="services('2')">Critical</a></li>
-				<li class="sidebarContentElement"><a ng-click="services('3')">Unknown</a></li>
+				<li class="sidebarContentElement"><a ui-sref="serviceList">All</a></li>
+				<li class="sidebarContentElement"><a ui-sref="serviceList({type:'0'})">OK</a></li>
+				<li class="sidebarContentElement"><a ui-sref="serviceList({type:'1'})">Warning</a></li>
+				<li class="sidebarContentElement"><a ui-sref="serviceList({type:'2'})">Critical</a></li>
+				<li class="sidebarContentElement"><a ui-sref="serviceList({type:'3'})">Unknown</a></li>
 				<li class="sidebarContentElement"><a>Pending</a></li>
 				<li class="sidebarContentElement"><a ng-click="servicesGraph()"><i class="fa fa-line-chart"></i> Graph</a></li>
 			</ul>
