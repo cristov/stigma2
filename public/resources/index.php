@@ -33,7 +33,7 @@
 			<p>
 			<ul class="nav">
 				<li class="sidebarContentTitle">Host</li>
-				<li class="sidebarContentElement"><a ui-sref="hostList">All</a></li>
+				<li class="sidebarContentElement"><a ui-sref="hostList({type:''})">All</a></li>
 				<li class="sidebarContentElement"><a ui-sref="hostList({type:'0'})">Up</a></li>
 				<li class="sidebarContentElement"><a ui-sref="hostList({type:'1'})">Down</a></li>
 				<li class="sidebarContentElement"><a ui-sref="hostList({type:'2'})">Unreachable</a></li>
@@ -43,7 +43,7 @@
 			<p>
 			<ul class="nav">
 				<li class="sidebarContentTitle">Service</li>
-				<li class="sidebarContentElement"><a ui-sref="serviceList">All</a></li>
+				<li class="sidebarContentElement"><a ui-sref="serviceList({type:''})">All</a></li>
 				<li class="sidebarContentElement"><a ui-sref="serviceList({type:'0'})">OK</a></li>
 				<li class="sidebarContentElement"><a ui-sref="serviceList({type:'1'})">Warning</a></li>
 				<li class="sidebarContentElement"><a ui-sref="serviceList({type:'2'})">Critical</a></li>

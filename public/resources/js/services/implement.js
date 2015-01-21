@@ -27,7 +27,6 @@ define(['angular'], function(angular) {
 				delimiter = '&';
 			};
 		}
-		console.log(url);
 		return url;
 	};
 

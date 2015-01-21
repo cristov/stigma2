@@ -5,7 +5,7 @@ define(['./implement', './module', '../app-config'],
 		services.factory('HostFactory', function($http) {
 			return {
 				list: function(params) {
-					var url = appConfig.getConfiguration().home + '/api/hosts/';
+					var url = appConfig.getConfiguration().home + '/api/hosts';
 					url = implement.addParamsToURL(url, params);
 					return implement.httpGetServiceImpl($http, url);
 				},
