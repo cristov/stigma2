@@ -6,6 +6,7 @@ define([
 	'./hostStatusCtrl',
 	'./hostStatusShowCtrl',
 	'./mainCtrl',
+	'./reportLogListCtrl',
 	'./serviceListCtrl',
 	'./serviceShowCtrl',
 	'./systemConfigurationListCtrl',

@@ -1,16 +1,16 @@
-define(['./module'],
-	function(services) {
+define(['./implement', './module', '../app-config'],
+	function(implement, services, appConfig) {
 		'use strict';
 
 		services.factory('AccountFactory', function($http) {
 			return {
 				login: function(params) {
-					var url = stigma2.getConfiguration().home + '/login';
-					return httpServiceImpl($http, 'POST', params, url);
+					var url = appConfig.getConfiguration().home + '/login';
+					return implement.httpServiceImpl($http, 'POST', params, url);
 				},
 				logout: function() {
-					var url = stigma2.getConfiguration().home + '/logout';
-					return httpGetServiceImpl($http, url);
+					var url = appConfig.getConfiguration().home + '/logout';
+					return implement.httpGetServiceImpl($http, url);
 				}
 			}
 		});

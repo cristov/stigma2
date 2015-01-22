@@ -1,5 +1,5 @@
-define(['./module'],
-	function(controllers) {
+define(['./module', '../app-config'],
+	function(controllers, appConfig) {
 		'use strict';
 
 		controllers.controller('SystemConfigurationTimeperiodCreationCtrl', [
@@ -20,7 +20,7 @@ define(['./module'],
 
 					SystemConfigurationTimeperiodFactory.save(params)
 						.success(function(data) {
-							$location.path(stigma2.getConfiguration().home + '/configuration/timeperiods/');
+							$location.path(appConfig.getConfiguration().home + '/configuration/timeperiods/');
 						})
 						.error(function(data) {
 							console.log(data);

@@ -1,5 +1,5 @@
-define(['./module'],
-	function(controllers) {
+define(['./module', '../app-config'],
+	function(controllers, appConfig) {
 		'use strict';
 
 		controllers.controller('SystemConfigurationServiceCreationCtrl', [
@@ -19,7 +19,7 @@ define(['./module'],
 
 					SystemConfigurationServiceFactory.save(params)
 						.success(function(data) {
-							$location.path(stigma2.getConfiguration().home + '/configuration/services/');
+							$location.path(appConfig.getConfiguration().home + '/configuration/services/');
 						})
 						.error(function(data) {
 							console.log(data);
@@ -27,7 +27,7 @@ define(['./module'],
 				};
 
 				$scope.cancel = function() {
-					$location.path(stigma2.getConfiguration().home + '/configuration/services/');
+					$location.path(appConfig.getConfiguration().home + '/configuration/services/');
 				};
 
 				SystemConfigurationServiceFactory.create()

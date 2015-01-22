@@ -1,5 +1,5 @@
-define(['./module'],
-	function(controllers) {
+define(['./module', '../app-config'],
+	function(controllers, appConfig) {
 		'use strict';
 
 		controllers.controller('SystemConfigurationCommandCreationCtrl', [
@@ -10,7 +10,7 @@ define(['./module'],
 				$scope.saveCommand = function() {
 					SystemConfigurationCommandFactory.save($scope.commandData)
 						.success(function(data) {
-							$location.path(stigma2.getConfiguration().home + '/configuration/commands/');
+							$location.path(appConfig.getConfiguration().home + '/configuration/commands/');
 						})
 						.error(function(data) {
 							console.log(data);
@@ -18,7 +18,7 @@ define(['./module'],
 				};
 
 				$scope.cancel = function() {
-					$location.path(stigma2.getConfiguration().home + '/configuration/commands/');
+					$location.path(appConfig.getConfiguration().home + '/configuration/commands/');
 				};
 			}
 		]);

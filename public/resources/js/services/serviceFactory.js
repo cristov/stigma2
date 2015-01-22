@@ -1,17 +1,17 @@
-define(['./module'],
-	function(services) {
+define(['./implement', './module', '../app-config'],
+	function(implement, services, appConfig) {
 		'use strict';
 
 		services.factory('ServiceFactory', function($http) {
 			return {
 				list: function(params) {
-					var url = stigma2.getConfiguration().home + '/api/services';
-					url = urlParameterHelper(url, params);
-					return httpGetServiceImpl($http, url);
+					var url = appConfig.getConfiguration().home + '/api/services';
+					url = implement.addParamsToURL(url, params);
+					return implement.httpGetServiceImpl($http, url);
 				},
 				show: function(id) {
-					var url = stigma2.getConfiguration().home + '/api/services/' + id;
-					return httpGetServiceImpl($http, url);
+					var url = appConfig.getConfiguration().home + '/api/services/' + id;
+					return implement.httpGetServiceImpl($http, url);
 				}
 			}
 		});

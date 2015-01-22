@@ -1,5 +1,5 @@
-define(['./module'],
-	function(controllers) {
+define(['./module', '../app-config'],
+	function(controllers, appConfig) {
 		'use strict';
 
 		controllers.controller('SystemConfigurationHostListCtrl', [
@@ -10,12 +10,12 @@ define(['./module'],
 				$scope.hostgroup_uuid = '';
 
 				$scope.createHost = function() {
-					$location.path(stigma2.getConfiguration().home + '/configuration/hosts/create/');
+					$location.path(appConfig.getConfiguration().home + '/configuration/hosts/create/');
 				};
 
 				$scope.detailHost = function(id) {
 					$rootScope.id = id;
-					$location.path(stigma2.getConfiguration().home + '/configuration/hosts/' + id + '/');
+					$location.path(appConfig.getConfiguration().home + '/configuration/hosts/' + id + '/');
 				};
 
 				$scope.deleteHost = function(id) {
@@ -32,7 +32,7 @@ define(['./module'],
 					$rootScope.params = {
 						'host_object_uuid': object_uuid
 					};
-					$location.path(stigma2.getConfiguration().home + '/configuration/services/');
+					$location.path(appConfig.getConfiguration().home + '/configuration/services/');
 				};
 
 				$scope.clickHostgroup = function(group) {

@@ -1,5 +1,5 @@
-define(['./module'],
-	function(controllers) {
+define(['./module', '../app-config'],
+	function(controllers, appConfig) {
 		'use strict';
 
 		controllers.controller('SystemConfigurationHostCreationCtrl', [
@@ -19,7 +19,7 @@ define(['./module'],
 
 					SystemConfigurationHostFactory.save(params)
 						.success(function(data) {
-							$location.path(stigma2.getConfiguration().home + '/configuration/hosts/');
+							$location.path(appConfig.getConfiguration().home + '/configuration/hosts/');
 						})
 						.error(function(data) {
 							console.log(data);
@@ -27,7 +27,7 @@ define(['./module'],
 				};
 
 				$scope.cancel = function() {
-					$location.path(stigma2.getConfiguration().home + '/configuration/hosts/');
+					$location.path(appConfig.getConfiguration().home + '/configuration/hosts/');
 				};
 
 				SystemConfigurationHostFactory.create()

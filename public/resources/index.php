@@ -54,12 +54,12 @@
 			<p>
 			<ul class="nav">
 				<li class="sidebarContentTitle">Report</li>
-				<li class="sidebarContentElement"><a ng-click="log()">Log</a></li>
+				<li class="sidebarContentElement"><a ui-sref="reportLogList">Log</a></li>
 			</ul>
 			<p>
 			<ul class="nav">
 				<li class="sidebarContentTitle">System</li>
-				<li class="sidebarContentElement"><a ng-click="configuration()">Configuration</a></li>
+				<li class="sidebarContentElement"><a ui-sref="systemConfigurationList">Configuration</a></li>
 			</ul>
 		</div>
 	</aside>

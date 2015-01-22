@@ -1,16 +1,16 @@
-define(['./module'],
-	function(controllers) {
+define(['./module', '../app-config'],
+	function(controllers, appConfig) {
 		'use strict';
 
 		controllers.controller('HostStatusCtrl', [
 			'$location', '$scope', 'HostFactory',
 			function($location, $scope, HostFactory) {
 				$scope.step = '1';
-				$scope.periods = stigma2.getConfiguration().periods;
+				$scope.periods = appConfig.getConfiguration().periods;
 				$scope.statusData = {};
 
 				$scope.cancel = function() {
-					$location.path(stigma2.getConfiguration().home + '/hosts/');
+					$location.path(appConfig.getConfiguration().home + '/hosts/');
 				};
 
 				$scope.continueStep2 = function() {
@@ -19,7 +19,7 @@ define(['./module'],
 				};
 
 				$scope.showStatus = function() {
-					$location.path(stigma2.getConfiguration().home + '/hosts/status/show/');
+					$location.path(appConfig.getConfiguration().home + '/hosts/status/show/');
 				};
 
 				HostFactory.list()

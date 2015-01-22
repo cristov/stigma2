@@ -1,5 +1,5 @@
-define(['./module'],
-	function(controllers) {
+define(['./module', '../app-config'],
+	function(controllers, appConfig) {
 		'use strict';
 
 		controllers.controller('SystemConfigurationHostEditCtrl', [
@@ -8,7 +8,7 @@ define(['./module'],
 				dragDropHelper($scope);
 
 				$scope.editHost = function() {
-					$location.path(stigma2.getConfiguration().home + '/configuration/hosts/' + $rootScope.id + '/edit/');
+					$location.path(appConfig.getConfiguration().home + '/configuration/hosts/' + $rootScope.id + '/edit/');
 				};
 
 				$scope.updateHost = function() {
@@ -22,7 +22,7 @@ define(['./module'],
 
 					SystemConfigurationHostFactory.update($rootScope.id, params)
 						.success(function(data) {
-							$location.path(stigma2.getConfiguration().home + '/configuration/hosts/' + $rootScope.id + '/');
+							$location.path(appConfig.getConfiguration().home + '/configuration/hosts/' + $rootScope.id + '/');
 						})
 						.error(function(data) {
 							console.log(data);
@@ -30,7 +30,7 @@ define(['./module'],
 				};
 
 				$scope.cancel = function() {
-					$location.path(stigma2.getConfiguration().home + '/configuration/hosts/');
+					$location.path(appConfig.getConfiguration().home + '/configuration/hosts/');
 				};
 
 				SystemConfigurationHostFactory.show($rootScope.id)

@@ -127,6 +127,8 @@ class ServicesController extends \BaseController {
 			$type = Input::get("type");
 
 			switch ($type) {
+				case 'undefined':
+					break;
 				case '0':
 					$query = array(
 						array("host_name" => "localhost", "service_name" => "Current Load", "status" => "OK", "last_check" => "10-13-2014 06:24:01", "duration" => "0d 2h 18m 46s", "attempt" => "1/4", "info" => "OK - load average: 0.07, 0.16, 0.14"),

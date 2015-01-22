@@ -1,21 +1,21 @@
-define(['./module'],
-	function(controllers) {
+define(['./module', '../app-config'],
+	function(controllers, appConfig) {
 		'use strict';
 
 		controllers.controller('ServiceListCtrl', [
-			'$location', '$rootScope', '$scope', 'ServiceFactory',
-			function($location, $rootScope, $scope, ServiceFactory) {
+			'$location', '$rootScope', '$scope', '$stateParams', 'ServiceFactory',
+			function($location, $rootScope, $scope, $stateParams, ServiceFactory) {
 				$scope.detailHost = function(id) {
 					$rootScope.id = id;
-					$location.path(stigma2.getConfiguration().home + '/hosts/' + id + '/');
+					$location.path(appConfig.getConfiguration().home + '/hosts/' + id + '/');
 				};
 
 				$scope.detailService = function(id) {
 					$rootScope.id = id;
-					$location.path(stigma2.getConfiguration().home + '/services/' + id + '/');
+					$location.path(appConfig.getConfiguration().home + '/services/' + id + '/');
 				};
 
-				ServiceFactory.list($rootScope.params)
+				ServiceFactory.list($stateParams)
 					.then(function(data) {
 						$scope.services = data;
 					});

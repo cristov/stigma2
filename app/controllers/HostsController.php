@@ -122,6 +122,8 @@ class HostsController extends \BaseController {
 			$type = Input::get("type");
 
 			switch ($type) {
+				case 'undefined':
+					break;
 				case '0':
 					$query = array(
 						array("host_name" => "localhost1", "status" => "UP", "last_check" => "10-13-2014 06:24:01", "duration" => "0d 2h 18m 46s", "info" => "PING OK - Packet loss = 0%, RTA = 0.06 ms"),

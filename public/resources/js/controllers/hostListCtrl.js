@@ -1,13 +1,13 @@
-define(['./module'],
-	function(controllers) {
+define(['./module', '../app-config'],
+	function(controllers, appConfig) {
 		'use strict';
 
 		controllers.controller('HostListCtrl', [
-			'$location', '$rootScope', '$scope', '$stateParams', 'HostFactory',
-			function($location, $rootScope, $scope, $stateParams, HostFactory) {
+			'$rootScope', '$scope', '$state', '$stateParams', 'HostFactory',
+			function($rootScope, $scope, $state, $stateParams, HostFactory) {
 				$scope.detailHost = function(id) {
 					$rootScope.id = id;
-					$location.path(stigma2.getConfiguration().home + '/hosts/'+ id + '/');
+					$state.go('hostShow', {id: id});
 				};
 
 				HostFactory.list($stateParams)

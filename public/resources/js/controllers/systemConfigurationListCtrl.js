@@ -1,23 +1,23 @@
-define(['./module'],
-	function(controllers) {
+define(['./module', '../app-config'],
+	function(controllers, appConfig) {
 		'use strict';
 
 		controllers.controller('SystemConfigurationListCtrl', [
-			'$location', '$scope',
-			function($location, $scope) {
+			'$scope', '$state',
+			function($scope, $state) {
 				$scope.objects = [{ 'value' : '1', 'text' : 'Hosts' }, { 'value' : '2', 'text' : 'Services' }, {'value' : '9', 'text' : 'Timeperiods'}, { 'value' : '12', 'text' : 'Commands' }];
 				$scope.type = $scope.objects[0];
 
 				$scope.continueToNextStep = function() {
 					switch ($scope.type.value) {
 						case '1' :
-							$location.path(stigma2.getConfiguration().home + '/configuration/hosts/'); break;
+							$state.go('systemConfigurationHostList'); break;
 						case '2' :
-							$location.path(stigma2.getConfiguration().home + '/configuration/services/'); break;
+							$state.go('systemConfigurationServiceList'); break;
 						case '9' :
-							$location.path(stigma2.getConfiguration().home + '/configuration/timeperiods/'); break;
+							$state.go('systemConfigurationTimeperiodList'); break;
 						case '12' :
-							$location.path(stigma2.getConfiguration().home + '/configuration/commands/'); break;
+							$state.go('systemConfigurationCommandList'); break;
 					}
 				};
 			}

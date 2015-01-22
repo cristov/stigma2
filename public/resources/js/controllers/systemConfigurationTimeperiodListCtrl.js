@@ -1,17 +1,17 @@
-define(['./module'],
-	function(controllers) {
+define(['./module', '../app-config'],
+	function(controllers, appConfig) {
 		'use strict';
 
 		controllers.controller('SystemConfigurationTimeperiodListCtrl', [
 			'$location', '$rootScope', '$scope', 'SystemConfigurationTimeperiodFactory',
 			function($location, $rootScope, $scope, SystemConfigurationTimeperiodFactory) {
 				$scope.createTimeperiod = function() {
-					$location.path(stigma2.getConfiguration().home + '/configuration/timeperiods/create/');
+					$location.path(appConfig.getConfiguration().home + '/configuration/timeperiods/create/');
 				};
 
 				$scope.editTimeperiod = function(id) {
 					$rootScope.id = id;
-					$location.path(stigma2.getConfiguration().home + '/configuration/timeperiods/'+ id + '/edit/');
+					$location.path(appConfig.getConfiguration().home + '/configuration/timeperiods/'+ id + '/edit/');
 				};
 
 				$scope.deleteTimeperiod = function(id) {
