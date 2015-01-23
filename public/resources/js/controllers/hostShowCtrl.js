@@ -3,15 +3,13 @@ define(['./module', '../app-config'],
 		'use strict';
 
 		controllers.controller('HostShowCtrl', [
-			'$location', '$rootScope', '$scope', '$stateParams', 'HostFactory',
-			function($location, $rootScope, $scope, $stateParams, HostFactory) {
+			'$scope', '$state', 'HostFactory',
+			function($scope, $state, HostFactory) {
 				$scope.cancel = function() {
-					$location.path(appConfig.getConfiguration().home + '/hosts/');
+					$state.go('hostList');
 				};
-				console.log('HostShowCtrl');
-				console.log($stateParams);
 
-				HostFactory.show($stateParams)
+				HostFactory.show($state.params)
 					.then(function(data) {
 						$scope.host = data.host;
 					});

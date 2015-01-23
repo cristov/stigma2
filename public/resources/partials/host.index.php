@@ -17,7 +17,7 @@
 			    </thead>
 				<tbody>
 					<tr ng-repeat="host in hosts" ng-show="hosts.length">
-						<td><a ng-click="detailHost(host.id)">{{ host.host_name }}</a></td>
+						<td><a ng-click="detailHost(host.object_uuid)">{{ host.host_name }}</a></td>
 						<td>{{ host.status }}</td>
 						<td>{{ host.last_check }}</td>
 						<td>{{ host.duration }}</td>

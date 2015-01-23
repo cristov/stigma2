@@ -3,20 +3,19 @@ define(['./module', '../app-config'],
 		'use strict';
 
 		controllers.controller('ServiceListCtrl', [
-			'$location', '$rootScope', '$scope', '$stateParams', 'ServiceFactory',
-			function($location, $rootScope, $scope, $stateParams, ServiceFactory) {
-				$scope.detailHost = function(id) {
-					$rootScope.id = id;
-					$location.path(appConfig.getConfiguration().home + '/hosts/' + id + '/');
+			'$scope', '$state', 'ServiceFactory',
+			function($scope, $state, ServiceFactory) {
+				$scope.detailHost = function(uuid) {
+					$state.go('hostShow', {uuid: uuid});
 				};
 
-				$scope.detailService = function(id) {
-					$rootScope.id = id;
-					$location.path(appConfig.getConfiguration().home + '/services/' + id + '/');
+				$scope.detailService = function(uuid) {
+					$state.go('serviceShow', {uuid: uuid});
 				};
 
-				ServiceFactory.list($stateParams)
+				ServiceFactory.list($state.params)
 					.then(function(data) {
+						console.log(data);
 						$scope.services = data;
 					});
 			}

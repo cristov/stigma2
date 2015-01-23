@@ -3,8 +3,8 @@ define(['./module'],
 		'use strict';
 
 		controllers.controller('HostStatusShowCtrl', [
-			'$location', '$scope', 'HostFactory',
-			function($location, $scope, HostFactory) {
+			'$scope', 'HostFactory',
+			function($scope, HostFactory) {
 				$scope.series = [{
 					name : 'Random data',
 					data : (function() {

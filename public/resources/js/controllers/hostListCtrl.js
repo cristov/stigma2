@@ -3,14 +3,13 @@ define(['./module', '../app-config'],
 		'use strict';
 
 		controllers.controller('HostListCtrl', [
-			'$rootScope', '$scope', '$state', '$stateParams', 'HostFactory',
-			function($rootScope, $scope, $state, $stateParams, HostFactory) {
-				$scope.detailHost = function(id) {
-					$rootScope.id = id;
-					$state.go('hostShow', {id: id});
+			'$scope', '$state', 'HostFactory',
+			function($scope, $state, HostFactory) {
+				$scope.detailHost = function(uuid) {
+					$state.go('hostShow', {uuid: uuid});
 				};
 
-				HostFactory.list($stateParams)
+				HostFactory.list($state.params)
 					.then(function(data) {
 						$scope.hosts = data;
 					});

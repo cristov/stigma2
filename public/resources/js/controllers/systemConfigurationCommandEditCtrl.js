@@ -3,14 +3,14 @@ define(['./module', '../app-config'],
 		'use strict';
 
 		controllers.controller('SystemConfigurationCommandEditCtrl', [
-			'$location', '$rootScope', '$scope', 'SystemConfigurationCommandFactory',
-			function($location, $rootScope, $scope, SystemConfigurationCommandFactory) {
+			'$scope', '$state', 'SystemConfigurationCommandFactory',
+			function($scope, $state, SystemConfigurationCommandFactory) {
 				$scope.commandData = {};
 
 				$scope.updateCommand = function(id) {
 					SystemConfigurationCommandFactory.update(id, $scope.commandData)
 						.success(function(data) {
-							$location.path(appConfig.getConfiguration().home + '/configuration/commands/');
+							$state.go('systemConfigurationCommandList');
 						})
 						.error(function(data) {
 							console.log(data);
@@ -18,10 +18,10 @@ define(['./module', '../app-config'],
 				};
 
 				$scope.cancel = function() {
-					$location.path(appConfig.getConfiguration().home + '/configuration/commands/');
+					$state.go('systemConfigurationCommandList');
 				};
 
-				SystemConfigurationCommandFactory.show($rootScope.id)
+				SystemConfigurationCommandFactory.show($state.params)
 					.then(function(data) {
 						$scope.commandData = data[0];
 					});

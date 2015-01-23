@@ -3,13 +3,13 @@ define(['./module', '../app-config'],
 		'use strict';
 
 		controllers.controller('ServiceShowCtrl', [
-			'$location', '$rootScope', '$scope', 'ServiceFactory',
-			function($location, $rootScope, $scope, ServiceFactory) {
+			'$scope', '$state', 'ServiceFactory',
+			function($scope, $state, ServiceFactory) {
 				$scope.cancel = function() {
-					$location.path(appConfig.getConfiguration().home + '/services/');
+					$state.go('serviceList');
 				};
 
-				ServiceFactory.show($rootScope.id)
+				ServiceFactory.show($state.params)
 					.then(function(data) {
 						$scope.service = data.service;
 					});

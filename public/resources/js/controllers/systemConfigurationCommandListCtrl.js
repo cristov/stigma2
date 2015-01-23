@@ -3,15 +3,14 @@ define(['./module', '../app-config'],
 		'use strict';
 
 		controllers.controller('SystemConfigurationCommandListCtrl', [
-			'$location', '$rootScope', '$scope', 'SystemConfigurationCommandFactory',
-			function($location, $rootScope, $scope, SystemConfigurationCommandFactory) {
+			'$scope', '$state', 'SystemConfigurationCommandFactory',
+			function($scope, $state, SystemConfigurationCommandFactory) {
 				$scope.createCommand = function() {
-					$location.path(appConfig.getConfiguration().home + '/configuration/commands/create/');
+					$state.go('systemConfigurationCommandCreation');
 				};
 
 				$scope.editCommand = function(id) {
-					$rootScope.id = id;
-					$location.path(appConfig.getConfiguration().home + '/configuration/commands/'+ id + '/edit/');
+					$state.go('systemConfigurationCommandEdit', {id: id});
 				};
 
 				$scope.deleteCommand = function(id) {

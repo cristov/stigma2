@@ -3,14 +3,14 @@ define(['./module', '../app-config'],
 		'use strict';
 
 		controllers.controller('SystemConfigurationCommandCreationCtrl', [
-			'$location', '$scope', 'SystemConfigurationCommandFactory',
-			function($location, $scope, SystemConfigurationCommandFactory) {
+			'$scope', '$state', 'SystemConfigurationCommandFactory',
+			function($scope, $state, SystemConfigurationCommandFactory) {
 				$scope.commandData = {};
 
 				$scope.saveCommand = function() {
 					SystemConfigurationCommandFactory.save($scope.commandData)
 						.success(function(data) {
-							$location.path(appConfig.getConfiguration().home + '/configuration/commands/');
+							$state.go('systemConfigurationCommandList');
 						})
 						.error(function(data) {
 							console.log(data);
@@ -18,7 +18,7 @@ define(['./module', '../app-config'],
 				};
 
 				$scope.cancel = function() {
-					$location.path(appConfig.getConfiguration().home + '/configuration/commands/');
+					$state.go('systemConfigurationCommandList');
 				};
 			}
 		]);

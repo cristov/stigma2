@@ -3,9 +3,9 @@ define(['./module', '../app-config'],
 		'use strict';
 
 		controllers.controller('SystemConfigurationHostCreationCtrl', [
-			'$location', '$scope', 'SystemConfigurationHostFactory',
-			function($location, $scope, SystemConfigurationHostFactory) {
-				dragDropHelper($scope);
+			'$scope', '$state', 'SystemConfigurationHostFactory',
+			function($scope, $state, SystemConfigurationHostFactory) {
+				// dragDropHelper($scope);
 				$scope.hostData = {};
 
 				$scope.saveHost = function() {
@@ -19,7 +19,7 @@ define(['./module', '../app-config'],
 
 					SystemConfigurationHostFactory.save(params)
 						.success(function(data) {
-							$location.path(appConfig.getConfiguration().home + '/configuration/hosts/');
+							$state.go('systemConfigurationHostList');
 						})
 						.error(function(data) {
 							console.log(data);
@@ -27,7 +27,7 @@ define(['./module', '../app-config'],
 				};
 
 				$scope.cancel = function() {
-					$location.path(appConfig.getConfiguration().home + '/configuration/hosts/');
+					$state.go('systemConfigurationHostList');
 				};
 
 				SystemConfigurationHostFactory.create()
