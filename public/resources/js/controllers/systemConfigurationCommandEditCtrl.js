@@ -21,7 +21,7 @@ define(['./module', '../app-config'],
 					$state.go('systemConfigurationCommandList');
 				};
 
-				SystemConfigurationCommandFactory.show($state.params)
+				SystemConfigurationCommandFactory.show($state.params.id)
 					.then(function(data) {
 						$scope.commandData = data[0];
 					});

@@ -9,7 +9,7 @@ define(['./module', '../app-config'],
 					$state.go('serviceList');
 				};
 
-				ServiceFactory.show($state.params)
+				ServiceFactory.show($state.params.uuid)
 					.then(function(data) {
 						$scope.service = data.service;
 					});

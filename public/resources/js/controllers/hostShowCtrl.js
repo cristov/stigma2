@@ -9,7 +9,7 @@ define(['./module', '../app-config'],
 					$state.go('hostList');
 				};
 
-				HostFactory.show($state.params)
+				HostFactory.show($state.params.uuid)
 					.then(function(data) {
 						$scope.host = data.host;
 					});

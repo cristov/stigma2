@@ -15,7 +15,6 @@ define(['./module', '../app-config'],
 
 				ServiceFactory.list($state.params)
 					.then(function(data) {
-						console.log(data);
 						$scope.services = data;
 					});
 			}
