@@ -3,15 +3,14 @@ define(['./module', '../app-config'],
 		'use strict';
 
 		controllers.controller('SystemConfigurationTimeperiodListCtrl', [
-			'$location', '$rootScope', '$scope', 'SystemConfigurationTimeperiodFactory',
-			function($location, $rootScope, $scope, SystemConfigurationTimeperiodFactory) {
+			'$scope', '$state', 'SystemConfigurationTimeperiodFactory',
+			function($scope, $state, SystemConfigurationTimeperiodFactory) {
 				$scope.createTimeperiod = function() {
-					$location.path(appConfig.getConfiguration().home + '/configuration/timeperiods/create/');
+					$state.go('systemConfigurationTimeperiodCreation');
 				};
 
 				$scope.editTimeperiod = function(id) {
-					$rootScope.id = id;
-					$location.path(appConfig.getConfiguration().home + '/configuration/timeperiods/'+ id + '/edit/');
+					$state.go('');
 				};
 
 				$scope.deleteTimeperiod = function(id) {
