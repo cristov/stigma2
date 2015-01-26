@@ -1,11 +1,12 @@
-define(['./module', '../app-config'],
-	function(controllers, appConfig) {
+define(['./module', '../app-config', './ngDraggableCtrl'],
+	function(controllers, appConfig, draggable) {
 		'use strict';
 
 		controllers.controller('SystemConfigurationHostCreationCtrl', [
 			'$scope', '$state', 'SystemConfigurationHostFactory',
 			function($scope, $state, SystemConfigurationHostFactory) {
-				// dragDropHelper($scope);
+				draggable.setScope($scope);
+				draggable.init();
 				$scope.hostData = {};
 
 				$scope.saveHost = function() {

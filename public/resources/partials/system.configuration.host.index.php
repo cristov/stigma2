@@ -5,7 +5,7 @@
 		</div>
 
 		<div>
-			<div>
+			<!-- <div>
 				<div class="col-lg-8">
 					<div class="form-inline">
 						<span>Group Name : </span>
@@ -27,16 +27,10 @@
 						</span>
 					</div>
 				</div>
-			</div>
-			<div>
-				<div class="col-lg-8">
-					<div class="form-inline">
-						<i class="fa fa-search"></i> <input type="text" class="form-control" ng-model="search.host_name" placeholder="Search">
-					</div>
-				</div>
-				<div class="col-lg-4 text-right">
-					<a ng-click="createHost()" class="btn btn-small">create new host</a>
-				</div>
+			</div> -->
+			
+			<div class="form-inline text-right">
+				<i class="fa fa-search"></i> <input type="text" class="form-control" ng-model="search.host_name" placeholder="Search">
 			</div>
 			
 			<table class="table table-striped table-condensed">
@@ -60,6 +54,7 @@
 					</tr>
 				</tbody>
 			</table>
+			<a ng-click="createHost()" class="btn btn-small">create new host</a>
 		</div>
 	</div>
 </div>

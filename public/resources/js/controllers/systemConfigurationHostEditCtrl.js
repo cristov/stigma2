@@ -1,14 +1,15 @@
-define(['./module', '../app-config'],
-	function(controllers, appConfig) {
+define(['./module', '../app-config', './ngDraggableCtrl'],
+	function(controllers, appConfig, draggable) {
 		'use strict';
 
 		controllers.controller('SystemConfigurationHostEditCtrl', [
-			'$location', '$rootScope', '$scope', 'SystemConfigurationHostFactory',
-			function($location, $rootScope, $scope, SystemConfigurationHostFactory) {
-				dragDropHelper($scope);
+			'$scope', '$state', 'SystemConfigurationHostFactory',
+			function($scope, $state, SystemConfigurationHostFactory) {
+				draggable.setScope($scope);
+				draggable.init();
 
 				$scope.editHost = function() {
-					$location.path(appConfig.getConfiguration().home + '/configuration/hosts/' + $rootScope.id + '/edit/');
+					$state.go('systemConfigurationHostEdit', {id: $state.params.id});
 				};
 
 				$scope.updateHost = function() {
@@ -20,9 +21,9 @@ define(['./module', '../app-config'],
 						params[key] = value;
 					}
 
-					SystemConfigurationHostFactory.update($rootScope.id, params)
+					SystemConfigurationHostFactory.update($state.params.id, params)
 						.success(function(data) {
-							$location.path(appConfig.getConfiguration().home + '/configuration/hosts/' + $rootScope.id + '/');
+							$state.go('systemConfigurationHostShow', {id: $state.params.id});
 						})
 						.error(function(data) {
 							console.log(data);
@@ -30,10 +31,14 @@ define(['./module', '../app-config'],
 				};
 
 				$scope.cancel = function() {
-					$location.path(appConfig.getConfiguration().home + '/configuration/hosts/');
+					$state.go('systemConfigurationHostShow', {id: $state.params.id});
 				};
 
-				SystemConfigurationHostFactory.show($rootScope.id)
+				$scope.list = function() {
+					$state.go('systemConfigurationHostList');
+				};
+
+				SystemConfigurationHostFactory.show($state.params.id)
 					.then(function(data) {
 						$scope.hostData = data.hostData;
 						$scope.hostDetail = data.hostDetail;
