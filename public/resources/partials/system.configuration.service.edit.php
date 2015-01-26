@@ -4,7 +4,7 @@
 			<h2>Edit Service</h2>
 		</div>
 
-		<form ng-submit="updateHost()">
+		<form ng-submit="updateService()">
 			<div class="form-group">
 				<div class="row topRow">
 					<h4 class="heading">
@@ -52,7 +52,7 @@
 								<input type="text" class="form-control input-sm" ng-model="rowContents.name" ng-readonly="true" />
 							</td>
 							<td>
-								<input type="text" class="form-control input-sm" ng-model="hostData[rowContents.name]" placeholder="{{ rowContents.placeholder }}" />
+								<input type="text" class="form-control input-sm" ng-model="serviceData[rowContents.name]" placeholder="{{ rowContents.placeholder }}" />
 							</td>
 						</tr>
 					</tbody>

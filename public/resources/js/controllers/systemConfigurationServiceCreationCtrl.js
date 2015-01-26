@@ -1,11 +1,12 @@
-define(['./module', '../app-config'],
-	function(controllers, appConfig) {
+define(['./module', '../app-config', './ngDraggableCtrl'],
+	function(controllers, appConfig, draggable) {
 		'use strict';
 
 		controllers.controller('SystemConfigurationServiceCreationCtrl', [
-			'$location', '$scope', 'SystemConfigurationServiceFactory',
-			function($location, $scope, SystemConfigurationServiceFactory) {
-				dragDropHelper($scope);
+			'$scope', '$state', 'SystemConfigurationServiceFactory',
+			function($scope, $state, SystemConfigurationServiceFactory) {
+				draggable.setScope($scope);
+				draggable.init();
 				$scope.serviceData = {};
 
 				$scope.saveService = function() {
@@ -19,7 +20,7 @@ define(['./module', '../app-config'],
 
 					SystemConfigurationServiceFactory.save(params)
 						.success(function(data) {
-							$location.path(appConfig.getConfiguration().home + '/configuration/services/');
+							$state.go('systemConfigurationServiceList');
 						})
 						.error(function(data) {
 							console.log(data);
@@ -27,7 +28,7 @@ define(['./module', '../app-config'],
 				};
 
 				$scope.cancel = function() {
-					$location.path(appConfig.getConfiguration().home + '/configuration/services/');
+					$state.go('systemConfigurationServiceList');
 				};
 
 				SystemConfigurationServiceFactory.create()

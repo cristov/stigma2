@@ -18,6 +18,7 @@ define([
 	'./systemConfigurationHostEditCtrl',
 	'./systemConfigurationServiceListCtrl',
 	'./systemConfigurationServiceCreationCtrl',
+	'./systemConfigurationServiceEdit',
 	'./systemConfigurationTimeperiodListCtrl',
 	'./systemConfigurationTimeperiodCreationCtrl'
 ], function() {});

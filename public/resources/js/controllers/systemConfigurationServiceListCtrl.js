@@ -3,25 +3,31 @@ define(['./module', '../app-config'],
 		'use strict';
 
 		controllers.controller('SystemConfigurationServiceListCtrl', [
-			'$location', '$rootScope', '$scope', 'SystemConfigurationServiceFactory',
-			function($location, $rootScope, $scope, SystemConfigurationServiceFactory) {
+			'$scope', '$state', 'SystemConfigurationServiceFactory',
+			function($scope, $state, SystemConfigurationServiceFactory) {
 				$scope.createService = function() {
-					$location.path(appConfig.getConfiguration().home + '/configuration/services/create/');
+					$state.go('systemConfigurationServiceCreation');
 				};
 
 				$scope.detailService = function(id) {
-					$rootScope.id = id;
-					$location.path(appConfig.getConfiguration().home + '/configuration/services/' + id + '/');
+					$state.go('systemConfigurationServiceShow', {id: id});
 				};
 
-				$scope.listHost = function(host_object_uuid) {
-					$rootScope.params = {
-						'object_uuid': host_object_uuid
-					};
-					$location.path(appConfig.getConfiguration().home + '/configuration/hosts/');
+				$scope.deleteService = function(id) {
+					SystemConfigurationServiceFactory.remove(id)
+						.success(function(data) {
+							SystemConfigurationServiceFactory.list()
+								.then(function(services) {
+									$scope.services = services;
+								});
+						});
 				};
 
-				SystemConfigurationServiceFactory.list($rootScope.params)
+				$scope.listHost = function(object_uuid) {
+					$state.go('systemConfigurationHostList', {object_uuid: object_uuid});
+				};
+
+				SystemConfigurationServiceFactory.list($state.params)
 					.then(function(data) {
 						$scope.services = data;
 					});

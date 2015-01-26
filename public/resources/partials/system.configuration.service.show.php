@@ -13,7 +13,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="rowContents in hostDetail">
+					<tr ng-repeat="rowContents in serviceDetail">
 						<td>
 							<input type="text" class="form-control input-sm" ng-model="rowContents.key" ng-readonly="true" />
 						</td>
@@ -25,8 +25,8 @@
 			</table>
 		</div>
 		<div class="form-group text-right">	
-			<button type="button" class="btn btn-lg" ng-click="cancel()">List</button>
-			<button type="button" class="btn btn-primary btn-lg" ng-click="editHost()">Modify</button>
+			<button type="button" class="btn btn-lg" ng-click="list()">List</button>
+			<button type="button" class="btn btn-primary btn-lg" ng-click="editService()">Modify</button>
 		</div>
 	</div>
 </div>

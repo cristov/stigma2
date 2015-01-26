@@ -2,6 +2,7 @@
 
 require dirname(__FILE__)."/../utils/config.inc.php";
 require dirname(__FILE__)."/../utils/nagios.objects.php";
+require dirname(__FILE__)."/../utils/UUID.php";
 
 class ConfigurationServicesController extends \BaseController {
 
@@ -91,7 +92,37 @@ class ConfigurationServicesController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$serviceDetail = DB::table("services")
+				->join("objects", "services.object_uuid", "=", "objects.uuid")
+				->join("service_details", "services.object_uuid", "=", "service_details.service_fk")
+				->select("service_details.key", "service_details.value")
+				->where("services.id", "=", $id)
+				->orderBy("service_details.id", "asc")
+				->get();
+
+		$nagiosService = NagiosObjects::service();
+		$keys = array();
+		$serviceData = array();
+		$use = array();
+		$disuse = array();
+
+		foreach ($serviceDetail as $prop) {
+			array_push($keys, $prop->key);
+			$serviceData[$prop->key] = $prop->value;
+		}
+		foreach ($nagiosService as $nagiosProp) {
+			if (in_array($nagiosProp["name"], $keys)) array_push($use, $nagiosProp);
+			else array_push($disuse, $nagiosProp);
+		}
+
+		$result = array(
+			"serviceData" => $serviceData,
+			"serviceDetail" => $serviceDetail,
+			"use" => $use,
+			"disuse" => $disuse
+		);
+
+		return Response::json($result);
 	}
 
 	/**
@@ -115,7 +146,26 @@ class ConfigurationServicesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		global $config;
+
+		$input = Input::all();
+		$result = DB::table("services")->select("object_uuid")->where("id", "=", $id)->get();
+		$object_uuid = $result[0]->object_uuid;
+
+		ServiceDetail::where("service_fk", "=", $object_uuid)->delete();
+
+		foreach ($input as $key => $value) {
+			ServiceDetail::create(array(
+				"service_fk" => $object_uuid,
+				"key" => $key,
+				"value" => $value
+			));
+		}
+
+		$this->writeConfig();
+		// TODO nagios restart
+
+		return Response::json(array("success" => true));
 	}
 
 	/**
@@ -127,7 +177,20 @@ class ConfigurationServicesController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$result = DB::table("services")
+				->select("object_uuid")
+				->where("id", "=", $id)
+				->get();
+		$object_uuid = $result[0]->object_uuid;
+
+		DB::table("service_details")->where("service_fk", "=", $object_uuid)->delete();
+		DB::table("services")->where("id", "=", $id)->delete();
+		DB::table("objects")->where("uuid", "=", $object_uuid)->delete();
+
+		$this->writeConfig();
+		// TODO nagios restart
+
+		return Response::json(array("success" => true));
 	}
 
 	private function getList()
