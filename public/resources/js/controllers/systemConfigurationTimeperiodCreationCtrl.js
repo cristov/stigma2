@@ -3,8 +3,8 @@ define(['./module', '../app-config'],
 		'use strict';
 
 		controllers.controller('SystemConfigurationTimeperiodCreationCtrl', [
-			'$compile', '$location', '$scope', 'DirectiveTimeperiodFactory', 'SystemConfigurationTimeperiodFactory',
-			function($compile, $location, $scope, DirectiveTimeperiodFactory, SystemConfigurationTimeperiodFactory) {
+			'$compile', '$scope', '$state', 'DirectiveTimeperiodFactory', 'SystemConfigurationTimeperiodFactory',
+			function($compile, $scope, $state, DirectiveTimeperiodFactory, SystemConfigurationTimeperiodFactory) {
 				$scope.count = 0;
 				$scope.timeperiodData = {};
 
@@ -14,13 +14,17 @@ define(['./module', '../app-config'],
 					$('tbody').append(content);
 				};
 
+				$scope.cancel = function() {
+					$state.go('systemConfigurationTimeperiodList');
+				};
+
 				$scope.saveTimeperiod = function() {
 					var timeperiods = DirectiveTimeperiodFactory.getTimeperiods();
 					var params = jQuery.extend({}, timeperiods, $scope.timeperiodData);
 
 					SystemConfigurationTimeperiodFactory.save(params)
 						.success(function(data) {
-							$location.path(appConfig.getConfiguration().home + '/configuration/timeperiods/');
+							$state.go('systemConfigurationTimeperiodList');
 						})
 						.error(function(data) {
 							console.log(data);

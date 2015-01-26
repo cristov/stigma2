@@ -1,10 +1,10 @@
-define(['angular', './controllers/index', './services/index', 'ui.router'], //'directives/index', 'filters/index', 
+define(['angular', './controllers/index', './directives/index', './services/index', 'ui.router'], //'./filters/index', 
 	function(angular) {
 		'use strict';
 
 		return angular.module('app', [
 			'app.controllers',
-			// 'app.directives',
+			'app.directives',
 			// 'app.filters',
 			'app.services',
 			'ui.router'
