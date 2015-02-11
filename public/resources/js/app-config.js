@@ -12,6 +12,7 @@ define([], function() {
 			{'state': 'home', 'url': CONTEXT_ROOT, 'templateUrl': PARTIALS_ROOT + 'home.php', 'controller': 'HomeCtrl'},
 			{'state': 'dashboardOverviewList', 'url': CONTEXT_ROOT + '/overview', 'templateUrl': PARTIALS_ROOT + 'dashboard.overview.index.php', 'controller': 'DashboardOverviewListCtrl'},
 			{'state': 'hostList', 'url': CONTEXT_ROOT + '/hosts?:type', 'templateUrl': PARTIALS_ROOT + 'host.index.php', 'controller': 'HostListCtrl'},
+			{'state': 'hostsGraph', 'url': CONTEXT_ROOT + '/hostsGraph', 'templateUrl': PARTIALS_ROOT + 'host.graph.php', 'controller': ''},
 			// // {'state': 'hostStatus', 'url': CONTEXT_ROOT + '/hosts/status', 'templateUrl': PARTIALS_ROOT + 'host.status.php', 'controller': 'HostStatusCtrl'},
 			// // {'state': 'hostStatusShow', 'url': CONTEXT_ROOT + '/hosts/status/show', 'templateUrl': PARTIALS_ROOT + 'host.status.show.php', 'controller': 'HostStatusShowCtrl'},
 			{'state': 'hostShow', 'url': CONTEXT_ROOT + '/hosts/:uuid', 'templateUrl': PARTIALS_ROOT + 'host.show.php', 'controller': 'HostShowCtrl'},

@@ -1,5 +1,5 @@
-define(['./implement', './module', '../app-config'],
-	function(implement, services, appConfig) {
+define(['./implement', './module', '../app-config', 'jquery'],
+	function(implement, services, appConfig, jQuery) {
 		'use strict';
 
 		services.factory('HostFactory', function($http) {

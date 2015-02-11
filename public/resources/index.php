@@ -38,7 +38,7 @@
 				<li class="sidebarContentElement"><a ui-sref="hostList({type:'1'})">Down</a></li>
 				<li class="sidebarContentElement"><a ui-sref="hostList({type:'2'})">Unreachable</a></li>
 				<li class="sidebarContentElement"><a>Pending</a></li>
-				<li class="sidebarContentElement"><a ng-click="hostsGraph()"><i class="fa fa-line-chart"></i> Graph</a></li>
+				<li class="sidebarContentElement"><a ui-sref="hostsGraph"><i class="fa fa-line-chart"></i> Graph</a></li>
 			</ul>
 			<p>
 			<ul class="nav">

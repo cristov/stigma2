@@ -3,8 +3,8 @@ define(['./module', '../app-config'],
 		'use strict';
 
 		controllers.controller('MainCtrl', [
-			'$scope',
-			function($scope) {
+			'$scope', 'HostFactory',
+			function($scope, HostFactory) {
 				//
 			}
 		]);
