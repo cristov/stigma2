@@ -16,6 +16,14 @@
     padding-left: 10px;
     padding-right: 20px;
 }
+
+.tableTitleName {
+    width: 30%;
+}
+
+.tableTitleValue {
+    width: 70%;
+}
 /* main Area End */
 
 

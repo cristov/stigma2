@@ -5,7 +5,7 @@
 		</div>
 
 		<div>
-			<table class="table table-striped table-condensed">
+			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
 						<th style="min-width: 80px;">Host</th>
@@ -14,7 +14,7 @@
 						<th style="min-width: 80px;">Duration</th>
 						<th style="min-width: 80px;">Status Information</th>
 					</tr>
-			    </thead>
+				</thead>
 				<tbody>
 					<tr ng-repeat="host in hosts" ng-show="hosts.length">
 						<td><a ng-click="detailHost(host.object_uuid)">{{ host.host_name }}</a></td>

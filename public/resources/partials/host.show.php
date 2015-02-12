@@ -5,20 +5,12 @@
 		</div>
 
 		<div class="form-group">
-			<table>
-				<thead>
-					<tr>
-						<th class="hostCreationTitleName">Configuration Name</th>
-						<th class="hostCreationTitleValue">Configuration Value</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="(key, value) in host">
-						<td>{{ key }}</td>
-						<td>{{ value }}</td>
-					</tr>
-				</tbody>
-			</table>
+			<div ng-repeat="(key, value) in host">
+				<label for="" class="col-lg-3 control-label">{{ key }}</label>
+				<div class="col-lg-9">
+					<span class="help-block">{{ value }}</span>
+				</div>
+			</div>
 		</div>
 		<div class="form-group text-right">	
 			<button type="button" class="btn btn-lg" ng-click="cancel()">List</button>

@@ -12,7 +12,7 @@
 </head>
 <body>
 	<header>
-		<nav class="navbar navbar-default">
+		<nav class="navbar navbar-inverse">
 			<div class="container">
 				<div class="navbar-header">
 					<a class="navbar-brand" ui-sref="home">Stigma2</a>
@@ -25,7 +25,7 @@
 		</nav>
 	</header>
 	<aside class="sidebar">
-		<div class="panel panel-info">
+		<div class="panel panel-primary">
 			<div class="panel-heading">Dashboard</div>
 			<div class="panel-body"><a ui-sref="dashboardOverviewList">Overview</a></div>
 		</div>
@@ -37,7 +37,7 @@
 			<div class="panel-body"><a ui-sref="hostList({type:'1'})">Down</a></div>
 			<div class="panel-body"><a ui-sref="hostList({type:'2'})">Unreachable</a></div>
 			<div class="panel-body"><a>Pending</a></div>
-			<div class="panel-body"><a ui-sref="hostsGraph"><i class="fa fa-line-chart"></i> Graph</a></div>
+			<!-- <div class="panel-body"><a ui-sref="hostsGraph"><i class="fa fa-line-chart"></i> Graph</a></div> -->
 		</div>
 		<p>
 		<div class="panel panel-default">
@@ -48,11 +48,12 @@
 			<div class="panel-body"><a ui-sref="serviceList({type:'2'})">Critical</a></div>
 			<div class="panel-body"><a ui-sref="serviceList({type:'3'})">Unknown</a></div>
 			<div class="panel-body"><a>Pending</a></div>
-			<div class="panel-body"><a ng-click="servicesGraph()"><i class="fa fa-line-chart"></i> Graph</a></div>
+			<!-- <div class="panel-body"><a ng-click="servicesGraph()"><i class="fa fa-line-chart"></i> Graph</a></div> -->
 		</div>
 		<p>
-		<div class="panel panel-primary">
+		<div class="panel panel-warning">
 			<div class="panel-heading">Report</div>
+			<div class="panel-body"><a ui-sref="reportGraph"><i class="fa fa-line-chart"></i> Graph</a></div>
 			<div class="panel-body"><a ui-sref="reportLogList">Log</a></div>
 		</div>
 		<p>
