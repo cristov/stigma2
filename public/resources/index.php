@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>Stigma2</title>
 
-	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap-3.3.2-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap-3.3.2/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/font-awesome-4.2.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 
@@ -25,42 +25,40 @@
 		</nav>
 	</header>
 	<aside class="sidebar">
-		<div class="sidebarContents">
-			<ul class="nav">
-				<li class="sidebarContentTitle">Dashboard</li>
-				<li class="sidebarContentElement"><a ui-sref="dashboardOverviewList">Overview</a></li>
-			</ul>
-			<p>
-			<ul class="nav">
-				<li class="sidebarContentTitle">Host</li>
-				<li class="sidebarContentElement"><a ui-sref="hostList({type:''})">All</a></li>
-				<li class="sidebarContentElement"><a ui-sref="hostList({type:'0'})">Up</a></li>
-				<li class="sidebarContentElement"><a ui-sref="hostList({type:'1'})">Down</a></li>
-				<li class="sidebarContentElement"><a ui-sref="hostList({type:'2'})">Unreachable</a></li>
-				<li class="sidebarContentElement"><a>Pending</a></li>
-				<li class="sidebarContentElement"><a ui-sref="hostsGraph"><i class="fa fa-line-chart"></i> Graph</a></li>
-			</ul>
-			<p>
-			<ul class="nav">
-				<li class="sidebarContentTitle">Service</li>
-				<li class="sidebarContentElement"><a ui-sref="serviceList({type:''})">All</a></li>
-				<li class="sidebarContentElement"><a ui-sref="serviceList({type:'0'})">OK</a></li>
-				<li class="sidebarContentElement"><a ui-sref="serviceList({type:'1'})">Warning</a></li>
-				<li class="sidebarContentElement"><a ui-sref="serviceList({type:'2'})">Critical</a></li>
-				<li class="sidebarContentElement"><a ui-sref="serviceList({type:'3'})">Unknown</a></li>
-				<li class="sidebarContentElement"><a>Pending</a></li>
-				<li class="sidebarContentElement"><a ng-click="servicesGraph()"><i class="fa fa-line-chart"></i> Graph</a></li>
-			</ul>
-			<p>
-			<ul class="nav">
-				<li class="sidebarContentTitle">Report</li>
-				<li class="sidebarContentElement"><a ui-sref="reportLogList">Log</a></li>
-			</ul>
-			<p>
-			<ul class="nav">
-				<li class="sidebarContentTitle">System</li>
-				<li class="sidebarContentElement"><a ui-sref="systemConfigurationList">Configuration</a></li>
-			</ul>
+		<div class="panel panel-info">
+			<div class="panel-heading">Dashboard</div>
+			<div class="panel-body"><a ui-sref="dashboardOverviewList">Overview</a></div>
+		</div>
+		<p>
+		<div class="panel panel-default">
+			<div class="panel-heading">Host</div>
+			<div class="panel-body"><a ui-sref="hostList({type:''})">All</a></div>
+			<div class="panel-body"><a ui-sref="hostList({type:'0'})">Up</a></div>
+			<div class="panel-body"><a ui-sref="hostList({type:'1'})">Down</a></div>
+			<div class="panel-body"><a ui-sref="hostList({type:'2'})">Unreachable</a></div>
+			<div class="panel-body"><a>Pending</a></div>
+			<div class="panel-body"><a ui-sref="hostsGraph"><i class="fa fa-line-chart"></i> Graph</a></div>
+		</div>
+		<p>
+		<div class="panel panel-default">
+			<div class="panel-heading">Service</div>
+			<div class="panel-body"><a ui-sref="serviceList({type:''})">All</a></div>
+			<div class="panel-body"><a ui-sref="serviceList({type:'0'})">OK</a></div>
+			<div class="panel-body"><a ui-sref="serviceList({type:'1'})">Warning</a></div>
+			<div class="panel-body"><a ui-sref="serviceList({type:'2'})">Critical</a></div>
+			<div class="panel-body"><a ui-sref="serviceList({type:'3'})">Unknown</a></div>
+			<div class="panel-body"><a>Pending</a></div>
+			<div class="panel-body"><a ng-click="servicesGraph()"><i class="fa fa-line-chart"></i> Graph</a></div>
+		</div>
+		<p>
+		<div class="panel panel-primary">
+			<div class="panel-heading">Report</div>
+			<div class="panel-body"><a ui-sref="reportLogList">Log</a></div>
+		</div>
+		<p>
+		<div class="panel panel-danger">
+			<div class="panel-heading">System</div>
+			<div class="panel-body"><a ui-sref="systemConfigurationList">Configuration</a></div>
 		</div>
 	</aside>
 	<article class="mainContents">
