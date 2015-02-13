@@ -1,25 +1,19 @@
 define([], function() {
 	const CONTEXT_ROOT = '/stigma2';
-	// const DIRECTIVES_ROOT = CONTEXT_ROOT + '/resources/directives/';
 	const PARTIALS_ROOT = CONTEXT_ROOT + '/resources/partials/';
 
 	var configuration = {
 		home: CONTEXT_ROOT,
-		// directive: DIRECTIVES_ROOT,
 		partial: PARTIALS_ROOT,
 		route: [
 			{'state': 'otherwise', 'url': CONTEXT_ROOT, 'templateUrl': PARTIALS_ROOT + 'home.php', 'controller': 'HomeCtrl'},
 			{'state': 'home', 'url': CONTEXT_ROOT, 'templateUrl': PARTIALS_ROOT + 'home.php', 'controller': 'HomeCtrl'},
 			{'state': 'dashboardOverviewList', 'url': CONTEXT_ROOT + '/overview', 'templateUrl': PARTIALS_ROOT + 'dashboard.overview.index.php', 'controller': 'DashboardOverviewListCtrl'},
 			{'state': 'hostList', 'url': CONTEXT_ROOT + '/hosts?:type', 'templateUrl': PARTIALS_ROOT + 'host.index.php', 'controller': 'HostListCtrl'},
-			// // {'state': 'hostStatus', 'url': CONTEXT_ROOT + '/hosts/status', 'templateUrl': PARTIALS_ROOT + 'host.status.php', 'controller': 'HostStatusCtrl'},
-			// // {'state': 'hostStatusShow', 'url': CONTEXT_ROOT + '/hosts/status/show', 'templateUrl': PARTIALS_ROOT + 'host.status.show.php', 'controller': 'HostStatusShowCtrl'},
 			{'state': 'hostShow', 'url': CONTEXT_ROOT + '/hosts/:uuid', 'templateUrl': PARTIALS_ROOT + 'host.show.php', 'controller': 'HostShowCtrl'},
 			{'state': 'serviceList', 'url': CONTEXT_ROOT + '/services?:type', 'templateUrl': PARTIALS_ROOT + 'service.index.php', 'controller': 'ServiceListCtrl'},
 			{'state': 'serviceShow', 'url': CONTEXT_ROOT + '/services/:uuid', 'templateUrl': PARTIALS_ROOT + 'service.show.php', 'controller': 'ServiceShowCtrl'},
-			// // {'state': '', 'url': CONTEXT_ROOT + '/trends', 'templateUrl': PARTIALS_ROOT + 'report.trend.index.php', 'controller': 'ReportTrendListCtrl'},
-			// // {'state': '', 'url': CONTEXT_ROOT + '/trends/show', 'templateUrl': PARTIALS_ROOT + 'report.trend.show.php', 'controller': 'ReportTrendShowCtrl'},
-			{'state': 'reportGraph', 'url': CONTEXT_ROOT + '/reportGraph', 'templateUrl': PARTIALS_ROOT + 'report.graph.php', 'controller': ''},
+			{'state': 'reportGraph', 'url': CONTEXT_ROOT + '/graph', 'templateUrl': PARTIALS_ROOT + 'report.graph.php', 'controller': ''},
 			{'state': 'reportLogList', 'url': CONTEXT_ROOT + '/log', 'templateUrl': PARTIALS_ROOT + 'report.log.index.php', 'controller': 'ReportLogListCtrl'},
 			{'state': 'systemConfigurationList', 'url': CONTEXT_ROOT + '/configuration', 'templateUrl': PARTIALS_ROOT + 'system.configuration.index.php', 'controller': 'SystemConfigurationListCtrl'},
 			{'state': 'systemConfigurationCommandList', 'url': CONTEXT_ROOT + '/configuration/commands', 'templateUrl': PARTIALS_ROOT + 'system.configuration.command.index.php', 'controller': 'SystemConfigurationCommandListCtrl'},

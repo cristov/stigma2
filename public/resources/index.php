@@ -36,8 +36,7 @@
 			<div class="panel-body"><a ui-sref="hostList({type:'0'})">Up</a></div>
 			<div class="panel-body"><a ui-sref="hostList({type:'1'})">Down</a></div>
 			<div class="panel-body"><a ui-sref="hostList({type:'2'})">Unreachable</a></div>
-			<div class="panel-body"><a>Pending</a></div>
-			<!-- <div class="panel-body"><a ui-sref="hostsGraph"><i class="fa fa-line-chart"></i> Graph</a></div> -->
+			<div class="panel-body">Pending</div>
 		</div>
 		<p>
 		<div class="panel panel-default">
@@ -47,8 +46,7 @@
 			<div class="panel-body"><a ui-sref="serviceList({type:'1'})">Warning</a></div>
 			<div class="panel-body"><a ui-sref="serviceList({type:'2'})">Critical</a></div>
 			<div class="panel-body"><a ui-sref="serviceList({type:'3'})">Unknown</a></div>
-			<div class="panel-body"><a>Pending</a></div>
-			<!-- <div class="panel-body"><a ng-click="servicesGraph()"><i class="fa fa-line-chart"></i> Graph</a></div> -->
+			<div class="panel-body">Pending</div>
 		</div>
 		<p>
 		<div class="panel panel-warning">

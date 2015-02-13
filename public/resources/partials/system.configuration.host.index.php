@@ -50,7 +50,7 @@
 						<td><a ng-click="deleteHost(host.id)" class="btn btn-small btn-danger">delete</a></td>
 					</tr>
 					<tr ng-show="!hosts.length">
-						<td colspan="3"><strong>No hosts.</strong></td>
+						<td colspan="4"><strong>No hosts.</strong></td>
 					</tr>
 				</tbody>
 			</table>

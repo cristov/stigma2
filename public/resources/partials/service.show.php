@@ -5,23 +5,19 @@
 		</div>
 
 		<div class="form-group">
-			<table>
-				<thead>
-					<tr>
-						<th class="hostCreationTitleName">Configuration Name</th>
-						<th class="hostCreationTitleValue">Configuration Value</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="(key, value) in service">
-						<td>{{ key }}</td>
-						<td>{{ value }}</td>
-					</tr>
-				</tbody>
-			</table>
+			<div>
+				<span class="label-default col-lg-3 help-block">Configuration Name</span>
+				<span class="label-default col-lg-9 help-block">Configuration Value</span>
+			</div>
+			<div ng-repeat="(key, value) in service">
+				<label for="" class="col-lg-3 control-label">{{ key }}</label>
+				<div class="col-lg-9">
+					<span class="help-block">{{ value }}</span>
+				</div>
+			</div>
 		</div>
 		<div class="form-group text-right">	
-			<button type="button" class="btn btn-lg" ng-click="cancel()">List</button>
+			<button type="button" class="btn btn-default btn-lg" ng-click="cancel()">List</button>
 		</div>
 	</div>
 </div>
