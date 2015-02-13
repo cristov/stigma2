@@ -11,12 +11,15 @@
 						Write Configuration
 					</h4>
 				</div>
+				<div class="text-right">
+					<button type="button" class="btn btn-info btn-sm" ng-click="addRow()">Add Row</button>
+				</div>
 
 				<table>
 					<thead>
 						<tr>
-							<th class="hostCreationTitleName">Configuration Name</th>
-							<th class="hostCreationTitleValue" colspan="2">Configuration Value</th>
+							<th class="tableTitleName">Configuration Name</th>
+							<th class="tableTitleValue" colspan="2">Configuration Value</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -40,10 +43,7 @@
 				</table>
 			</div>
 			<div class="form-group text-right">
-				<button type="button" class="btn btn-info btn-sm" ng-click="addRow()">Add Row</button>
-			</div>
-			<div class="form-group text-right">
-				<button type="button" class="btn btn-lg" ng-click="cancel()">Cancel</button>
+				<button type="button" class="btn btn-default btn-lg" ng-click="cancel()">Cancel</button>
 				<button type="submit" class="btn btn-primary btn-lg">Submit</button>
 			</div>
 		</form>
