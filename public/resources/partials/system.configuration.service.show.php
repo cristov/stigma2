@@ -5,27 +5,19 @@
 		</div>
 
 		<div class="form-group">
-			<table>
-				<thead>
-					<tr>
-						<th class="hostCreationTitleName">Configuration Name</th>
-						<th class="hostCreationTitleValue">Configuration Value</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="rowContents in serviceDetail">
-						<td>
-							<input type="text" class="form-control input-sm" ng-model="rowContents.key" ng-readonly="true" />
-						</td>
-						<td>
-							<input type="text" class="form-control input-sm" ng-model="rowContents.value" ng-readonly="true" />
-						</td>
-					</tr>
-				</tbody>
-			</table>
+			<div>
+				<span class="label-default col-lg-3 help-block">Configuration Name</span>
+				<span class="label-default col-lg-9 help-block">Configuration Value</span>
+			</div>
+			<div ng-repeat="prop in serviceDetail">
+				<label for="" class="col-lg-3 control-label">{{ prop.key }}</label>
+				<div class="col-lg-9">
+					<span class="help-block">{{ prop.value }}</span>
+				</div>
+			</div>
 		</div>
 		<div class="form-group text-right">	
-			<button type="button" class="btn btn-lg" ng-click="list()">List</button>
+			<button type="button" class="btn btn-default btn-lg" ng-click="list()">List</button>
 			<button type="button" class="btn btn-primary btn-lg" ng-click="editService()">Modify</button>
 		</div>
 	</div>

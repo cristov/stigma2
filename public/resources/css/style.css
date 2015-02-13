@@ -2,6 +2,14 @@ a {
     cursor: pointer;
 }
 
+table {
+    width: 100%;
+}
+
+textarea {
+    resize: none;
+}
+
 
 
 /* aside Area Start */

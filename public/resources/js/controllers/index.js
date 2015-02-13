@@ -3,8 +3,6 @@ define([
 	'./homeCtrl',
 	'./hostListCtrl',
 	'./hostShowCtrl',
-	'./hostStatusCtrl',
-	'./hostStatusShowCtrl',
 	'./mainCtrl',
 	'./reportLogListCtrl',
 	'./serviceListCtrl',

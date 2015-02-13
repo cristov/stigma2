@@ -61,7 +61,7 @@
 		</div>
 	</aside>
 	<article class="mainContents">
-		<div ui-view></div>
+		<div ui-view autoscroll="true"></div>
 	</article>
 	<footer class="text-center footerbar">
 		Copyright 2010 All Rights Reserved. <a href="http://www.zespro.co.kr">Zespro</a>
