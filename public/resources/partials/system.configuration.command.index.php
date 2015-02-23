@@ -5,6 +5,7 @@
 		</div>
 
 		<div>
+			<p><a ng-click="createCommand()" class="btn btn-small">create new command</a></p>
 			<table class="table table-striped table-condensed" style="table-layout: fixed;">
 				<thead>
 					<tr>
@@ -26,7 +27,6 @@
 					</tr>
 				</tbody>
 			</table>
-			<a ng-click="createCommand()" class="btn btn-small">create new command</a>
 		</div>
 	</div>
 </div>
