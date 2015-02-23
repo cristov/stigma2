@@ -5,19 +5,19 @@
 		</div>
 
 		<div>
-			<table class="table table-striped table-condensed">
+			<table class="table table-striped table-condensed" style="table-layout: fixed;">
 				<thead>
 					<tr>
-						<th style="min-width: 80px;">Command Name</th>
-						<th style="min-width: 80px;">Command Line</th>
-						<th style="width: 20px;"> </th>
-						<th style="width: 20px;"> </th>
+						<th style="width: 180px;">Command Name</th>
+						<th>Command Line</th>
+						<th style="width: 55px;"> </th>
+						<th style="width: 75px;"> </th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr ng-repeat="command in commands" ng-show="commands.length">
 						<td>{{ command.command_name }}</td>
-						<td>{{ command.command_line }}</td>
+						<td style="overflow: hidden; white-space: nowrap;">{{ command.command_line }}</td>
 						<td><a ng-click="editCommand(command.id)" class="btn btn-small btn-primary">edit</a></td>
 						<td><a ng-click="deleteCommand(command.id)" class="btn btn-small btn-danger">delete</a></td>
 					</tr>
