@@ -39,17 +39,17 @@ class ConfigurationCommandsController extends \BaseController {
 	{
 		$command_name = Input::get("command_name");
 		$command_line = Input::get("command_line");
-		$v4uuid = UUID::v4();
+		$uuid = UUID::v4();
 
 		Object::create(array(
-			"uuid" => $v4uuid,
+			"uuid" => $uuid,
 			"object_type" => "12",
 			"first_name" => $command_name,
 			"is_active" => "1"
 		));
 
 		Command::create(array(
-			"object_uuid" => $v4uuid,
+			"object_uuid" => $uuid,
 			"command_line" => $command_line
 		));
 
@@ -68,13 +68,7 @@ class ConfigurationCommandsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$command = DB::table("commands")
-				->join("objects", "commands.object_uuid", "=", "objects.uuid")
-				->select("commands.id", "objects.first_name as command_name", "commands.command_line")
-				->where("commands.id", "=", $id)
-				->get();
-
-		return Response::json($command);
+		//
 	}
 
 	/**
@@ -86,7 +80,13 @@ class ConfigurationCommandsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$command = DB::table("commands")
+				->join("objects", "commands.object_uuid", "=", "objects.uuid")
+				->select("commands.id", "objects.first_name as command_name", "commands.command_line")
+				->where("commands.id", "=", $id)
+				->get();
+
+		return Response::json($command);
 	}
 
 	/**
