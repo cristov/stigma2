@@ -16,8 +16,8 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="command in commands" ng-show="commands.length">
-						<td>{{ command.command_name }}</td>
-						<td style="overflow: hidden; white-space: nowrap;">{{ command.command_line }}</td>
+						<td class="listTdOverflow" style="vertical-align: middle;">{{ command.command_name }}</td>
+						<td class="listTdOverflow" style="vertical-align: middle;">{{ command.command_line }}</td>
 						<td><a ng-click="editCommand(command.id)" class="btn btn-small btn-primary">edit</a></td>
 						<td><a ng-click="deleteCommand(command.id)" class="btn btn-small btn-danger">delete</a></td>
 					</tr>
