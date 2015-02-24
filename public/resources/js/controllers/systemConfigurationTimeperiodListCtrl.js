@@ -10,7 +10,7 @@ define(['./module', '../app-config'],
 				};
 
 				$scope.editTimeperiod = function(id) {
-					$state.go('');
+					$state.go('systemConfigurationTimeperiodEdit', {id: id});
 				};
 
 				$scope.deleteTimeperiod = function(id) {

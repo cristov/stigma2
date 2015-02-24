@@ -29,6 +29,7 @@ define([], function() {
 			{'state': 'systemConfigurationServiceEdit', 'url': CONTEXT_ROOT + '/configuration/services/:id/edit', 'templateUrl': PARTIALS_ROOT + 'system.configuration.service.edit.php', 'controller': 'SystemConfigurationServiceEditCtrl'},
 			{'state': 'systemConfigurationTimeperiodList', 'url': CONTEXT_ROOT + '/configuration/timeperiods', 'templateUrl': PARTIALS_ROOT + 'system.configuration.timeperiod.index.php', 'controller': 'SystemConfigurationTimeperiodListCtrl'},
 			{'state': 'systemConfigurationTimeperiodCreation', 'url': CONTEXT_ROOT + '/configuration/timeperiods/create', 'templateUrl': PARTIALS_ROOT + 'system.configuration.timeperiod.create.php', 'controller': 'SystemConfigurationTimeperiodCreationCtrl'},
+			{'state': 'systemConfigurationTimeperiodEdit', 'url': CONTEXT_ROOT + '/configuration/timeperiods/:id/edit', 'templateUrl': PARTIALS_ROOT + 'system.configuration.timeperiod.edit.php', 'controller': 'SystemConfigurationTimeperiodEditCtrl'},
 		],
 		periods: [
 			{ 'value': '1', 'text': 'Today' },

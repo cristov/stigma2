@@ -45,6 +45,7 @@ class ConfigurationCommandsController extends \BaseController {
 			"uuid" => $uuid,
 			"object_type" => "12",
 			"first_name" => $command_name,
+			"second_name" => "",
 			"is_active" => "1"
 		));
 

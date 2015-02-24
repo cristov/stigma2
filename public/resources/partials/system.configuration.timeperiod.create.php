@@ -6,15 +6,11 @@
 
 		<form ng-submit="saveTimeperiod()">
 			<div class="form-group">
-				<div class="row">
-					<h4 class="heading">
-						Write Configuration
-					</h4>
-				</div>
 				<div class="text-right">
 					<button type="button" class="btn btn-info btn-sm" ng-click="addRow()">Add Row</button>
 				</div>
-
+				<p>
+				
 				<table>
 					<thead>
 						<tr>

@@ -44,6 +44,7 @@ class ConfigurationTimeperiodsController extends \BaseController {
 			"uuid" => $v4uuid,
 			"object_type" => "9",
 			"first_name" => $input["timeperiod_name"],
+			"second_name" => "",
 			"is_active" => "1"
 		));
 

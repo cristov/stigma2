@@ -14,7 +14,7 @@
 				<textarea class="form-control" ng-model="commandData.command_line" rows="10" placeholder="Command Line"></textarea>
 			</div>
 			<div class="form-group text-right">	
-				<button type="button" class="btn btn-lg" ng-click="cancel()">Cancel</button>
+				<button type="button" class="btn btn-default btn-lg" ng-click="cancel()">Cancel</button>
 				<button type="submit" class="btn btn-primary btn-lg">Submit</button>
 			</div>
 		</form>
