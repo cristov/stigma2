@@ -134,7 +134,20 @@ class ConfigurationTimeperiodsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$result = DB::table("timeperiods")
+				->select("object_uuid")
+				->where("id", "=", $id)
+				->get();
+		$object_uuid = $result[0]->object_uuid;
+
+		DB::table("timeperiod_details")->where("timeperiod_fk", "=", $object_uuid)->delete();
+		DB::table("timeperiods")->where("id", "=", $id)->delete();
+		DB::table("objects")->where("uuid", "=", $object_uuid)->delete();
+
+		$this->writeConfig();
+		// TODO nagios restart
+
+		return Response::json(array("success" => true));
 	}
 
 	private function getList()
