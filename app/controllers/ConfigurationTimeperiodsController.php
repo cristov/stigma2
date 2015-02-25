@@ -54,7 +54,13 @@ class ConfigurationTimeperiodsController extends \BaseController {
 		));
 
 		foreach ($input as $k => $v) {
-			if (is_array($v)) {
+			if (is_string($v)) {
+				TimeperiodDetail::create(array(
+					"timeperiod_fk" => $v4uuid,
+					"key" => $k,
+					"value" => $v
+				));
+			} else {
 				$foo3 = "";
 				if (!empty($v['foo3'])) {
 					$foo3 = " ".$v['foo3']['value'];
@@ -66,12 +72,6 @@ class ConfigurationTimeperiodsController extends \BaseController {
 					"timeperiod_fk" => $v4uuid,
 					"key" => $key,
 					"value" => $value
-				));
-			} else {
-				TimeperiodDetail::create(array(
-					"timeperiod_fk" => $v4uuid,
-					"key" => $k,
-					"value" => $v
 				));
 			}
 		}
@@ -103,7 +103,14 @@ class ConfigurationTimeperiodsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$timeperiod = DB::table("timeperiods")
+				->join("objects", "timeperiods.object_uuid", "=", "objects.uuid")
+				->join("timeperiod_details", "timeperiods.object_uuid", "=", "timeperiod_details.timeperiod_fk")
+				->select("timeperiods.id as timeperiod_id", "objects.first_name as timeperiod_name", "timeperiods.alias", "timeperiod_details.*")
+				->where("timeperiods.id", "=", $id)
+				->get();
+
+		return Response::json($timeperiod);
 	}
 
 	/**

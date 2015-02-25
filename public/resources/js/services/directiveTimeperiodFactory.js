@@ -3,14 +3,17 @@ define(['./module'],
 		'use strict';
 
 		services.factory('DirectiveTimeperiodFactory', function() {
-			var timeperiods = [];
+			var timeperiods = {};
 
 			return {
+				drop: function(num) {
+					delete timeperiods[num];
+				},
 				getTimeperiods: function() {
 					return timeperiods;
 				},
-				register: function(timeperiod) {
-					timeperiods.push(timeperiod);
+				register: function(count, timeperiod) {
+					timeperiods[count] = timeperiod;
 				}
 			};
 		});

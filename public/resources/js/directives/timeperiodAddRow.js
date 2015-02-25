@@ -32,7 +32,7 @@ define(['./module', '../app-config'],
 						scope.timeperiodData.bar3 = scope.bar3[0];
 						scope.timeperiodData.bar4 = scope.bar4[0];
 
-						DirectiveTimeperiodFactory.register(scope.timeperiodData);
+						DirectiveTimeperiodFactory.register(scope.count, scope.timeperiodData);
 
 						var monthObj = new Object();
 						var weekObj = new Object();
@@ -64,6 +64,7 @@ define(['./module', '../app-config'],
 
 						scope.deleteRow = function(num) {
 							angular.element('tr[count="' + num + '"]').remove();
+							DirectiveTimeperiodFactory.drop(num);
 						};
 					}
 				};
