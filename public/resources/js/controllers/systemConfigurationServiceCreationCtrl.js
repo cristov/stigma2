@@ -31,11 +31,13 @@ define(['./module', '../app-config', './ngDraggableCtrl'],
 					$state.go('systemConfigurationServiceList');
 				};
 
-				SystemConfigurationServiceFactory.create()
-					.then(function(data) {
-						$scope.use = data.use;
-						$scope.disuse = data.disuse;
-					});
+				$scope.$on('$viewContentLoaded', function() {
+					SystemConfigurationServiceFactory.create()
+						.then(function(data) {
+							$scope.use = data.use;
+							$scope.disuse = data.disuse;
+						});
+				});
 			}
 		]);
 	}

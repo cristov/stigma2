@@ -38,13 +38,15 @@ define(['./module', '../app-config', './ngDraggableCtrl'],
 					$state.go('systemConfigurationHostList');
 				};
 
-				SystemConfigurationHostFactory.show($state.params.id)
-					.then(function(data) {
-						$scope.hostData = data.hostData;
-						$scope.hostDetail = data.hostDetail;
-						$scope.use = data.use;
-						$scope.disuse = data.disuse;
-					});
+				$scope.$on('$viewContentLoaded', function() {
+					SystemConfigurationHostFactory.show($state.params.id)
+						.then(function(data) {
+							$scope.hostData = data.hostData;
+							$scope.hostDetail = data.hostDetail;
+							$scope.use = data.use;
+							$scope.disuse = data.disuse;
+						});
+				});
 			}
 		]);
 	}

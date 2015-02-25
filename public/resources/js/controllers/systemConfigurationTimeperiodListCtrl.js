@@ -23,10 +23,12 @@ define(['./module', '../app-config'],
 						});
 				};
 
-				SystemConfigurationTimeperiodFactory.list()
-					.then(function(data) {
-						$scope.timeperiods = data;
-					});
+				$scope.$on('$viewContentLoaded', function() {
+					SystemConfigurationTimeperiodFactory.list()
+						.then(function(data) {
+							$scope.timeperiods = data;
+						});
+				});
 			}
 		]);
 	}

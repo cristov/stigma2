@@ -9,10 +9,12 @@ define(['./module', '../app-config'],
 					$state.go('serviceList');
 				};
 
-				ServiceFactory.show($state.params.uuid)
-					.then(function(data) {
-						$scope.service = data.service;
-					});
+				$scope.$on('$viewContentLoaded', function() {
+					ServiceFactory.show($state.params.uuid)
+						.then(function(data) {
+							$scope.service = data.service;
+						});
+				});
 			}
 		]);
 	}

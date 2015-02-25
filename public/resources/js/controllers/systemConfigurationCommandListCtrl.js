@@ -23,10 +23,12 @@ define(['./module', '../app-config'],
 						});
 				};
 
-				SystemConfigurationCommandFactory.list()
-					.then(function(data) {
-						$scope.commands = data;
-					});
+				$scope.$on('$viewContentLoaded', function() {
+					SystemConfigurationCommandFactory.list()
+						.then(function(data) {
+							$scope.commands = data;
+						});
+				});
 			}
 		]);
 	}
