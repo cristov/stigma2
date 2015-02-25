@@ -9,7 +9,8 @@ define(['./module', '../app-config'],
 					restrict: 'E',
 					replace: true,
 					scope: {
-						count: '='
+						count: '=',
+						getdata: '&'
 					},
 					templateUrl: appConfig.getConfiguration().partial + 'system.configuration.timeperiod.add_row_directive.php',
 					link: function (scope, element, attrs) {
@@ -24,13 +25,18 @@ define(['./module', '../app-config'],
 						scope.bar3 = appConfig.getConfiguration().timeperiod.hour;
 						scope.bar4 = appConfig.getConfiguration().timeperiod.minite;
 
-						scope.timeperiodData.foo1 = scope.foo1[0];
-						scope.timeperiodData.foo2 = scope.foo2[0];
-						scope.timeperiodData.foo3 = "";
-						scope.timeperiodData.bar1 = scope.bar1[0];
-						scope.timeperiodData.bar2 = scope.bar2[0];
-						scope.timeperiodData.bar3 = scope.bar3[0];
-						scope.timeperiodData.bar4 = scope.bar4[0];
+						var data = scope.getdata(scope.count);
+						if (data === null || data === undefined) {
+							scope.timeperiodData.foo1 = scope.foo1[0];
+							scope.timeperiodData.foo2 = scope.foo2[0];
+							scope.timeperiodData.foo3 = "";
+							scope.timeperiodData.bar1 = scope.bar1[0];
+							scope.timeperiodData.bar2 = scope.bar2[0];
+							scope.timeperiodData.bar3 = scope.bar3[0];
+							scope.timeperiodData.bar4 = scope.bar4[0];
+						} else {
+							console.log('object ############');
+						}
 
 						DirectiveTimeperiodFactory.register(scope.count, scope.timeperiodData);
 

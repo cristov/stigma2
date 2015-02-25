@@ -6,12 +6,17 @@ define(['./module', '../app-config'],
 			'$compile', '$scope', '$state', 'SystemConfigurationTimeperiodFactory',
 			function($compile, $scope, $state, SystemConfigurationTimeperiodFactory) {
 				$scope.count = 0;
+				$scope.preTimeperiodData = {};
 				$scope.timeperiodData = {};
 
-				$scope.addRow = function() {
-					$scope.count++;
-					var content = $compile('<x-timeperiod-add-row count="' + $scope.count + '"></x-timeperiod-add-row>')($scope);
+				$scope.addRow = function(data) {
+					$scope.preTimeperiodData[++$scope.count] = data;
+					var content = $compile('<x-timeperiod-add-row count="' + $scope.count + '" getdata="getPreTimeperiodData(' + $scope.count + ')"></x-timeperiod-add-row>')($scope);
 					$('tbody').append(content);
+				};
+
+				$scope.getPreTimeperiodData = function(count) {
+					return $scope.preTimeperiodData[count];
 				};
 
 				$scope.updateCommand = function(id) {
@@ -31,11 +36,9 @@ define(['./module', '../app-config'],
 				$scope.$on('$viewContentLoaded', function() {
 					SystemConfigurationTimeperiodFactory.edit($state.params.id)
 						.then(function(data) {
-							console.log(data);
-							// for (var i in data) {
-							// 	// console.log(data[i]);
-							// 	$scope.addRow(data[i]);
-							// }
+							for (var i in data) {
+								$scope.addRow(data[i]);
+							}
 							// $scope.timeperiodData = data;
 						});
 				});

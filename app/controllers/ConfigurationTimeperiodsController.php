@@ -122,7 +122,49 @@ class ConfigurationTimeperiodsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$input = Input::all();
+		$v4uuid = UUID::v4();
+
+		Object::create(array(
+			"uuid" => $v4uuid,
+			"object_type" => "9",
+			"first_name" => $input["timeperiod_name"],
+			"second_name" => "",
+			"is_active" => "1"
+		));
+
+		Timeperiod::create(array(
+			"object_uuid" => $v4uuid,
+			"alias" => $input["alias"]
+		));
+
+		foreach ($input as $k => $v) {
+			if (is_string($v)) {
+				TimeperiodDetail::create(array(
+					"timeperiod_fk" => $v4uuid,
+					"key" => $k,
+					"value" => $v
+				));
+			} else {
+				$foo3 = "";
+				if (!empty($v['foo3'])) {
+					$foo3 = " ".$v['foo3']['value'];
+				}
+				$key = $v['foo1']['value']." ".$v['foo2']['value'].$foo3;
+				$value = $v['bar1']['value'].":".$v['bar2']['value']."-".$v['bar3']['value'].":".$v['bar4']['value'];
+
+				TimeperiodDetail::create(array(
+					"timeperiod_fk" => $v4uuid,
+					"key" => $key,
+					"value" => $value
+				));
+			}
+		}
+
+		$this->writeConfig();
+		// TODO nagios restart
+
+		return Response::json(array("success" => true));
 	}
 
 	/**
