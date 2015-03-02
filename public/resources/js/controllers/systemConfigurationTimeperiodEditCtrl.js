@@ -33,15 +33,23 @@ define(['./module', '../app-config'],
 					$state.go('systemConfigurationTimeperiodList');
 				};
 
-				$scope.$on('$viewContentLoaded', function() {
-					SystemConfigurationTimeperiodFactory.edit($state.params.id)
-						.then(function(data) {
-							for (var i in data) {
-								$scope.addRow(data[i]);
+				SystemConfigurationTimeperiodFactory.edit($state.params.id)
+					.then(function(data) {
+						for (var i in data) {
+							var timeperiod = data[i];
+							switch (timeperiod.key) {
+								case 'timeperiod_name':
+									$scope.timeperiodData.timeperiod_name = timeperiod.timeperiod_name;
+									break;
+								case 'alias':
+									$scope.timeperiodData.alias = timeperiod.alias;
+									break;
+								default:
+									$scope.addRow(timeperiod);
+									break;
 							}
-							// $scope.timeperiodData = data;
-						});
-				});
+						}
+					});
 			}
 		]);
 	}

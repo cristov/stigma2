@@ -35,7 +35,7 @@ define(['./module', '../app-config'],
 							scope.timeperiodData.bar3 = scope.bar3[0];
 							scope.timeperiodData.bar4 = scope.bar4[0];
 						} else {
-							console.log('object ############');
+							console.log(data);
 						}
 
 						DirectiveTimeperiodFactory.register(scope.count, scope.timeperiodData);

@@ -21,12 +21,10 @@ define(['./module', '../app-config'],
 					$state.go('systemConfigurationCommandList');
 				};
 
-				$scope.$on('$viewContentLoaded', function() {
-					SystemConfigurationCommandFactory.edit($state.params.id)
-						.then(function(data) {
-							$scope.commandData = data[0];
-						});
-				});
+				SystemConfigurationCommandFactory.edit($state.params.id)
+					.then(function(data) {
+						$scope.commandData = data[0];
+					});
 			}
 		]);
 	}

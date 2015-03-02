@@ -1,4 +1,4 @@
-<div ng-controller="HomeCtrl">
+<div>
 	<div ng-if="$success" class="alert alert-success">
 		<span>{{ $success }}</span>
 	</div>

@@ -27,12 +27,10 @@ define(['./module', '../app-config'],
 					$state.go('systemConfigurationHostList', {object_uuid: object_uuid});
 				};
 
-				$scope.$on('$viewContentLoaded', function() {
-					SystemConfigurationServiceFactory.list($state.params)
-						.then(function(data) {
-							$scope.services = data;
-						});
-				});
+				SystemConfigurationServiceFactory.list($state.params)
+					.then(function(data) {
+						$scope.services = data;
+					});
 			}
 		]);
 	}

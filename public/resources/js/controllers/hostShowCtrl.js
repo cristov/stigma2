@@ -9,12 +9,10 @@ define(['./module', '../app-config'],
 					$state.go('hostList');
 				};
 
-				$scope.$on('$viewContentLoaded', function() {
-					HostFactory.show($state.params.uuid)
-						.then(function(data) {
-							$scope.host = data.host;
-						});
-				});
+				HostFactory.show($state.params.uuid)
+					.then(function(data) {
+						$scope.host = data.host;
+					});
 			}
 		]);
 	}

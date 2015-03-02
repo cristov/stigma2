@@ -102,12 +102,10 @@ define(['./module', '../app-config'],
 				// 	}
 				// });
 
-				$scope.$on('$viewContentLoaded', function() {
-					SystemConfigurationHostFactory.list($state.params)
-						.then(function(data) {
-							$scope.hosts = data;
-						});
-				});
+				SystemConfigurationHostFactory.list($state.params)
+					.then(function(data) {
+						$scope.hosts = data;
+					});
 
 				// SystemConfigurationHostgroupFactory.list()
 				// 	.then(function(hostgroups) {
