@@ -56,6 +56,7 @@ define([], function() {
 				{'value': 'saturday', 'text': 'Saturday'},
 			],
 			month: [
+				{'value': '', 'text': '선택'},
 				{'value': 'january', 'text': 'January'},
 				{'value': 'february', 'text': 'February'},
 				{'value': 'march', 'text': 'March'},
@@ -70,13 +71,16 @@ define([], function() {
 				{'value': 'december', 'text': 'December'},
 			],
 			weekday: [
+				{'value': '', 'text': '선택'},
 				{'value': '-1', 'text': '-1'},
 				{'value': '1', 'text': '1'},
 				{'value': '2', 'text': '2'},
 				{'value': '3', 'text': '3'},
 				{'value': '4', 'text': '4'},
+				{'value': '5', 'text': '5'},
 			],
 			day: [
+				{'value': '', 'text': '선택'},
 				{'value': '1', 'text': '1'},
 				{'value': '2', 'text': '2'},
 				{'value': '3', 'text': '3'},

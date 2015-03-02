@@ -61,11 +61,12 @@ class ConfigurationTimeperiodsController extends \BaseController {
 					"value" => $v
 				));
 			} else {
+				$foo2 = "";
 				$foo3 = "";
-				if (!empty($v['foo3'])) {
-					$foo3 = " ".$v['foo3']['value'];
-				}
-				$key = $v['foo1']['value']." ".$v['foo2']['value'].$foo3;
+				if (!empty($v['foo2'])) $foo2 = " ".$v['foo2']['value'];
+				if (!empty($v['foo3'])) $foo3 = " ".$v['foo3']['value'];
+
+				$key = $v['foo1']['value'].$foo2.$foo3;
 				$value = $v['bar1']['value'].":".$v['bar2']['value']."-".$v['bar3']['value'].":".$v['bar4']['value'];
 
 				TimeperiodDetail::create(array(
@@ -146,11 +147,12 @@ class ConfigurationTimeperiodsController extends \BaseController {
 					"value" => $v
 				));
 			} else {
+				$foo2 = "";
 				$foo3 = "";
-				if (!empty($v['foo3'])) {
-					$foo3 = " ".$v['foo3']['value'];
-				}
-				$key = $v['foo1']['value']." ".$v['foo2']['value'].$foo3;
+				if (!empty($v['foo2'])) $foo2 = " ".$v['foo2']['value'];
+				if (!empty($v['foo3'])) $foo3 = " ".$v['foo3']['value'];
+
+				$key = $v['foo1']['value'].$foo2.$foo3;
 				$value = $v['bar1']['value'].":".$v['bar2']['value']."-".$v['bar3']['value'].":".$v['bar4']['value'];
 
 				TimeperiodDetail::create(array(

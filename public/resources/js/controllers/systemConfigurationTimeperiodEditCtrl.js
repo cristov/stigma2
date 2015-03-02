@@ -19,7 +19,7 @@ define(['./module', '../app-config'],
 					return $scope.preTimeperiodData[count];
 				};
 
-				$scope.updateCommand = function(id) {
+				$scope.updateTimeperiod = function(id) {
 					SystemConfigurationTimeperiodFactory.update(id, $scope.timeperiodData)
 						.success(function(data) {
 							$state.go('systemConfigurationTimeperiodList');
@@ -49,6 +49,7 @@ define(['./module', '../app-config'],
 									break;
 							}
 						}
+						$scope.timeperiodData.id = data[0].id;
 					});
 			}
 		]);
