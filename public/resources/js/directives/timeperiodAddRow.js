@@ -43,25 +43,37 @@ define(['./module', '../app-config'],
 								break;
 							}
 						}
-						scope.timeperiodData.foo1 = {'value': keySpl[0].trim()};
-						scope.timeperiodData.foo2 = {'value': keySpl[1].trim()};
-						scope.timeperiodData.foo3 = {'value': keySpl[2].trim()};
+
+						scope.timeperiodData.foo1 = getTimeperiodDataFoo(scope.foo1, keySpl[0].trim());
+						scope.timeperiodData.foo2 = getTimeperiodDataFoo(scope.foo2, keySpl[1].trim());
+						scope.timeperiodData.foo3 = getTimeperiodDataFoo(scope.foo3, keySpl[2].trim());
 
 						var valueSpl = valueStr.split('-');
-						var valueSubSpl = valueSpl[0].split(':');
-						scope.timeperiodData.bar1 = {'value': valueSubSpl[0].trim()};
-						scope.timeperiodData.bar2 = {'value': valueSubSpl[1].trim()};
-						valueSubSpl = valueSpl[1].split(':');
-						scope.timeperiodData.bar3 = {'value': valueSubSpl[0].trim()};
-						scope.timeperiodData.bar4 = {'value': valueSubSpl[1].trim()};
+						setTimeperiodDataBar(scope, valueSpl);
 					}
+				}
+
+				function getTimeperiodDataFoo(obj, keyStr) {
+					var keys = Object.keys(obj);
+					for (var i = 0, l = keys.length; i < l; i++) {
+						if (obj[keys[i]].value === keyStr) {
+							return obj[keys[i]];
+						}
+					}
+				}
+
+				function setTimeperiodDataBar(scope, valueSpl) {
+					var valueSubSpl = valueSpl[0].split(':');
+					scope.timeperiodData.bar1 = {'value': valueSubSpl[0].trim()};
+					scope.timeperiodData.bar2 = {'value': valueSubSpl[1].trim()};
+					valueSubSpl = valueSpl[1].split(':');
+					scope.timeperiodData.bar3 = {'value': valueSubSpl[0].trim()};
+					scope.timeperiodData.bar4 = {'value': valueSubSpl[1].trim()};
 				}
 
 				function setWatcher(scope, monthObj, weekObj) {
 					scope.$watch('timeperiodData.foo1', function(newValue, oldValue) {
 						if (newValue === oldValue) return;
-						console.log(newValue);
-						console.log(oldValue);
 
 						if (monthObj.hasOwnProperty(oldValue.text) && weekObj.hasOwnProperty(newValue.text)) {
 							// scope.isWeek = true;
