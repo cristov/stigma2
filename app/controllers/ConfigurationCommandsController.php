@@ -101,10 +101,7 @@ class ConfigurationCommandsController extends \BaseController {
 	{
 		$command_name = Input::get("command_name");
 		$command_line = Input::get("command_line");
-		$result = DB::table("commands")
-				->select("object_uuid")
-				->where("id", "=", $id)
-				->get();
+		$result = DB::table("commands")->select("object_uuid")->where("id", "=", $id)->get();
 		$uuid = $result[0]->object_uuid;
 
 		DB::table("objects")

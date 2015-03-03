@@ -124,25 +124,24 @@ class ConfigurationTimeperiodsController extends \BaseController {
 	public function update($id)
 	{
 		$input = Input::all();
-		$v4uuid = UUID::v4();
+		$result = DB::table("timeperiods")->select("object_uuid")->where("id", "=", $id)->get();
+		$object_uuid = $result[0]->object_uuid;
 
-		Object::create(array(
-			"uuid" => $v4uuid,
-			"object_type" => "9",
-			"first_name" => $input["timeperiod_name"],
-			"second_name" => "",
-			"is_active" => "1"
-		));
+		TimeperiodDetail::where("timeperiod_fk", "=", $object_uuid)->delete();
 
-		Timeperiod::create(array(
-			"object_uuid" => $v4uuid,
-			"alias" => $input["alias"]
-		));
+		DB::table("objects")
+			->where("uuid", "=", $object_uuid)
+			->update(array("first_name" => $input["timeperiod_name"]));
+		DB::table("timeperiods")
+			->where("id", "=", $id)
+			->update(array("alias" => $input["alias"]));
 
 		foreach ($input as $k => $v) {
 			if (is_string($v)) {
+				if ($k === "id") continue;
+
 				TimeperiodDetail::create(array(
-					"timeperiod_fk" => $v4uuid,
+					"timeperiod_fk" => $object_uuid,
 					"key" => $k,
 					"value" => $v
 				));
@@ -156,7 +155,7 @@ class ConfigurationTimeperiodsController extends \BaseController {
 				$value = $v['bar1']['value'].":".$v['bar2']['value']."-".$v['bar3']['value'].":".$v['bar4']['value'];
 
 				TimeperiodDetail::create(array(
-					"timeperiod_fk" => $v4uuid,
+					"timeperiod_fk" => $object_uuid,
 					"key" => $key,
 					"value" => $value
 				));

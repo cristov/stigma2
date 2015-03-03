@@ -45,8 +45,16 @@ define(['./module', '../app-config'],
 						}
 
 						scope.timeperiodData.foo1 = getTimeperiodDataFoo(scope.foo1, keySpl[0].trim());
-						scope.timeperiodData.foo2 = getTimeperiodDataFoo(scope.foo2, keySpl[1].trim());
-						scope.timeperiodData.foo3 = getTimeperiodDataFoo(scope.foo3, keySpl[2].trim());
+						if (keySpl[1].trim() !== null && keySpl[1].trim() !== undefined && keySpl[1].trim().length > 0) {
+							scope.timeperiodData.foo2 = getTimeperiodDataFoo(scope.foo2, keySpl[1].trim());
+						} else {
+							scope.timeperiodData.foo2 = scope.foo2[0];
+						}
+						if (keySpl[2].trim() !== null && keySpl[2].trim() !== undefined && keySpl[2].trim().length > 0) {
+							scope.timeperiodData.foo3 = getTimeperiodDataFoo(scope.foo3, keySpl[2].trim());
+						} else {
+							scope.timeperiodData.foo3 = scope.foo3[0];
+						}
 
 						var valueSpl = valueStr.split('-');
 						setTimeperiodDataBar(scope, valueSpl);

@@ -3,8 +3,8 @@ define(['./module', '../app-config'],
 		'use strict';
 
 		controllers.controller('SystemConfigurationTimeperiodEditCtrl', [
-			'$compile', '$scope', '$state', 'SystemConfigurationTimeperiodFactory',
-			function($compile, $scope, $state, SystemConfigurationTimeperiodFactory) {
+			'$compile', '$scope', '$state', 'DirectiveTimeperiodFactory', 'SystemConfigurationTimeperiodFactory',
+			function($compile, $scope, $state, DirectiveTimeperiodFactory, SystemConfigurationTimeperiodFactory) {
 				$scope.count = 0;
 				$scope.preTimeperiodData = {};
 				$scope.timeperiodData = {};
@@ -20,7 +20,10 @@ define(['./module', '../app-config'],
 				};
 
 				$scope.updateTimeperiod = function(id) {
-					SystemConfigurationTimeperiodFactory.update(id, $scope.timeperiodData)
+					var timeperiods = DirectiveTimeperiodFactory.getTimeperiods();
+					var params = jQuery.extend({}, timeperiods, $scope.timeperiodData);
+
+					SystemConfigurationTimeperiodFactory.update(id, params)
 						.success(function(data) {
 							$state.go('systemConfigurationTimeperiodList');
 						})
@@ -49,7 +52,7 @@ define(['./module', '../app-config'],
 									break;
 							}
 						}
-						$scope.timeperiodData.id = data[0].id;
+						$scope.timeperiodData.id = data[0].timeperiod_id;
 					});
 			}
 		]);

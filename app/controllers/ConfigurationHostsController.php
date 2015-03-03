@@ -143,8 +143,6 @@ class ConfigurationHostsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		global $config;
-
 		$input = Input::all();
 		$result = DB::table("hosts")->select("object_uuid")->where("id", "=", $id)->get();
 		$object_uuid = $result[0]->object_uuid;
