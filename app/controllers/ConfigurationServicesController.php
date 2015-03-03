@@ -197,7 +197,7 @@ class ConfigurationServicesController extends \BaseController {
 	{
 		$query = DB::table("services")
 				->join("objects", "services.object_uuid", "=", "objects.uuid")
-				->select("services.id", "services.object_uuid", "services.host_fk", "objects.first_name as host_name", "objects.second_name as service_description")
+				->select("services.id", "services.object_uuid", "services.host_fk", "services.description", "objects.first_name as host_name")
 				->orderBy("services.created_at", "desc");
 		if (Input::has("host_fk")) $query->where("host_fk", "=", Input::get("host_fk"));
 		return $query->get();

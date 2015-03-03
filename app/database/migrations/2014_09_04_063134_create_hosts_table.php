@@ -16,7 +16,6 @@ class CreateHostsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('object_uuid', 128);
-			$table->string('name', 128);
 			$table->string('description', 1024);
 			$table->string('command_fk', 128);
 			$table->timestamps();

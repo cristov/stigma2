@@ -4,19 +4,20 @@
 	</div>
 
 	<div>
+		<p><a ng-click="createService()" class="btn btn-small">create new service</a></p>
 		<table class="table table-striped table-condensed">
 			<thead>
 				<tr>
-					<th style="min-width: 80px;">Host</th>
-					<th style="min-width: 80px;">Description</th>
-					<th style="width:20px;"> </th>
-					<th style="width:20px;"> </th>
+					<th style="width: 180px;">Host</th>
+					<th>Description</th>
+					<th style="width: 55px;"> </th>
+					<th style="width: 75px;"> </th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="service in services" ng-show="services.length">
-					<td><a ng-click="listHost(service.host_object_uuid)">{{ service.host_name }}</a></td>
-					<td>{{ service.service_description }}</td>
+					<td class="listTdOverflow" style="vertical-align: middle;"><a ng-click="listHost(service.host_object_uuid)">{{ service.host_name }}</a></td>
+					<td class="listTdOverflow" style="vertical-align: middle;">{{ service.description }}</td>
 					<td><a ng-click="detailService(service.id)" class="btn btn-small btn-primary">detail</a></td>
 					<td><a ng-click="deleteService(service.id)" class="btn btn-small btn-danger">delete</a></td>
 				</tr>
@@ -25,6 +26,5 @@
 				</tr>
 			</tbody>
 		</table>
-		<a ng-click="createService()" class="btn btn-small">create new service</a>
 	</div>
 </div>

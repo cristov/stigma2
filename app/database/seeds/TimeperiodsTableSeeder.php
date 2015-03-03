@@ -7,6 +7,7 @@ class TimeperiodsTableSeeder extends Seeder {
 	public function run()
 	{
 		DB::table('timeperiods')->delete();
+		DB::table('timeperiod_details')->delete();
 
 		$uuid = UUID::v4();
 		Object::create([
