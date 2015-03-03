@@ -34,6 +34,14 @@
 							<input type="text" class="form-control input-sm" ng-model="timeperiodData.alias" />
 						</td>
 					</tr>
+					<tr>
+						<td>
+							<span>Use</span>
+						</td>
+						<td colspan="2">
+							<input type="text" class="form-control input-sm" ng-model="timeperiodData.use" />
+						</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>

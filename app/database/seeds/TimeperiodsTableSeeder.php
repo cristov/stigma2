@@ -167,27 +167,27 @@ class TimeperiodsTableSeeder extends Seeder {
 		TimeperiodDetail::create([
 			'timeperiod_fk' => $uuid,
 			'key' => 'january 1',
-			'value' => '00:00-00:00     ; New Years'
+			'value' => '00:00-00:00'
 		]);
 		TimeperiodDetail::create([
 			'timeperiod_fk' => $uuid,
 			'key' => 'monday -1 may',
-			'value' => '00:00-00:00     ; Memorial Day (last Monday in May)'
+			'value' => '00:00-00:00'
 		]);
 		TimeperiodDetail::create([
 			'timeperiod_fk' => $uuid,
 			'key' => 'july 4',
-			'value' => '00:00-00:00     ; Independence Day'
+			'value' => '00:00-00:00'
 		]);
 		TimeperiodDetail::create([
 			'timeperiod_fk' => $uuid,
 			'key' => 'monday 1 september',
-			'value' => '00:00-00:00     ; Labor Day (first Monday in September)'
+			'value' => '00:00-00:00'
 		]);
 		TimeperiodDetail::create([
 			'timeperiod_fk' => $uuid,
 			'key' => 'thursday 4 november',
-			'value' => '00:00-00:00     ; Thanksgiving (4th Thursday in November)'
+			'value' => '00:00-00:00'
 		]);
 		TimeperiodDetail::create([
 			'timeperiod_fk' => $uuid,

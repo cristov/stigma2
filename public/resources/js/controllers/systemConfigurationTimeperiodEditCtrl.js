@@ -47,6 +47,11 @@ define(['./module', '../app-config'],
 								case 'alias':
 									$scope.timeperiodData.alias = timeperiod.alias;
 									break;
+								case 'name':
+									break;
+								case 'use':
+									$scope.timeperiodData.use = timeperiod.value;
+									break;
 								default:
 									$scope.addRow(timeperiod);
 									break;
