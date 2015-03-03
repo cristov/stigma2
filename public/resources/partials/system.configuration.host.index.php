@@ -32,19 +32,22 @@
 			<i class="fa fa-search"></i> <input type="text" class="form-control" ng-model="search.host_name" placeholder="Search">
 		</div>
 		
+		<p><a ng-click="createHost()" class="btn btn-small">create new host</a></p>
 		<table class="table table-striped table-condensed">
 			<thead>
 				<tr>
-					<th style="width:20px;"> </th>
-					<th style="min-width: 80px;">Host</th>
-					<th style="width:20px;"> </th>
-					<th style="width:20px;"> </th>
+					<!-- <th style="width:20px;"> </th> -->
+					<th style="width: 180px;">Host</th>
+					<th>Description</th>
+					<th style="width: 55px;"> </th>
+					<th style="width: 75px;"> </th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="host in hosts | filter:search" ng-show="hosts.length">
-					<td><input type="checkbox" name="{{host.object_uuid}}" value="{{host.object_uuid}}"></td>
-					<td><a ng-click="listService(host.object_uuid)">{{ host.host_name }}</a></td>
+					<!-- <td><input type="checkbox" name="{{host.object_uuid}}" value="{{host.object_uuid}}"></td> -->
+					<td class="listTdOverflow" style="vertical-align: middle;"><a ng-click="listService(host.object_uuid)">{{ host.host_name }}</a></td>
+					<td class="listTdOverflow" style="vertical-align: middle;">{{ host.description }}</td>
 					<td><a ng-click="detailHost(host.id)" class="btn btn-small btn-primary">detail</a></td>
 					<td><a ng-click="deleteHost(host.id)" class="btn btn-small btn-danger">delete</a></td>
 				</tr>
@@ -53,6 +56,5 @@
 				</tr>
 			</tbody>
 		</table>
-		<a ng-click="createHost()" class="btn btn-small">create new host</a>
 	</div>
 </div>

@@ -195,7 +195,7 @@ class ConfigurationHostsController extends \BaseController {
 	{
 		$query = DB::table("hosts")
 				->join("objects", "hosts.object_uuid", "=", "objects.uuid")
-				->select("hosts.id", "hosts.object_uuid", "objects.first_name as host_name")
+				->select("hosts.id", "hosts.object_uuid", "hosts.description", "objects.first_name as host_name")
 				->orderBy("hosts.created_at", "desc");
 		if (Input::has("object_uuid")) $query->where("object_uuid", "=", Input::get("object_uuid"));
 		return $query->get();

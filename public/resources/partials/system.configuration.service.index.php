@@ -9,6 +9,7 @@
 			<thead>
 				<tr>
 					<th style="width: 180px;">Host</th>
+					<th style="width: 180px;">Service</th>
 					<th>Description</th>
 					<th style="width: 55px;"> </th>
 					<th style="width: 75px;"> </th>
@@ -17,8 +18,9 @@
 			<tbody>
 				<tr ng-repeat="service in services" ng-show="services.length">
 					<td class="listTdOverflow" style="vertical-align: middle;"><a ng-click="listHost(service.host_object_uuid)">{{ service.host_name }}</a></td>
+					<td class="listTdOverflow" style="vertical-align: middle;">{{ service.service_name }}</td>
 					<td class="listTdOverflow" style="vertical-align: middle;">{{ service.description }}</td>
-					<td><a ng-click="detailService(service.id)" class="btn btn-small btn-primary">detail</a></td>
+					<td><a ng-click="editService(service.id)" class="btn btn-small btn-primary">edit</a></td>
 					<td><a ng-click="deleteService(service.id)" class="btn btn-small btn-danger">delete</a></td>
 				</tr>
 				<tr ng-show="!services.length">

@@ -13,8 +13,8 @@ class ServicesTableSeeder extends Seeder {
 		Object::create([
 			'uuid' => $uuid,
 			'object_type' => '2',
-			'first_name' => 'generic-service',
-			'second_name' => '',
+			'first_name' => '',
+			'second_name' => 'generic-service',
 			'is_active' => '1'
 		]);
 		Service::create([
@@ -143,8 +143,8 @@ class ServicesTableSeeder extends Seeder {
 		Object::create([
 			'uuid' => $uuid,
 			'object_type' => '2',
-			'first_name' => 'local-service',
-			'second_name' => '',
+			'first_name' => '',
+			'second_name' => 'local-service',
 			'is_active' => '1'
 		]);
 		Service::create([

@@ -9,8 +9,8 @@ define(['./module', '../app-config'],
 					$state.go('systemConfigurationServiceCreation');
 				};
 
-				$scope.detailService = function(id) {
-					$state.go('systemConfigurationServiceShow', {id: id});
+				$scope.editService = function(id) {
+					$state.go('systemConfigurationServiceEdit', {id: id});
 				};
 
 				$scope.deleteService = function(id) {

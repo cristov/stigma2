@@ -8,10 +8,6 @@ define(['./module', '../app-config', './ngDraggableCtrl'],
 				draggable.setScope($scope);
 				draggable.init();
 
-				$scope.editService = function() {
-					$state.go('systemConfigurationServiceEdit', {id: $state.params.id});
-				};
-
 				$scope.updateService = function() {
 					var params = {};
 
