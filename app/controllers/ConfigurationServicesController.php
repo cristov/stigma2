@@ -93,6 +93,18 @@ class ConfigurationServicesController extends \BaseController {
 	 */
 	public function show($id)
 	{
+		//
+	}
+
+	/**
+	 * Show the form for editing the specified resource.
+	 * GET /configurationservices/{id}/edit
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function edit($id)
+	{
 		$serviceDetail = DB::table("services")
 				->join("objects", "services.object_uuid", "=", "objects.uuid")
 				->join("service_details", "services.object_uuid", "=", "service_details.service_fk")
@@ -124,18 +136,6 @@ class ConfigurationServicesController extends \BaseController {
 		);
 
 		return Response::json($result);
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /configurationservices/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
 	}
 
 	/**

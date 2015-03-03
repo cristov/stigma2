@@ -49,7 +49,7 @@
 			</div>
 		</div>
 		<div class="form-group text-right">	
-			<button type="button" class="btn btn-lg" ng-click="cancel()">Cancel</button>
+			<button type="button" class="btn btn-default btn-lg" ng-click="cancel()">Cancel</button>
 			<button type="submit" class="btn btn-primary btn-lg">Submit</button>
 		</div>
 	</form>

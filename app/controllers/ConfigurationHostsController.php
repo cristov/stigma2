@@ -89,6 +89,18 @@ class ConfigurationHostsController extends \BaseController {
 	 */
 	public function show($id)
 	{
+		//
+	}
+
+	/**
+	 * Show the form for editing the specified resource.
+	 * GET /configurationhosts/{id}/edit
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function edit($id)
+	{
 		$hostDetail = DB::table("hosts")
 				->join("objects", "hosts.object_uuid", "=", "objects.uuid")
 				->join("host_details", "hosts.object_uuid", "=", "host_details.host_fk")
@@ -120,18 +132,6 @@ class ConfigurationHostsController extends \BaseController {
 		);
 
 		return Response::json($result);
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /configurationhosts/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
 	}
 
 	/**

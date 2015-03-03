@@ -17,8 +17,8 @@ define(['./implement', './module', '../app-config'],
 					var url = appConfig.getConfiguration().home + '/api/configuration/hosts';
 					return implement.httpServiceImpl($http, 'POST', params, url);
 				},
-				show: function(id) {
-					var url = appConfig.getConfiguration().home + '/api/configuration/hosts/' + id;
+				edit: function(id) {
+					var url = appConfig.getConfiguration().home + '/api/configuration/hosts/' + id + '/edit';
 					return implement.httpGetServiceImpl($http, url);
 				},
 				update: function(id, params) {

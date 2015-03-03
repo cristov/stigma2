@@ -27,14 +27,10 @@ define(['./module', '../app-config', './ngDraggableCtrl'],
 				};
 
 				$scope.cancel = function() {
-					$state.go('systemConfigurationServiceShow', {id: $state.params.id});
-				};
-
-				$scope.list = function() {
 					$state.go('systemConfigurationServiceList');
 				};
 
-				SystemConfigurationServiceFactory.show($state.params.id)
+				SystemConfigurationServiceFactory.edit($state.params.id)
 					.then(function(data) {
 						$scope.serviceData = data.serviceData;
 						$scope.serviceDetail = data.serviceDetail;

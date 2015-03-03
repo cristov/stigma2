@@ -8,10 +8,6 @@ define(['./module', '../app-config', './ngDraggableCtrl'],
 				draggable.setScope($scope);
 				draggable.init();
 
-				$scope.editHost = function() {
-					$state.go('systemConfigurationHostEdit', {id: $state.params.id});
-				};
-
 				$scope.updateHost = function() {
 					var params = {};
 
@@ -31,14 +27,10 @@ define(['./module', '../app-config', './ngDraggableCtrl'],
 				};
 
 				$scope.cancel = function() {
-					$state.go('systemConfigurationHostShow', {id: $state.params.id});
-				};
-
-				$scope.list = function() {
 					$state.go('systemConfigurationHostList');
 				};
 
-				SystemConfigurationHostFactory.show($state.params.id)
+				SystemConfigurationHostFactory.edit($state.params.id)
 					.then(function(data) {
 						$scope.hostData = data.hostData;
 						$scope.hostDetail = data.hostDetail;

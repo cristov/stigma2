@@ -13,8 +13,8 @@ define(['./module', '../app-config'],
 					$state.go('systemConfigurationHostCreation');
 				};
 
-				$scope.detailHost = function(id) {
-					$state.go('systemConfigurationHostShow', {id: id});
+				$scope.editHost = function(id) {
+					$state.go('systemConfigurationHostEdit', {id: id});
 				};
 
 				$scope.deleteHost = function(id) {
