@@ -5,50 +5,17 @@
 
 	<form ng-submit="updateHost()">
 		<div class="form-group">
-			<div class="row topRow">
-				<h4 class="heading">
-					Select Configuration
-				</h4>
-		 	</div>
-	        
-			<div class="row">
-				<div ng-drop="true" ng-drop-success="onDropComplete1($data,$event)">
-					<span class="title">사용</span>
-
-					<div ng-repeat="obj in use" ng-drag="true" ng-drag-data="obj" ng-drag-success="onDragSuccess1($data,$event)">
-						{{obj.name}}
-					</div>
-
-				</div>
-
-				<div ng-drop="true" ng-drop-success="onDropComplete2($data,$event)">
-					<span class="title">사용안함</span>
-
-					<div ng-repeat="obj in disuse" ng-drag="true" ng-drag-data="obj" ng-drag-success="onDragSuccess2($data,$event)">
-						{{obj.name}}
-					</div>
-
-				</div> 
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="row">
-				<h4 class="heading">
-					Write Configuration
-				</h4>
-			</div>
-
 			<table>
 				<thead>
 					<tr>
-						<th class="hostCreationTitleName">Configuration Name</th>
-						<th class="hostCreationTitleValue">Configuration Value</th>
+						<th class="tableTitleName">Configuration Name</th>
+						<th class="tableTitleValue">Configuration Value</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr ng-repeat="rowContents in use">
 						<td>
-							<input type="text" class="form-control input-sm" ng-model="rowContents.name" ng-readonly="true" />
+							<span>{{ rowContents.name }}</span>
 						</td>
 						<td>
 							<input type="text" class="form-control input-sm" ng-model="hostData[rowContents.name]" placeholder="{{ rowContents.placeholder }}" />
@@ -56,6 +23,30 @@
 					</tr>
 				</tbody>
 			</table>
+		</div>
+		<div style="height:80px;"></div>
+		<div class="form-group">
+			<p><h4 class="heading">Drag and drop the box</h4></p>
+	        
+			<div class="row">
+				<div>
+					<div class="ng-drop-title"><span class="ng-drop-title">사용</span></div>
+					<div class="ng-drop-title"><span class="ng-drop-title-right">사용안함</span></div>
+				</div>
+				<div ng-drop="true" ng-drop-success="onDropComplete1($data,$event)">
+					<div ng-repeat="obj in use" ng-drag="true" ng-drag-data="obj" ng-drag-success="onDragSuccess1($data,$event)">
+						{{obj.name}}
+					</div>
+
+				</div>
+
+				<div ng-drop="true" ng-drop-success="onDropComplete2($data,$event)">
+					<div ng-repeat="obj in disuse" ng-drag="true" ng-drag-data="obj" ng-drag-success="onDragSuccess2($data,$event)">
+						{{obj.name}}
+					</div>
+
+				</div> 
+			</div>
 		</div>
 		<div class="form-group text-right">	
 			<button type="button" class="btn btn-lg" ng-click="cancel()">Cancel</button>

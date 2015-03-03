@@ -51,7 +51,7 @@ class NagiosObjects {
 	public static function service() {
 		return array(
 			array("required" => "Y", "name" => "host_name", "placeholder" => ""),
-			array("required" => "Y", "name" => "service_description", "placeholder" => ""),
+			array("required" => "Y", "name" => "description", "placeholder" => ""),
 			array("required" => "Y", "name" => "check_command", "placeholder" => ""),
 			array("required" => "Y", "name" => "max_check_attempts", "placeholder" => "#"),
 			array("required" => "Y", "name" => "check_interval", "placeholder" => "#"),

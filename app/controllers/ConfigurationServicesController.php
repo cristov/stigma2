@@ -59,13 +59,14 @@ class ConfigurationServicesController extends \BaseController {
 			"uuid" => $v4uuid,
 			"object_type" => "2",
 			"first_name" => $input["host_name"],
-			"second_name" => $input["service_description"],
+			"second_name" => $input["description"],
 			"is_active" => "1"
 		));
 
 		Service::create(array(
 			"object_uuid" => $v4uuid,
 			"host_fk" => "",
+			'description' => $input["description"],
 			"command_fk" => ""
 		));
 
@@ -153,6 +154,13 @@ class ConfigurationServicesController extends \BaseController {
 		$object_uuid = $result[0]->object_uuid;
 
 		ServiceDetail::where("service_fk", "=", $object_uuid)->delete();
+
+		DB::table("objects")
+			->where("uuid", "=", $object_uuid)
+			->update(array("first_name" => $input["host_name"], "second_name" => $input["description"]));
+		DB::table("services")
+			->where("id", "=", $id)
+			->update(array("description" => $input["description"]));
 
 		foreach ($input as $key => $value) {
 			ServiceDetail::create(array(
