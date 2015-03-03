@@ -102,30 +102,36 @@ ul.draggable-objects:after{
 [ng-drop]{
     background: rgba(0,255,0, 0.5);
     text-align: center;
-    width: 100%;
-    height: 400px;
+    width: 45%;
+    height: 600px;
     padding-top:50px;
     padding-bottom:30px;
     display: block;
-    margin:20px auto;
+    margin:20px;
     position: relative;
     overflow-y: scroll;
+    float: left;
 }
 [ng-drop].drag-enter{
     border:solid 5px red;
 }
-[ng-drop] span.title{
+div.ng-drop-title{
+    width: 50%;
+    float: left;
+}
+span.ng-drop-title{
     display: block;
-    position: absolute;
-    top:50%;
-    left:50%;
-    width: 200px;
-    height: 20px;
-    margin-left: -100px;
-    margin-top: -10px;
     font-size: x-large;
     font-weight: bold;
-    color: #002DFF
+    margin-left: 45%;
+    color: #289FD6
+}
+span.ng-drop-title-right{
+    display: block;
+    font-size: x-large;
+    font-weight: bold;
+    margin-left: 38%;
+    color: #FF8800
 }
 [ng-drop] div{
     position: relative;
